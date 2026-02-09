@@ -1,0 +1,27 @@
+<div style="background: #000; color: #0f0; padding: 20px; font-family: monospace; border: 5px solid red; z-index: 9999; position: relative;">
+  <h2>DEBUG PRODUCT DATA</h2>
+  <p>Product Title: {{ product.title }}</p>
+  <p>Closest Product Title: {{ closest.product.title }}</p>
+  <p>Section ID: {{ section.id }}</p>
+  <p>Number of blocks in section: {{ section.blocks.size }}</p>
+  <ul>
+    {% for block in section.blocks %}
+      <li>Block Type: {{ block.type }} | ID: {{ block.id }}</li>
+    {% endfor %}
+  </ul>
+  <hr>
+  <h3>Section Settings</h3>
+  <pre>{{ section.settings | json }}</pre>
+</div>
+
+{% schema %}
+{
+  "name": "DEBUG SECTION",
+  "settings": [],
+  "presets": [
+    {
+      "name": "DEBUG SECTION"
+    }
+  ]
+}
+{% endschema %}

@@ -1,5 +1,8 @@
 {
   "sections": {
+    "debug": {
+      "type": "debug-product"
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -151,6 +154,7 @@
     }
   },
   "order": [
+    "debug",
     "main",
     "video_guide",
     "customer_reviews"
