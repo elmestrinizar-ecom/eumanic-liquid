@@ -1,21 +1,11 @@
 {
   "sections": {
-    "debug": {
-      "type": "debug-product"
-    },
     "main": {
       "type": "product-information",
       "blocks": {
         "product-details": {
           "type": "_product-details",
           "blocks": {
-            "vendor": {
-              "type": "text",
-              "settings": {
-                "text": "{{ closest.product.vendor }}",
-                "alignment": "left"
-              }
-            },
             "title": {
               "type": "product-title",
               "settings": {
@@ -117,7 +107,6 @@
             }
           },
           "block_order": [
-            "vendor",
             "title",
             "subtitle",
             "price",
@@ -154,7 +143,6 @@
     }
   },
   "order": [
-    "debug",
     "main",
     "video_guide",
     "customer_reviews"

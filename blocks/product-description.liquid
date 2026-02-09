@@ -1,11 +1,11 @@
 
 
 {% liquid
-  assign product = block.settings.product
+  assign product = block.settings.product | default: closest.product
   if request.visual_preview_mode and product == blank
     assign product = collections.all.products.first
-    assign text = product.description
   endif
+  assign text = product.description
 %}
 
 {% render 'text', fallback_text: text, block: block %}
