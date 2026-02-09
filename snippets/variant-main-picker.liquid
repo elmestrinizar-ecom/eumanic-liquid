@@ -32,7 +32,7 @@
       data-shopify-visual-preview
     {% endif %}
   >
-    <form class="variant-picker__form">
+    <div class="variant-picker__form">
       {%- for product_option in product_resource.options_with_values -%}
         {%- liquid
           assign swatch_count = product_option.values | map: 'swatch' | compact | size
@@ -205,7 +205,7 @@
       <script type="application/json">
         {{ product_resource.selected_or_first_available_variant | json }}
       </script>
-    </form>
+    </div>
   </variant-picker>
 {% endunless %}
 

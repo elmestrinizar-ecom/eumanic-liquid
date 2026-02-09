@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "main-product",
+      "type": "product-information",
       "blocks": {
         "vendor": {
           "type": "text",
@@ -94,6 +94,7 @@
         "price",
         "variant_picker",
         "upsell_section",
+        "quantity_selector",
         "buy_buttons",
         "description",
         "collapsible_tab_features",
@@ -103,7 +104,9 @@
       ],
       "settings": {
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "desktop_media_position": "left",
+        "content_width": "content-center-aligned"
       }
     },
     "video_guide": {
