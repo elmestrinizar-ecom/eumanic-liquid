@@ -1,12 +1,4 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */{
+{
   "sections": {
     "main": {
       "type": "product-information",
@@ -18,24 +10,8 @@
             "media_presentation": "grid",
             "media_columns": "two",
             "image_gap": 4,
-            "large_first_image": false,
-            "icons_style": "none",
-            "slideshow_controls_style": "counter",
-            "slideshow_mobile_controls_style": "dots",
-            "thumbnail_position": "right",
-            "thumbnail_width": 44,
-            "aspect_ratio": "adapt",
-            "constrain_to_viewport": true,
-            "media_fit": "contain",
-            "media_radius": 0,
-            "extend_media": false,
-            "zoom": true,
-            "video_loop": false,
-            "hide_variants": true,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "large_first_image": true,
+            "hide_variants": true
           },
           "blocks": {}
         },
@@ -43,371 +19,210 @@
           "type": "_product-details",
           "static": true,
           "settings": {
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "details_position": "flex-start",
-            "gap": 28,
             "sticky_details_desktop": true,
-            "inherit_color_scheme": true,
-            "color_scheme": "scheme-1",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 24,
-            "padding-block-end": 24,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "color_scheme": "scheme-1"
           },
           "blocks": {
-            "group_icgrde": {
+            "title_block": {
               "type": "group",
-              "name": "Header",
+              "name": "Title & Validated",
               "settings": {
-                "open_in_new_tab": false,
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "gap": 8
               },
               "blocks": {
-                "text_xrnftG": {
+                "product_title": {
                   "type": "text",
-                  "name": "Product title",
                   "settings": {
-                    "text": "<h1>{{ closest.product.title }}</h1>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "h3",
-                    "font": "var(--font-primary--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
+                    "text": "<h1>Masseur Oculaire Eumanic™ Pro</h1>",
+                    "type_preset": "h2",
+                    "font": "var(--font-heading--family)"
+                  }
                 },
-                "price_tVjtKg": {
-                  "type": "price",
+                "subtitle": {
+                  "type": "text",
                   "settings": {
-                    "show_sale_price_first": true,
-                    "show_installments": false,
-                    "show_tax_info": false,
-                    "type_preset": "paragraph",
-                    "width": "100%",
-                    "alignment": "left",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "color": "var(--color-foreground)",
-                    "padding-block-start": 4,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
+                    "text": "<p style='color: #d32f2f; font-weight: bold;'>Technologie Clinique à Domicile : Lumière Rouge + EMS</p>",
+                    "type_preset": "body"
+                  }
+                },
+                "rating": {
+                  "type": "text",
+                  "settings": {
+                    "text": "★★★★★ 4.9/5 (15,000+ utilisateurs ravis)",
+                    "type_preset": "caption"
+                  }
                 }
-              },
-              "block_order": [
-                "text_xrnftG",
-                "price_tVjtKg"
-              ]
+              }
             },
-            "divider_VJhene": {
-              "type": "_divider",
-              "name": "t:names.divider",
+            "price_block": {
+              "type": "price",
               "settings": {
-                "thickness": 1,
-                "corner_radius": "square",
-                "width_percent": 100,
-                "padding-block-start": 0,
-                "padding-block-end": 0
-              },
-              "blocks": {}
+                "show_sale_price_first": true,
+                "font_size": "1.5rem"
+              }
             },
-            "variant_picker_R3rGDr": {
+            "variant_picker": {
               "type": "variant-picker",
               "settings": {
-                "variant_style": "buttons",
-                "show_swatches": false,
-                "alignment": "left",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
+                "variant_style": "buttons"
+              }
             },
-            "buy_buttons_eYQEYi": {
+            "buy_buttons": {
               "type": "buy-buttons",
               "settings": {
-                "stacking": true,
-                "show_pickup_availability": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "show_pickup_availability": false
               },
               "blocks": {
                 "quantity": {
                   "type": "quantity",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
+                  "static": true
                 },
                 "add-to-cart": {
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
-                    "style_class": "button"
-                  },
-                  "blocks": {}
-                },
-                "accelerated-checkout": {
-                  "type": "accelerated-checkout",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
+                    "style_class": "button primary"
+                  }
                 }
-              },
-              "block_order": []
+              }
             },
-            "text_aEtTtq": {
+            "guarantee_badges": {
               "type": "text",
-              "name": "Product description",
+              "settings": {
+                "text": "<div style='display:flex; gap:10px; font-size:0.8rem;'><p>✅ Satisfait ou Remboursé (30j)</p><p>🚚 Livraison Gratuite</p><p>🛡️ Garantie 2 ans</p></div>",
+                "type_preset": "caption"
+              }
+            },
+            "description_block": {
+              "type": "text",
               "settings": {
                 "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-primary--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
+                "type_preset": "rte"
+              }
             }
           },
           "block_order": [
-            "group_icgrde",
-            "divider_VJhene",
-            "variant_picker_R3rGDr",
-            "buy_buttons_eYQEYi",
-            "text_aEtTtq"
+            "title_block",
+            "price_block",
+            "variant_picker",
+            "buy_buttons",
+            "guarantee_badges",
+            "description_block"
           ]
         }
       },
       "settings": {
-        "content_width": "content-center-aligned",
         "desktop_media_position": "left",
-        "equal_columns": false,
-        "limit_details_width": false,
-        "gap": 48,
-        "color_scheme": "",
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "gap": 48
       }
     },
-    "product_recommendations_qggXJq": {
-      "type": "product-recommendations",
-      "blocks": {
-        "text_cbcgyb": {
-          "type": "text",
-          "name": "t:names.header",
-          "settings": {
-            "text": "<h3>You may also like </h3>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h4",
-            "font": "var(--font-primary--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 8,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 8,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_DNizbJ": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_M7MJkb": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_gLWgA6": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_DNizbJ",
-            "product_title_M7MJkb",
-            "price_gLWgA6"
-          ]
-        }
-      },
-      "block_order": [
-        "text_cbcgyb"
-      ],
-      "name": "t:names.product_recommendations",
+    "problem_solution": {
+      "type": "rich-text",
       "settings": {
-        "product": "{{ closest.product }}",
-        "recommendation_type": "related",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 4,
-        "columns": 4,
-        "mobile_columns": "2",
-        "columns_gap": 12,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 28,
+        "color_scheme": "scheme-2",
+        "title": "Vos yeux sont fatigués ? Eumanic est la solution.",
+        "text": "<p>Cernes, poches, fatigue numérique... Vos yeux subissent 10x plus de stress qu'il y a 20 ans. <br><strong>Eumanic™ inverse les dommages en 10 minutes par jour.</strong></p>",
+        "align": "center"
+      },
+      "blocks": {
+        "benefit_1": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>👁️ Réduit Cernes & Poches</h3><p>La chaleur douce (42°C) relance la micro-circulation instantanément.</p>"
+          }
+        },
+        "benefit_2": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>✨ Lisse les Rides</h3><p>La lumière rouge stimule le collagène naturel pour une peau plus ferme.</p>"
+          }
+        },
+        "benefit_3": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>🧘‍♀️ Relaxation Immédiate</h3><p>Le massage intelligent apaise les tensions oculaires après une journée d'écran.</p>"
+          }
+        }
+      }
+    },
+    "science_section": {
+      "type": "image-with-text",
+      "settings": {
         "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "layout": "right",
+        "title": "La Science derrière Eumanic",
+        "text": "Contrairement aux crèmes qui restent en surface, la technologie Eumanic pénètre en profondeur.<br><br><strong>1. Lumière Rouge (630nm)</strong> : Répare les cellules.<br><strong>2. Micro-Courants (EMS)</strong> : Tonifient les muscles.",
+        "button_label": "Voir les études cliniques",
+        "button_link": "#science"
+      }
+    },
+    "how_to_use": {
+      "type": "multicolumn",
+      "settings": {
+        "title": "Une Routine Simple en 3 Étapes",
+        "columns": 3,
+        "color_scheme": "scheme-2"
+      },
+      "blocks": {
+        "step_1": {
+          "type": "column",
+          "settings": {
+            "title": "1. Nettoyer",
+            "text": "Appliquez votre crème ou sérum habituel sur une peau propre."
+          }
+        },
+        "step_2": {
+          "type": "column",
+          "settings": {
+            "title": "2. Masser",
+            "text": "Passez Eumanic sous vos yeux pendant 5 à 10 minutes."
+          }
+        },
+        "step_3": {
+          "type": "column",
+          "settings": {
+            "title": "3. Admirer",
+            "text": "Constatez un regard plus frais et reposé immédiatement."
+          }
+        }
+      }
+    },
+    "faq_section": {
+      "type": "collapsible-content",
+      "settings": {
+        "title": "Questions Fréquentes",
+        "color_scheme": "scheme-1"
+      },
+      "blocks": {
+        "faq_1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Est-ce dangereux pour les yeux ?",
+            "content": "Non, Eumanic est certifié sûr. La lumière rouge ne contient aucun UV et la chaleur est régulée."
+          }
+        },
+        "faq_2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Puis-je l'utiliser avec mes crèmes ?",
+            "content": "Absolument ! Eumanic améliore même l'absorption de vos crèmes par 3x."
+          }
+        },
+        "faq_3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Quelle fréquence d'utilisation ?",
+            "content": "Nous recommandons 5 à 10 minutes par jour, le matin pour dégonfler ou le soir pour relaxer."
+          }
+        }
       }
     }
   },
   "order": [
     "main",
-    "product_recommendations_qggXJq"
+    "problem_solution",
+    "science_section",
+    "how_to_use",
+    "faq_section"
   ]
 }
