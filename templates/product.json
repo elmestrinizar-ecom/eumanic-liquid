@@ -3,110 +3,134 @@
     "main": {
       "type": "product-information",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h1"
-          }
-        },
-        "subtitle": {
-          "type": "text",
-          "settings": {
-            "text": "Masseur Oculaire Intelligent - Technologie EMS & Luminothérapie",
-            "text_style": "subtitle"
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
-        "upsell_section": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style='background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 20px;'><strong>Complétez votre routine :</strong><br><label><input type='checkbox'> Sérum Contour des Yeux (+19,90€)</label><br><label><input type='checkbox'> Extension de Garantie 2 ans (+9,90€)</label></div>"
-          }
-        },
-        "collapsible_tab_features": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Fonctionnalités",
-            "content": "<p><strong>Modes de Massage :</strong><br>- Lumière Rouge (Anti-Âge/Cernes)<br>- Lumière Bleue (Apaisant/Anti-bactérien)<br>- Chauffant (42°C pour la relaxation)<br>- Micro-courants EMS (Liftant)</p>",
-            "icon": "check_mark"
-          }
-        },
-        "collapsible_tab_usage": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Utilisation",
-            "content": "<p>1. Appliquez votre crème contour des yeux.<br>2. Choisissez le mode (Rouge ou Bleu).<br>3. Massez délicatement le contour de l'œil pendant 5 à 10 minutes.<br>4. Nettoyez la tête de massage.</p>",
-            "icon": "eye"
-          }
-        },
-        "collapsible_tab_specs": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Fiche Technique",
-            "content": "<p><strong>Batterie :</strong> 500mAh (Rechargeable USB-C)<br><strong>Autonomie :</strong> 120 minutes<br><strong>Matériaux :</strong> ABS + Tête Métal Hypoallergénique<br><strong>Poids :</strong> 45g (Ultra-léger)</p>",
-            "icon": "ruler"
-          }
-        },
-        "collapsible_tab_delivery": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Livraison & Retour",
-            "content": "<p>Livraison Gratuite en 48h.<br>Satisfait ou Remboursé pendant 30 jours (retours gratuits).</p>",
-            "icon": "plane"
-          }
+        "product-details": {
+          "type": "_product-details",
+          "blocks": {
+            "vendor": {
+              "type": "text",
+              "settings": {
+                "text": "{{ closest.product.vendor }}",
+                "alignment": "left"
+              }
+            },
+            "title": {
+              "type": "product-title",
+              "settings": {
+                "type_preset": "h2"
+              }
+            },
+            "subtitle": {
+              "type": "text",
+              "settings": {
+                "text": "Masseur Oculaire Intelligent - Technologie EMS & Lumière Rouge",
+                "alignment": "left"
+              }
+            },
+            "price": {
+              "type": "price",
+              "settings": {
+                "type_preset": "h4"
+              }
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "swatch"
+              }
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {}
+            },
+            "description": {
+              "type": "product-description",
+              "settings": {}
+            },
+            "accordion": {
+              "type": "accordion",
+              "settings": {
+                "icon": "plus",
+                "dividers": true
+              },
+              "blocks": {
+                "features": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Fonctionnalités",
+                    "open_by_default": true
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p><strong>Modes de Massage :</strong><br>- Lumière Rouge (Anti-Âge/Cernes)<br>- Lumière Bleue (Apaisant/Anti-bactérien)<br>- Chauffant (42°C pour la relaxation)<br>- Micro-courants EMS (Liftant)</p>"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                },
+                "usage": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Utilisation"
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>1. Appliquez votre crème contour des yeux.<br>2. Choisissez le mode (Rouge ou Bleu).<br>3. Massez délicatement le contour de l'œil pendant 5 à 10 minutes.</p>"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                },
+                "delivery": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Livraison & Retours"
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Livraison Gratuite en 48h.<br>Satisfait ou Remboursé pendant 30 jours.</p>"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                }
+              },
+              "block_order": [
+                "features",
+                "usage",
+                "delivery"
+              ]
+            }
+          },
+          "block_order": [
+            "vendor",
+            "title",
+            "subtitle",
+            "price",
+            "variant_picker",
+            "buy_buttons",
+            "description",
+            "accordion"
+          ]
         }
       },
       "block_order": [
-        "vendor",
-        "title",
-        "subtitle",
-        "price",
-        "variant_picker",
-        "upsell_section",
-        "quantity_selector",
-        "buy_buttons",
-        "description",
-        "collapsible_tab_features",
-        "collapsible_tab_usage",
-        "collapsible_tab_specs",
-        "collapsible_tab_delivery"
+        "product-details"
       ],
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36,
         "desktop_media_position": "left",
-        "content_width": "content-center-aligned"
+        "desktop_media_width": "medium"
       }
     },
     "video_guide": {
@@ -114,7 +138,6 @@
       "settings": {
         "heading": "Installation & Utilisation en Vidéo",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "cover_image": "shopify://shop_images/beauty-natural-4.jpg",
         "description": "Découvrez comment utiliser votre Eumanic en 3 étapes simples."
       }
     },
@@ -122,9 +145,8 @@
       "type": "rich-text",
       "settings": {
         "title": "Ce qu'elles en pensent",
-        "text": "⭐⭐⭐⭐⭐<br>« Depuis que j'utilise le mode Rouge, mes ridules se sont vraiment estompées. » - Claire D.<br><br>⭐⭐⭐⭐⭐<br>« Le mode Bleu est magique pour mes migraines et la fatigue oculaire. » - Thomas L.",
-        "align": "center",
-        "color_scheme": "scheme-2"
+        "text": "⭐⭐⭐⭐⭐<br>« Depuis que j'utilise le mode Rouge, mes ridules se sont vraiment estompées. » - Claire D.",
+        "align": "center"
       }
     }
   },
