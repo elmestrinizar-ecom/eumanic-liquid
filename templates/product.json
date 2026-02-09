@@ -1,228 +1,133 @@
 {
   "sections": {
     "main": {
-      "type": "product-information",
+      "type": "main-product",
       "blocks": {
-        "media-gallery": {
-          "type": "_product-media-gallery",
-          "static": true,
+        "vendor": {
+          "type": "text",
           "settings": {
-            "media_presentation": "grid",
-            "media_columns": "two",
-            "image_gap": 4,
-            "large_first_image": true,
-            "hide_variants": true
-          },
-          "blocks": {}
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
         },
-        "product-details": {
-          "type": "_product-details",
-          "static": true,
+        "title": {
+          "type": "title",
           "settings": {
-            "sticky_details_desktop": true,
-            "color_scheme": "scheme-1"
-          },
-          "blocks": {
-            "title_block": {
-              "type": "group",
-              "name": "Title & Validated",
-              "settings": {
-                "gap": 8
-              },
-              "blocks": {
-                "product_title": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<h1>Masseur Oculaire Eumanic™ Pro</h1>",
-                    "type_preset": "h2",
-                    "font": "var(--font-heading--family)"
-                  }
-                },
-                "subtitle": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p style='color: #d32f2f; font-weight: bold;'>Technologie Clinique à Domicile : Lumière Rouge + EMS</p>",
-                    "type_preset": "body"
-                  }
-                },
-                "rating": {
-                  "type": "text",
-                  "settings": {
-                    "text": "★★★★★ 4.9/5 (15,000+ utilisateurs ravis)",
-                    "type_preset": "caption"
-                  }
-                }
-              }
-            },
-            "price_block": {
-              "type": "price",
-              "settings": {
-                "show_sale_price_first": true,
-                "font_size": "1.5rem"
-              }
-            },
-            "variant_picker": {
-              "type": "variant-picker",
-              "settings": {
-                "variant_style": "buttons"
-              }
-            },
-            "buy_buttons": {
-              "type": "buy-buttons",
-              "settings": {
-                "show_pickup_availability": false
-              },
-              "blocks": {
-                "quantity": {
-                  "type": "quantity",
-                  "static": true
-                },
-                "add-to-cart": {
-                  "type": "add-to-cart",
-                  "static": true,
-                  "settings": {
-                    "style_class": "button primary"
-                  }
-                }
-              }
-            },
-            "guarantee_badges": {
-              "type": "text",
-              "settings": {
-                "text": "<div style='display:flex; gap:10px; font-size:0.8rem;'><p>✅ Satisfait ou Remboursé (30j)</p><p>🚚 Livraison Gratuite</p><p>🛡️ Garantie 2 ans</p></div>",
-                "type_preset": "caption"
-              }
-            },
-            "description_block": {
-              "type": "text",
-              "settings": {
-                "text": "{{ closest.product.description }}",
-                "type_preset": "rte"
-              }
-            }
-          },
-          "block_order": [
-            "title_block",
-            "price_block",
-            "variant_picker",
-            "buy_buttons",
-            "guarantee_badges",
-            "description_block"
-          ]
+            "heading_tag": "h1"
+          }
+        },
+        "subtitle": {
+          "type": "text",
+          "settings": {
+            "text": "Masseur Oculaire Intelligent - Technologie EMS & Luminothérapie",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "upsell_section": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style='background-color: #f9f9f9; padding: 15px; border-radius: 8px; margin-top: 20px;'><strong>Complétez votre routine :</strong><br><label><input type='checkbox'> Sérum Contour des Yeux (+19,90€)</label><br><label><input type='checkbox'> Extension de Garantie 2 ans (+9,90€)</label></div>"
+          }
+        },
+        "collapsible_tab_features": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Fonctionnalités",
+            "content": "<p><strong>Modes de Massage :</strong><br>- Lumière Rouge (Anti-Âge/Cernes)<br>- Lumière Bleue (Apaisant/Anti-bactérien)<br>- Chauffant (42°C pour la relaxation)<br>- Micro-courants EMS (Liftant)</p>",
+            "icon": "check_mark"
+          }
+        },
+        "collapsible_tab_usage": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Utilisation",
+            "content": "<p>1. Appliquez votre crème contour des yeux.<br>2. Choisissez le mode (Rouge ou Bleu).<br>3. Massez délicatement le contour de l'œil pendant 5 à 10 minutes.<br>4. Nettoyez la tête de massage.</p>",
+            "icon": "eye"
+          }
+        },
+        "collapsible_tab_specs": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Fiche Technique",
+            "content": "<p><strong>Batterie :</strong> 500mAh (Rechargeable USB-C)<br><strong>Autonomie :</strong> 120 minutes<br><strong>Matériaux :</strong> ABS + Tête Métal Hypoallergénique<br><strong>Poids :</strong> 45g (Ultra-léger)</p>",
+            "icon": "ruler"
+          }
+        },
+        "collapsible_tab_delivery": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Livraison & Retour",
+            "content": "<p>Livraison Gratuite en 48h.<br>Satisfait ou Remboursé pendant 30 jours (retours gratuits).</p>",
+            "icon": "plane"
+          }
         }
       },
+      "block_order": [
+        "vendor",
+        "title",
+        "subtitle",
+        "price",
+        "variant_picker",
+        "upsell_section",
+        "buy_buttons",
+        "description",
+        "collapsible_tab_features",
+        "collapsible_tab_usage",
+        "collapsible_tab_specs",
+        "collapsible_tab_delivery"
+      ],
       "settings": {
-        "desktop_media_position": "left",
-        "gap": 48
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "problem_solution": {
+    "video_guide": {
+      "type": "video",
+      "settings": {
+        "heading": "Installation & Utilisation en Vidéo",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "cover_image": "shopify://shop_images/beauty-natural-4.jpg",
+        "description": "Découvrez comment utiliser votre Eumanic en 3 étapes simples."
+      }
+    },
+    "customer_reviews": {
       "type": "rich-text",
       "settings": {
-        "color_scheme": "scheme-2",
-        "title": "Vos yeux sont fatigués ? Eumanic est la solution.",
-        "text": "<p>Cernes, poches, fatigue numérique... Vos yeux subissent 10x plus de stress qu'il y a 20 ans. <br><strong>Eumanic™ inverse les dommages en 10 minutes par jour.</strong></p>",
-        "align": "center"
-      },
-      "blocks": {
-        "benefit_1": {
-          "type": "text",
-          "settings": {
-            "text": "<h3>👁️ Réduit Cernes & Poches</h3><p>La chaleur douce (42°C) relance la micro-circulation instantanément.</p>"
-          }
-        },
-        "benefit_2": {
-          "type": "text",
-          "settings": {
-            "text": "<h3>✨ Lisse les Rides</h3><p>La lumière rouge stimule le collagène naturel pour une peau plus ferme.</p>"
-          }
-        },
-        "benefit_3": {
-          "type": "text",
-          "settings": {
-            "text": "<h3>🧘‍♀️ Relaxation Immédiate</h3><p>Le massage intelligent apaise les tensions oculaires après une journée d'écran.</p>"
-          }
-        }
-      }
-    },
-    "science_section": {
-      "type": "image-with-text",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "layout": "right",
-        "title": "La Science derrière Eumanic",
-        "text": "Contrairement aux crèmes qui restent en surface, la technologie Eumanic pénètre en profondeur.<br><br><strong>1. Lumière Rouge (630nm)</strong> : Répare les cellules.<br><strong>2. Micro-Courants (EMS)</strong> : Tonifient les muscles.",
-        "button_label": "Voir les études cliniques",
-        "button_link": "#science"
-      }
-    },
-    "how_to_use": {
-      "type": "multicolumn",
-      "settings": {
-        "title": "Une Routine Simple en 3 Étapes",
-        "columns": 3,
+        "title": "Ce qu'elles en pensent",
+        "text": "⭐⭐⭐⭐⭐<br>« Depuis que j'utilise le mode Rouge, mes ridules se sont vraiment estompées. » - Claire D.<br><br>⭐⭐⭐⭐⭐<br>« Le mode Bleu est magique pour mes migraines et la fatigue oculaire. » - Thomas L.",
+        "align": "center",
         "color_scheme": "scheme-2"
-      },
-      "blocks": {
-        "step_1": {
-          "type": "column",
-          "settings": {
-            "title": "1. Nettoyer",
-            "text": "Appliquez votre crème ou sérum habituel sur une peau propre."
-          }
-        },
-        "step_2": {
-          "type": "column",
-          "settings": {
-            "title": "2. Masser",
-            "text": "Passez Eumanic sous vos yeux pendant 5 à 10 minutes."
-          }
-        },
-        "step_3": {
-          "type": "column",
-          "settings": {
-            "title": "3. Admirer",
-            "text": "Constatez un regard plus frais et reposé immédiatement."
-          }
-        }
-      }
-    },
-    "faq_section": {
-      "type": "collapsible-content",
-      "settings": {
-        "title": "Questions Fréquentes",
-        "color_scheme": "scheme-1"
-      },
-      "blocks": {
-        "faq_1": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Est-ce dangereux pour les yeux ?",
-            "content": "Non, Eumanic est certifié sûr. La lumière rouge ne contient aucun UV et la chaleur est régulée."
-          }
-        },
-        "faq_2": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Puis-je l'utiliser avec mes crèmes ?",
-            "content": "Absolument ! Eumanic améliore même l'absorption de vos crèmes par 3x."
-          }
-        },
-        "faq_3": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Quelle fréquence d'utilisation ?",
-            "content": "Nous recommandons 5 à 10 minutes par jour, le matin pour dégonfler ou le soir pour relaxer."
-          }
-        }
       }
     }
   },
   "order": [
     "main",
-    "problem_solution",
-    "science_section",
-    "how_to_use",
-    "faq_section"
+    "video_guide",
+    "customer_reviews"
   ]
 }
