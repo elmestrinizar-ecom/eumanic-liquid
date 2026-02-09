@@ -14,8 +14,9 @@
 
 {% capture product_details %}
   <div class="product-details-custom">
-    {% form 'product', closest.product, id: 'product-form', class: 'product-form' %}
-      <input type="hidden" name="id" value="{{ closest.product.selected_or_first_available_variant.id }}">
+    <div style="background:red; color:white; padding:10px; font-weight:bold;">DEBUG: PRODUCT FORM LOADED - VARIANT: {{ product.selected_or_first_available_variant.id }}</div>
+    {% form 'product', product, id: 'product-form', class: 'product-form' %}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
       
       {% for block in section.blocks %}
         <div class="product-block product-block--{{ block.type }}" {{ block.shopify_attributes }} style="margin-bottom: 20px;">
@@ -29,25 +30,25 @@
               </p>
             
             {% when 'title' %}
-              <h1 class="product-title h2">{{ closest.product.title }}</h1>
+              <h1 class="product-title h2">{{ product.title }}</h1>
             
             {% when 'price' %}
               <div class="product-price h4">
-                {% render 'price', product: closest.product, use_variant: true, show_badges: true %}
+                {% render 'price', product: product, use_variant: true, show_badges: true %}
               </div>
             
             {% when 'variant_picker' %}
-              {% render 'variant-main-picker', product_resource: closest.product, block: block %}
+              {% render 'variant-main-picker', product_resource: product, block: block %}
 
             {% when 'quantity_selector' %}
-              {% render 'quantity-selector', product_resource: closest.product, block: block %}
+              {% render 'quantity-selector', product_resource: product, block: block %}
 
             {% when 'buy_buttons' %}
                <div class="product-form__buttons">
                  {% render 'add-to-cart-button', 
-                    product: closest.product, 
+                    product: product, 
                     add_to_cart_text: 'Ajouter au panier',
-                    can_add_to_cart: closest.product.selected_or_first_available_variant.available,
+                    can_add_to_cart: product.selected_or_first_available_variant.available,
                     class: 'button--full-width button--primary'
                  %}
                  {% if block.settings.show_dynamic_checkout %}
@@ -57,7 +58,7 @@
 
             {% when 'description' %}
               <div class="product-description rte">
-                {{ closest.product.description }}
+                {{ product.description }}
               </div>
 
             {% when 'collapsible_tab' %}
