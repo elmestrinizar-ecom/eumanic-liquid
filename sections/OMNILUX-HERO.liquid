@@ -1,165 +1,49 @@
-<style>
-  #omnilux-hero-{{ section.id }} {
-    position: relative;
-    width: 100%;
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background: #ffffff;
-    overflow: hidden;
-    font-family: 'Inter', sans-serif;
-  }
-
-  .omnilux-hero__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-  }
-
-  .omnilux-hero__bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 75% center;
-  }
-
-  .omnilux-hero__overlay {
-    position: absolute;
-    inset: 0;
-    /* Dégradé beaucoup plus court pour laisser l'image du produit totalement visible */
-    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0) 50%);
-    z-index: 2;
-  }
-
-  @media (max-width: 768px) {
-    #omnilux-hero-{{ section.id }} { min-height: 80vh; }
-    .omnilux-hero__bg img { object-position: center; }
-    .omnilux-hero__overlay {
-      background: linear-gradient(to bottom, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.5) 100%);
-    }
-  }
-
-  .omnilux-hero__content {
-    position: relative;
-    z-index: 3;
-    max-width: 1200px;
-    width: 100%;
-    padding: 220px 80px 100px; /* Augmentation massive du padding top pour descendre sous le logo */
-    text-align: left;
-  }
-
-  @media (max-width: 768px) {
-    .omnilux-hero__content {
-      text-align: center;
-      padding: 60px 24px;
-    }
-  }
-
-  .omnilux-hero__trust {
-    color: #E63946 !important;
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    margin-bottom: 24px;
-    display: block;
-    text-transform: uppercase;
-  }
-
-  .omnilux-hero__title {
-    font-size: 3.2rem;
-    font-weight: 800;
-    line-height: 1.1;
-    color: #000000;
-    margin-bottom: 24px;
-    max-width: 550px; /* Texte plus étroit pour ne pas déborder sur l'image */
-  }
-
-  @media (max-width: 768px) {
-    .omnilux-hero__title {
-      font-size: 2.6rem;
-    }
-  }
-
-  .omnilux-hero__subtitle {
-    font-size: 1.25rem;
-    color: #333333;
-    max-width: 580px;
-    line-height: 1.6;
-    margin-bottom: 40px;
-  }
-
-  .omnilux-hero__cta {
-    display: inline-block;
-    background-color: #E63946 !important;
-    color: #ffffff !important;
-    padding: 22px 55px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 12px 30px rgba(230, 57, 70, 0.3);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
-    cursor: pointer;
-  }
-
-  .omnilux-hero__cta:hover {
-    background-color: #C81D25 !important;
-    transform: translateY(-3px);
-    box-shadow: 0 18px 40px rgba(230, 57, 70, 0.4);
-  }
-
-  .omnilux-hero__badges {
-    display: flex;
-    gap: 35px;
-    margin-top: 60px;
-  }
-
-  @media (max-width: 768px) {
-    .omnilux-hero__badges {
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-  }
-
-  .omnilux-hero__badge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #555555;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-</style>
-
-<div id="omnilux-hero-{{ section.id }}" class="omnilux-hero">
-  <div class="omnilux-hero__bg">
-    <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" alt="EyeLuxe Pro">
+<div id="omnilux-hero-{{ section.id }}" 
+     style="position: relative !important; width: 100% !important; min-height: 90vh !important; display: flex !important; align-items: flex-start !important; justify-content: flex-start !important; background: #ffffff !important; overflow: hidden !important; font-family: 'Inter', sans-serif !important; border: none !important;">
+  
+  <div class="omnilux-hero__bg" style="position: absolute !important; inset: 0 !important; z-index: 1 !important;">
+    <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" 
+         style="width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: 80% center !important; border: none !important;" 
+         alt="EyeLuxe Pro">
   </div>
   
-  <div class="omnilux-hero__overlay" style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0) 45%); z-index: 2;"></div>
+  <div class="omnilux-hero__overlay" 
+       style="position: absolute !important; inset: 0 !important; background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 20%, rgba(255,255,255,0) 45%) !important; z-index: 2 !important;">
+  </div>
 
-  <div class="omnilux-hero__content" style="position: relative; z-index: 3; max-width: 1200px; width: 100%; padding: 260px 80px 100px; text-align: left;">
-    <span class="omnilux-hero__trust" style="color: #E63946 !important; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 24px; display: block; text-transform: uppercase;">★★★★★ 150+ CLIENTS SATISFAITS</span>
-    <h1 class="omnilux-hero__title" style="font-size: 3rem; font-weight: 800; line-height: 1.1; color: #000000; margin-bottom: 24px; max-width: 500px;">Régénérez votre regard en 10 minutes par jour.</h1>
-    <p class="omnilux-hero__subtitle" style="font-size: 1.2rem; color: #333333; max-width: 500px; line-height: 1.6; margin-bottom: 40px;">La seule technologie combinant Lumière Rouge 633nm + Stimulation EMS cliniquement prouvée pour éliminer cernes, poches et rides, à domicile.</p>
+  <div class="omnilux-hero__content" 
+       style="position: relative !important; z-index: 3 !important; max-width: 1200px !important; width: 100% !important; padding: 280px 80px 100px !important; text-align: left !important; box-sizing: border-box !important;">
     
-    <a href="/products/eyeluxe-pro" class="omnilux-hero__cta">JE VEUX UN REGARD RADIEUX</a>
+    <span class="omnilux-hero__trust" 
+          style="color: #E63946 !important; font-weight: 700 !important; font-size: 0.9rem !important; letter-spacing: 2px !important; margin-bottom: 24px !important; display: block !important; text-transform: uppercase !important;">
+      ★★★★★ 150+ CLIENTS SATISFAITS
+    </span>
+    
+    <h1 class="omnilux-hero__title" 
+        style="font-size: 3rem !important; font-weight: 900 !important; line-height: 1.1 !important; color: #000000 !important; margin: 0 0 24px 0 !important; max-width: 480px !important;">
+      Régénérez votre regard en 10 minutes par jour.
+    </h1>
+    
+    <p class="omnilux-hero__subtitle" 
+       style="font-size: 1.25rem !important; color: #222222 !important; max-width: 480px !important; line-height: 1.6 !important; margin: 0 0 40px 0 !important;">
+      La seule technologie combinant Lumière Rouge 633nm + Stimulation EMS cliniquement prouvée pour éliminer cernes, poches et rides, à domicile.
+    </p>
+    
+    <a href="/products/eyeluxe-pro" 
+       class="omnilux-hero__cta" 
+       style="display: inline-block !important; background-color: #E63946 !important; color: #ffffff !important; padding: 24px 60px !important; font-size: 1.15rem !important; font-weight: 800 !important; text-decoration: none !important; border-radius: 4px !important; box-shadow: 0 12px 30px rgba(230, 57, 70, 0.4) !important; text-transform: uppercase !important; letter-spacing: 1px !important;">
+      JE VEUX UN REGARD RADIEUX
+    </a>
 
-    <div class="omnilux-hero__badges">
-      <div class="omnilux-hero__badge">
+    <div class="omnilux-hero__badges" 
+         style="display: flex !important; gap: 40px !important; margin-top: 60px !important;">
+      <div class="omnilux-hero__badge" style="display: flex !important; align-items: center !important; gap: 10px !important; font-size: 0.8rem !important; font-weight: 700 !important; color: #444444 !important; text-transform: uppercase !important;">
         <span>✅ Efficacité Clinique</span>
       </div>
-      <div class="omnilux-hero__badge">
+      <div class="omnilux-hero__badge" style="display: flex !important; align-items: center !important; gap: 10px !important; font-size: 0.8rem !important; font-weight: 700 !important; color: #444444 !important; text-transform: uppercase !important;">
         <span>👨‍⚕️ Recommandé Experts</span>
       </div>
-      <div class="omnilux-hero__badge">
+      <div class="omnilux-hero__badge" style="display: flex !important; align-items: center !important; gap: 10px !important; font-size: 0.8rem !important; font-weight: 700 !important; color: #444444 !important; text-transform: uppercase !important;">
         <span>🛡️ 30 Jours d'Essai</span>
       </div>
     </div>
