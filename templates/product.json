@@ -1,10 +1,10 @@
 {
   "sections": {
     "main": {
-      "type": "product-information",
+      "type": "boku-info",
       "blocks": {
         "product-details": {
-          "type": "_product-details",
+          "type": "boku-details",
           "blocks": {
             "title": {
               "type": "product-title",
@@ -121,30 +121,11 @@
         "product-details"
       ],
       "settings": {
-        "desktop_media_position": "left",
-        "desktop_media_width": "medium"
-      }
-    },
-    "video_guide": {
-      "type": "video",
-      "settings": {
-        "heading": "Installation & Utilisation en Vidéo",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "description": "Découvrez comment utiliser votre Eumanic en 3 étapes simples."
-      }
-    },
-    "customer_reviews": {
-      "type": "rich-text",
-      "settings": {
-        "title": "Ce qu'elles en pensent",
-        "text": "⭐⭐⭐⭐⭐<br>« Depuis que j'utilise le mode Rouge, mes ridules se sont vraiment estompées. » - Claire D.",
-        "align": "center"
+        "desktop_media_position": "left"
       }
     }
   },
   "order": [
-    "main",
-    "video_guide",
-    "customer_reviews"
+    "main"
   ]
 }

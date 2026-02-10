@@ -1,0 +1,74 @@
+{%- assign block_settings = block.settings -%}
+<div
+  id="ProductInformation-{{ section.id }}"
+  class="
+    product-details
+    {% if block_settings.sticky_details_desktop %} sticky-content--desktop{% endif %}
+    {% if block_settings.height == 'fill' -%} full-height--desktop{% endif -%}
+  "
+  style="--details-position: {{ block_settings.details_position }};"
+  data-testid="product-information-details"
+>
+  {% capture children %}
+    <div class="view-product-title" style="display: none;">
+      <a href="{{ closest.product.selected_or_first_available_variant.url }}" class="link">
+        {{- closest.product.title }}
+      </a>
+    </div>
+    {% content_for 'blocks' %}
+  {% endcapture %}
+
+  {% render 'group', children: children, settings: block_settings, shopify_attributes: block.shopify_attributes %}
+</div>
+
+{% stylesheet %}
+  .product-details {
+    display: flex;
+    align-self: start;
+    justify-content: center;
+  }
+  @media screen and (min-width: 750px) {
+    .product-details > .group-block { height: min-content; }
+    .full-height--desktop {
+      height: 100%;
+      max-height: calc(100vh - var(--header-group-height, 0));
+      min-height: fit-content;
+    }
+    .full-height--desktop .group-block { align-self: var(--details-position, 'flex-start'); }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BOKU-DETAILS",
+  "blocks": [
+    { "type": "@app" },
+    { "type": "product-title" },
+    { "type": "text" },
+    { "type": "price" },
+    { "type": "variant-picker" },
+    { "type": "buy-buttons" },
+    { "type": "product-description" },
+    { "type": "accordion" },
+    { "type": "review" }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "options": [
+        { "value": "fill", "label": "Fill" },
+        { "value": "fit-content", "label": "Fit Content" }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_details_desktop",
+      "label": "Sticky on desktop",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

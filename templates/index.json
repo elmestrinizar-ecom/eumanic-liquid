@@ -35,124 +35,35 @@
               "type": "button",
               "settings": {
                 "label": "PROFITER DE L'OFFRE -50%",
-                "link": "shopify://products/eumanic-pro",
+                "link": "shopify://products/eyeluxe-pro",
                 "style_class": "button primary",
                 "width": "fit-content"
-              }
-            },
-            "hero_guarantee": {
-              "type": "text",
-              "settings": {
-                "text": "<p style='font-size: 0.9rem; color: #555;'>✅ 30 Jours d'Essai - Satisfait ou Remboursé</p>"
               }
             }
           },
           "block_order": [
             "hero_title",
             "hero_subtitle",
-            "hero_cta",
-            "hero_guarantee"
+            "hero_cta"
           ]
         }
       },
       "settings": {
         "media_type_1": "image",
         "image_1": "shopify://shop_images/eumanic_before_after_1.png",
-        "image_position": "center",
-        "section_height": "large",
-        "overlay_color": "#ffffff",
-        "overlay_style": "gradient_bottom"
-      }
-    },
-    "scientific_results": {
-      "type": "multicolumn",
-      "settings": {
-        "title": "Résultats Cliniques Prouvés",
-        "columns": 4,
-        "color_scheme": "scheme-2",
-        "padding-block-start": 60,
-        "padding-block-end": 60
-      },
-      "blocks": {
-        "stat_1": {
-          "type": "column",
-          "settings": {
-            "title": "91%",
-            "text": "<strong>Réduction des Poches</strong><br>Le drainage lymphatique élimine la rétention d'eau."
-          }
-        },
-        "stat_2": {
-          "type": "column",
-          "settings": {
-            "title": "87%",
-            "text": "<strong>Cernes Éclaircis</strong><br>La lumière rouge stimule la circulation sanguine."
-          }
-        },
-        "stat_3": {
-          "type": "column",
-          "settings": {
-            "title": "+35%",
-            "text": "<strong>Densité de Collagène</strong><br>Peau plus ferme et moins de rides."
-          }
-        },
-        "stat_4": {
-          "type": "column",
-          "settings": {
-            "title": "94%",
-            "text": "<strong>Peau Plus Lisse</strong><br>Texture améliorée dès 2 semaines."
-          }
-        }
-      }
-    },
-    "before_after_section": {
-      "type": "image-with-text",
-      "settings": {
-        "title": "Transformations Réelles",
-        "text": "Voyez la différence par vous-même. Nos utilisatrices constatent une réduction visible des cernes et poches après seulement une semaine d'utilisation quotidienne.",
-        "image": "shopify://shop_images/eumanic_before_after_2.png",
-        "layout": "left",
-        "color_scheme": "scheme-1",
-        "button_label": "VOIR TOUS LES RÉSULTATS",
-        "button_link": "shopify://pages/reviews"
-      }
-    },
-    "video_section": {
-      "type": "video",
-      "settings": {
-        "heading": "Comment ça marche ?",
-        "cover_image": "shopify://shop_images/eumanic_before_after_1.png",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "description": "Découvrez comment Eumanic utilise la science pour effacer la fatigue.",
-        "full_width": true,
-        "color_scheme": "scheme-3"
-      }
-    },
-    "social_proof_reviews": {
-      "type": "rich-text",
-      "settings": {
-        "title": "Elles ne peuvent plus s'en passer",
-        "text": "« J'ai tout essayé : crèmes, rouleaux de jade, glaçons... Rien n'a fonctionné comme Eumanic. Mes poches ont disparu en 3 jours ! » <br><strong>- Sophie, 34 ans</strong>",
-        "align": "center",
-        "color_scheme": "scheme-2"
+        "section_height": "large"
       }
     },
     "featured_product": {
-      "type": "product-information",
+      "type": "boku-info",
       "blocks": {
         "product-details": {
-          "type": "_product-details",
+          "type": "boku-details",
           "blocks": {
             "title": {
               "type": "product-title",
               "settings": {
                 "type_preset": "h2"
-              }
-            },
-            "subtitle": {
-              "type": "text",
-              "settings": {
-                "text": "Masseur Oculaire Intelligent - Technologie EMS & Lumière Rouge",
-                "alignment": "left"
               }
             },
             "price": {
@@ -170,86 +81,13 @@
             "buy-buttons": {
               "type": "buy-buttons",
               "settings": {}
-            },
-            "description": {
-              "type": "product-description",
-              "settings": {}
-            },
-            "accordion": {
-              "type": "accordion",
-              "settings": {
-                "icon": "plus",
-                "dividers": true
-              },
-              "blocks": {
-                "features": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Fonctionnalités",
-                    "open_by_default": true
-                  },
-                  "blocks": {
-                    "content": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p><strong>Modes de Massage :</strong><br>- Lumière Rouge (Anti-Âge/Cernes)<br>- Lumière Bleue (Apaisant/Anti-bactérien)<br>- Chauffant (42°C pour la relaxation)<br>- Micro-courants EMS (Liftant)</p>"
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "content"
-                  ]
-                },
-                "usage": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Utilisation"
-                  },
-                  "blocks": {
-                    "content": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>1. Appliquez votre crème contour des yeux.<br>2. Choisissez le mode (Rouge ou Bleu).<br>3. Massez délicatement le contour de l'œil pendant 5 à 10 minutes.</p>"
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "content"
-                  ]
-                },
-                "delivery": {
-                  "type": "_accordion-row",
-                  "settings": {
-                    "heading": "Livraison & Retours"
-                  },
-                  "blocks": {
-                    "content": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Livraison Gratuite en 48h.<br>Satisfait ou Remboursé pendant 30 jours.</p>"
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "content"
-                  ]
-                }
-              },
-              "block_order": [
-                "features",
-                "usage",
-                "delivery"
-              ]
             }
           },
           "block_order": [
             "title",
-            "subtitle",
             "price",
             "variant-picker",
-            "buy-buttons",
-            "description",
-            "accordion"
+            "buy-buttons"
           ]
         }
       },
@@ -257,18 +95,13 @@
         "product-details"
       ],
       "settings": {
-        "product": "eumanic-pro",
-        "desktop_media_position": "left",
-        "desktop_media_width": "medium"
+        "product": "eyeluxe-pro",
+        "desktop_media_position": "left"
       }
     }
   },
   "order": [
     "hero_section",
-    "scientific_results",
-    "before_after_section",
-    "video_section",
-    "social_proof_reviews",
     "featured_product"
   ]
 }
