@@ -9,6 +9,11 @@
  */
 {
   "sections": {
+    "omnilux_hero_UYUBLP": {
+      "type": "OMNILUX-HERO",
+      "name": "OMNILUX-HERO",
+      "settings": {}
+    },
     "boku_hero_bNEkEN": {
       "type": "boku-hero",
       "disabled": true,
@@ -623,6 +628,7 @@
     }
   },
   "order": [
+    "omnilux_hero_UYUBLP",
     "boku_hero_bNEkEN",
     "product_list_themegen",
     "section_x8mrnx",
