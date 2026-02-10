@@ -1,0 +1,18 @@
+<div style="background: #fff; padding: 20px; border: 2px solid red; margin: 20px; color: #000;">
+  <h3>DEBUG: Liste des produits dans cette collection</h3>
+  <ul>
+    {% for p in collection.products %}
+      <li>Titre: {{ p.title }} | Handle: <strong>{{ p.handle }}</strong></li>
+    {% else %}
+      <li>Aucun produit trouvé dans cette collection ({{ collection.title }})</li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "DEBUG-PRODUCTS",
+  "settings": [],
+  "presets": [{"name": "DEBUG-PRODUCTS"}]
+}
+{% endschema %}
