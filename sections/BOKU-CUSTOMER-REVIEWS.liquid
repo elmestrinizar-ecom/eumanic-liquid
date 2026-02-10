@@ -1,6 +1,6 @@
 {% comment %}
   Section: BOKU-CUSTOMER-REVIEWS
-  Carrousel d'avis clients inspiré de Boku
+  Carrousel d'avis clients inspiré de Boku - Version Finalisée
 {% endcomment %}
 
 <style>
@@ -60,27 +60,30 @@
   .boku-reviews-carousel::-webkit-scrollbar { display: none; }
 
   .boku-reviews-card {
-    min-width: 380px;
+    min-width: 320px;
     flex-shrink: 0;
     background: #fff;
     border: 1px solid #eee;
     border-radius: 20px;
     padding: 0;
     overflow: hidden;
-    /* box-shadow: 0 10px 30px rgba(0,0,0,0.03); */
+    transition: transform 0.3s ease;
+  }
+  .boku-reviews-card:hover {
+    transform: translateY(-5px);
   }
   .boku-reviews-img {
     width: 100%;
-    height: 320px;
+    height: 400px;
     object-fit: cover;
     display: block;
-    background: #f4f6f9; /* Placeholder */
+    background: #f4f6f9;
   }
   .boku-reviews-content {
-    padding: 25px;
+    padding: 20px 25px;
   }
   .boku-reviews-stars {
-    color: #E63946; /* Brand Red */
+    color: #E63946;
     font-size: 1.2rem;
     margin-bottom: 12px;
     letter-spacing: 2px;
@@ -98,22 +101,39 @@
     margin: 0;
   }
 
+  .boku-red-light {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #E63946;
+    border-radius: 50%;
+    margin-left: 8px;
+    box-shadow: 0 0 10px #E63946;
+    animation: pulse-red 2s infinite;
+    vertical-align: middle;
+  }
+  @keyframes pulse-red {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(230, 57, 70, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
+  }
+
   @media (max-width: 768px) {
     .boku-reviews-title { font-size: 1.8rem; }
     .boku-reviews-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-    .boku-reviews-card { min-width: 300px; }
-    .boku-reviews-img { height: 260px; }
+    .boku-reviews-card { min-width: 280px; }
+    .boku-reviews-img { height: 350px; }
   }
 </style>
 
 <div class="boku-reviews-section">
   <div class="boku-reviews-header">
-    <h2 class="boku-reviews-title">Rejoignez plus de 200,000 utilisateurs satisfaits 🍑</h2>
+    <h2 class="boku-reviews-title">Rejoignez plus de 250 utilisateurs satisfaits <span class="boku-red-light"></span></h2>
     <div class="boku-reviews-nav">
-      <button class="boku-reviews-btn" onclick="slideReviews('left')">
+      <button class="boku-reviews-btn" onclick="slideReviews('left'); stopAutoScroll();">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
-      <button class="boku-reviews-btn" onclick="slideReviews('right')">
+      <button class="boku-reviews-btn" onclick="slideReviews('right'); stopAutoScroll();">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </button>
     </div>
@@ -167,13 +187,45 @@
 <script>
   function slideReviews(direction) {
     const carousel = document.getElementById('reviewsCarousel');
-    const scrollAmount = 400;
+    const firstCard = carousel.querySelector('.boku-reviews-card');
+    const cardWidth = firstCard ? firstCard.offsetWidth + 25 : 400;
+    
     if (direction === 'left') {
-      carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
     } else {
-      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      if (carousel.scrollLeft >= maxScroll - 10) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
     }
   }
+
+  let autoScrollInterval;
+  function startAutoScroll() {
+    autoScrollInterval = setInterval(() => {
+      slideReviews('right');
+    }, 4000);
+  }
+
+  function stopAutoScroll() {
+    clearInterval(autoScrollInterval);
+  }
+
+  // Handle interaction to stop auto-scroll
+  const reviewsCarousel = document.getElementById('reviewsCarousel');
+  reviewsCarousel.addEventListener('mouseenter', stopAutoScroll);
+  reviewsCarousel.addEventListener('mouseleave', startAutoScroll);
+  reviewsCarousel.addEventListener('touchstart', stopAutoScroll, {passive: true});
+
+  // Handle manual clicks
+  document.querySelectorAll('.boku-reviews-btn').forEach(btn => {
+    btn.addEventListener('click', stopAutoScroll);
+  });
+
+  // Start initially
+  startAutoScroll();
 </script>
 
 {% schema %}
