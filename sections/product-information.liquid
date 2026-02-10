@@ -4,6 +4,10 @@
   ⚠️ ALERTE DEBUG : LA SECTION 'PRODUCT-INFORMATION.LIQUID' EST BIEN CHARGÉE ⚠️
 </div>
 
+<style>
+  body { background-color: #00ff00 !important; border: 20px solid green !important; }
+</style>
+
 {% liquid
   assign product = section.settings.product | default: closest.product
 %}
