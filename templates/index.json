@@ -11,6 +11,7 @@
   "sections": {
     "boku_hero_bNEkEN": {
       "type": "boku-hero",
+      "disabled": true,
       "name": "BOKU-HERO-OMNILUX",
       "settings": {}
     },
