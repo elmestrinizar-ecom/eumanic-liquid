@@ -1,0 +1,170 @@
+<style>
+  .boku-hero {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .boku-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .boku-hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .boku-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    z-index: 2;
+  }
+
+  @media (max-width: 768px) {
+    .boku-hero__overlay {
+      background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
+    }
+  }
+
+  .boku-hero__content {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 40px;
+    text-align: left;
+  }
+
+  @media (max-width: 768px) {
+    .boku-hero__content {
+      text-align: center;
+      padding: 40px 20px;
+    }
+  }
+
+  .boku-hero__trust {
+    color: #E63946;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .boku-hero__title {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #000;
+    margin-bottom: 25px;
+    max-width: 700px;
+  }
+
+  @media (max-width: 768px) {
+    .boku-hero__title {
+      font-size: 2.5rem;
+    }
+  }
+
+  .boku-hero__subtitle {
+    font-size: 1.25rem;
+    color: #333;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .boku-hero__cta {
+    display: inline-block;
+    background: #E63946;
+    color: #fff;
+    padding: 20px 45px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(230, 57, 70, 0.2);
+  }
+
+  .boku-hero__cta:hover {
+    background: #C81D25;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(230, 57, 70, 0.3);
+  }
+
+  .boku-hero__badges {
+    display: flex;
+    gap: 30px;
+    margin-top: 50px;
+  }
+
+  @media (max-width: 768px) {
+    .boku-hero__badges {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  }
+
+  .boku-hero__badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #666;
+  }
+</style>
+
+<div class="boku-hero">
+  <div class="boku-hero__bg">
+    <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" alt="Un regard reposé en 10 minutes">
+  </div>
+  
+  <div class="boku-hero__overlay"></div>
+
+  <div class="boku-hero__content">
+    <span class="boku-hero__trust">★★★★★ 600,000+ CLIENTS SATISFAITS</span>
+    <h1 class="boku-hero__title">Régénérez votre regard en 10 minutes.</h1>
+    <p class="boku-hero__subtitle">La seule technologie de photothérapie LED cliniquement prouvée pour éliminer cernes et poches, à domicile.</p>
+    
+    <a href="/products/eyeluxe-pro" class="boku-hero__cta">DÉCOUVRIR EYELUXE PRO</a>
+
+    <div class="boku-hero__badges">
+      <div class="boku-hero__badge">
+        <span>🏆 Best Eye-Tech 2024</span>
+      </div>
+      <div class="boku-hero__badge">
+        <span>👨‍⚕️ Approuvé Dermatologiquement</span>
+      </div>
+      <div class="boku-hero__badge">
+        <span>🌿 100% Non-Invasif</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BOKU-HERO-OMNILUX",
+  "settings": [],
+  "presets": [
+    {
+      "name": "BOKU-HERO-OMNILUX"
+    }
+  ]
+}
+{% endschema %}
