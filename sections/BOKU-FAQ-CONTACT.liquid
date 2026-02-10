@@ -1,0 +1,318 @@
+{% comment %}
+  Section: BOKU-FAQ-CONTACT
+  FAQ et Contact inspirés du style Boku
+{% endcomment %}
+
+<style>
+  .boku-faq-section {
+    background: #f8f9fa;
+    padding: 100px 0;
+    font-family: 'Inter', sans-serif;
+  }
+  .boku-faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+  }
+
+  /* Colonne Gauche: Contact */
+  .boku-faq-contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .boku-faq-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .boku-faq-main-title {
+    color: #1D3557;
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  .boku-faq-avatars {
+    display: flex;
+    align-items: center;
+  }
+  .boku-faq-avatar-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin-left: -15px;
+    object-fit: cover;
+  }
+  .boku-faq-avatar-img:first-child { margin-left: 0; }
+
+  .boku-faq-subtext {
+    color: #457B9D;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .boku-faq-subtext span {
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .boku-faq-contact-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .boku-faq-btn-chat {
+    background: #E63946; /* Brand Red */
+    color: #fff;
+    padding: 18px 30px;
+    border-radius: 100px;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(230, 57, 70, 0.2);
+  }
+  .boku-faq-btn-chat:hover {
+    background: #1D3557;
+    transform: translateY(-2px);
+  }
+  .boku-faq-btn-mail {
+    border: 1.5px solid #1D3557;
+    color: #1D3557;
+    padding: 18px 30px;
+    border-radius: 100px;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+  .boku-faq-btn-mail:hover {
+    background: #f1f1f1;
+  }
+
+  /* Colonne Droite: FAQ Accordion */
+  .boku-faq-accordion {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #ddd;
+  }
+  .boku-faq-item {
+    border-bottom: 1px solid #ddd;
+  }
+  .boku-faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    color: #1D3557;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .boku-faq-question:hover {
+    color: #E63946;
+  }
+  .boku-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    color: #444;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  .boku-faq-item.active .boku-faq-answer {
+    max-height: 300px;
+    padding-bottom: 25px;
+  }
+  .boku-faq-icon {
+    font-size: 1.4rem;
+    font-weight: 400;
+    transition: transform 0.3s ease;
+  }
+  .boku-faq-item.active .boku-faq-icon {
+    transform: rotate(45deg);
+    color: #E63946;
+  }
+
+  /* Badges Bas */
+  .boku-faq-badges {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 60px;
+  }
+  .boku-faq-badge-item {
+    background: #fff;
+    flex: 1;
+    padding: 25px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  }
+  .boku-faq-badge-icon {
+    width: 44px;
+    height: 44px;
+    background: #E63946;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .boku-faq-badge-text-wrap h4 {
+    margin: 0 0 5px 0;
+    color: #1D3557;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+  .boku-faq-badge-text-wrap p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 991px) {
+    .boku-faq-container { grid-template-columns: 1fr; gap: 60px; }
+    .boku-faq-badges { flex-direction: column; }
+    .boku-faq-main-title { font-size: 2.2rem; }
+  }
+</style>
+
+<div class="boku-faq-section">
+  <div class="boku-faq-container">
+    
+    <!-- GAUCHE -->
+    <div class="boku-faq-contact-info">
+      <div class="boku-faq-title-wrap">
+        <h2 class="boku-faq-main-title">Des questions ?</h2>
+        <div class="boku-faq-avatars">
+          <img src="https://i.pravatar.cc/150?u=1" class="boku-faq-avatar-img">
+          <img src="https://i.pravatar.cc/150?u=2" class="boku-faq-avatar-img">
+          <img src="https://i.pravatar.cc/150?u=3" class="boku-faq-avatar-img">
+        </div>
+      </div>
+      <p class="boku-faq-subtext">
+        Vous avez une question ? <span>On y répond !</span><br>
+        Notre équipe de pro.fessionnels vous répond du Lundi au Vendredi de 9h à 18h
+      </p>
+      <div class="boku-faq-contact-btns">
+        <a href="#chat" class="boku-faq-btn-chat" onclick="openBokuChat()">Chat en ligne direct</a>
+        <a href="mailto:contact@eumanic.com" class="boku-faq-btn-mail">contact@eumanic.com</a>
+      </div>
+    </div>
+
+    <!-- DROITE -->
+    <div class="boku-faq-accordion">
+      
+      {% assign faqs = "Quelles sont les différences avec les autres masseurs ?|Comment l'EyeLuxe Pro traite-t-il les cernes ?|Est-ce que l'appareil est sans danger pour les yeux ?|Combien de temps dure une séance ?|Comment recharger l'appareil ?|Politique de retour et remboursement" | split: "|" %}
+      
+      {% for q in faqs %}
+        <div class="boku-faq-item">
+          <button class="boku-faq-question" onclick="toggleBokuFaq(this)">
+            {{ q }}
+            <span class="boku-faq-icon">+</span>
+          </button>
+          <div class="boku-faq-answer">
+            <p>
+              {% case forloop.index %}
+                {% when 1 %}
+                  L'EyeLuxe Pro combine photothérapie par lumière rouge, micro-courants EMS et chaleur thérapeutique à 42°C pour un traitement complet et ciblé du contour des yeux.
+                {% when 2 %}
+                  La lumière rouge pénètre en douceur pour stimuler le collagène, tandis que la chaleur améliore la micro-circulation, drainant ainsi les pigments responsables des cernes.
+                {% when 3 %}
+                  Oui, notre appareil est certifié CE et utilise une lumière froide LED sans danger pour la rétine lorsqu'il est utilisé conformément au manuel.
+                {% when 4 %}
+                  Nous recommandons une utilisation de 5 à 10 minutes par jour pour obtenir des résultats visibles en 2 semaines.
+                {% when 5 %}
+                  L'appareil se recharge via un câble USB standard inclus. Une charge complète permet jusqu'à 2 heures d'utilisation continue.
+                {% else %}
+                  Nous offrons une garantie 'Satisfait ou Remboursé' de 30 jours. Si vous n'êtes pas convaincu, nous vous remboursons sans poser de questions.
+              {% endcase %}
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+
+    <!-- BADGES BAS -->
+    <div class="boku-faq-badges">
+      <div class="boku-faq-badge-item">
+        <div class="boku-faq-badge-icon">✓</div>
+        <div class="boku-faq-badge-text-wrap">
+          <h4>Livraison en 48h</h4>
+          <p>Recevez votre colis en 48h</p>
+        </div>
+      </div>
+      <div class="boku-faq-badge-item">
+        <div class="boku-faq-badge-icon">✓</div>
+        <div class="boku-faq-badge-text-wrap">
+          <h4>Essai 30 jours</h4>
+          <p>100% satisfait ou remboursé</p>
+        </div>
+      </div>
+      <div class="boku-faq-badge-item">
+        <div class="boku-faq-badge-icon">✓</div>
+        <div class="boku-faq-badge-text-wrap">
+          <h4>Garantie 2 ans</h4>
+          <p>+50 000 regards conquis</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function toggleBokuFaq(btn) {
+    const item = btn.parentElement;
+    const isActive = item.classList.contains('active');
+    
+    // Close others
+    document.querySelectorAll('.boku-faq-item').forEach(el => el.classList.remove('active'));
+    
+    if (!isActive) {
+      item.classList.add('active');
+    }
+  }
+
+  function openBokuChat() {
+    // Logic to open the chatbot widget
+    const chatWidget = document.getElementById('bokuChatWidget');
+    if (chatWidget) {
+      chatWidget.style.display = 'flex';
+      // Trigger opening animation if any
+      const openBtn = chatWidget.querySelector('.boku-chat-bubble');
+      if (openBtn) openBtn.click();
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "BOKU-FAQ-CONTACT",
+  "settings": [],
+  "presets": [
+    {
+      "name": "BOKU-FAQ-CONTACT"
+    }
+  ]
+}
+{% endschema %}

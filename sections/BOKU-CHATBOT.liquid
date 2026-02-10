@@ -1,0 +1,270 @@
+{% comment %}
+  Section: BOKU-CHATBOT
+  Widget de chat flottant inspiré de Boku
+{% endcomment %}
+
+<style>
+  .boku-chat-widget {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .boku-chat-bubble {
+    width: 60px;
+    height: 60px;
+    background: #1D3557; /* Brand Navy */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .boku-chat-bubble:hover {
+    transform: scale(1.1);
+    background: #E63946; /* Brand Red */
+  }
+  .boku-chat-bubble svg {
+    width: 28px;
+    height: 28px;
+    color: #fff;
+  }
+
+  .boku-chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    transform-origin: bottom right;
+    animation: bokuSlideUp 0.3s ease;
+  }
+  @keyframes bokuSlideUp {
+    from { transform: scale(0.8) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+  }
+
+  .boku-chat-header {
+    background: #1D3557;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .boku-chat-header-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1D3557;
+    font-weight: 800;
+  }
+  .boku-chat-header-info h4 {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .boku-chat-header-info p {
+    margin: 0;
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+
+  .boku-chat-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .boku-chat-msg {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .boku-chat-msg.bot {
+    background: #fff;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+  }
+  .boku-chat-msg.user {
+    background: #E63946;
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+  }
+
+  .boku-chat-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .boku-chat-opt {
+    background: #fff;
+    border: 1px solid #1D3557;
+    color: #1D3557;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .boku-chat-opt:hover {
+    background: #1D3557;
+    color: #fff;
+  }
+
+  .boku-chat-footer {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+  }
+  .boku-chat-input {
+    flex: 1;
+    border: none;
+    background: #f1f1f1;
+    padding: 10px 15px;
+    border-radius: 100px;
+    outline: none;
+    font-size: 0.9rem;
+  }
+  .boku-chat-send {
+    background: #E63946;
+    color: #fff;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 480px) {
+    .boku-chat-window {
+      width: calc(100vw - 40px);
+      height: 70vh;
+      right: -10px;
+    }
+  }
+</style>
+
+<div class="boku-chat-widget" id="bokuChatWidget">
+  <!-- Window -->
+  <div class="boku-chat-window" id="bokuChatWindow">
+    <div class="boku-chat-header">
+      <div class="boku-chat-header-avatar">E</div>
+      <div class="boku-chat-header-info">
+        <h4>Support Eumanic</h4>
+        <p>En ligne - Répond en quelques minutes</p>
+      </div>
+      <div style="margin-left: auto; cursor: pointer;" onclick="toggleBokuChat()">✕</div>
+    </div>
+    
+    <div class="boku-chat-body" id="bokuChatBody">
+      <div class="boku-chat-msg bot">
+        Bonjour ! Je suis l'assistant Eumanic. Comment puis-je vous aider aujourd'hui ? 😊
+      </div>
+      <div class="boku-chat-options">
+        <div class="boku-chat-opt" onclick="sendBokuBotMsg('Suivre ma commande')">Suivre ma commande</div>
+        <div class="boku-chat-opt" onclick="sendBokuBotMsg('Comment utiliser l\'EyeLuxe ?')">Usage de l'EyeLuxe</div>
+        <div class="boku-chat-opt" onclick="sendBokuBotMsg('Délais de livraison')">Livraison</div>
+      </div>
+    </div>
+
+    <div class="boku-chat-footer">
+      <input type="text" class="boku-chat-input" placeholder="Écrivez votre message..." id="bokuChatInput">
+      <button class="boku-chat-send" onclick="sendBokuUserMsg()">
+        <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Bubble -->
+  <div class="boku-chat-bubble" onclick="toggleBokuChat()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+  </div>
+</div>
+
+<script>
+  function toggleBokuChat() {
+    const win = document.getElementById('bokuChatWindow');
+    if (win.style.display === 'flex') {
+      win.style.display = 'none';
+    } else {
+      win.style.display = 'flex';
+      const input = document.getElementById('bokuChatInput');
+      input.focus();
+    }
+  }
+
+  function sendBokuUserMsg() {
+    const input = document.getElementById('bokuChatInput');
+    const msg = input.value.trim();
+    if (msg) {
+      appendBokuMsg(msg, 'user');
+      input.value = '';
+      
+      // Auto reply logic
+      setTimeout(() => {
+        appendBokuMsg("Merci pour votre message ! Un conseiller va vous répondre très rapidement.", 'bot');
+      }, 1000);
+    }
+  }
+
+  function sendBokuBotMsg(text) {
+    appendBokuMsg(text, 'user');
+    setTimeout(() => {
+      let reply = "Je transmets votre demande concernant " + text + " à notre équipe.";
+      if (text.includes('Livraison')) reply = "Nos délais habituels sont de 48h à 72h ouvrés. Votre numéro de suivi vous a été envoyé par mail.";
+      appendBokuMsg(reply, 'bot');
+    }, 8000);
+  }
+
+  function appendBokuMsg(text, type) {
+    const body = document.getElementById('bokuChatBody');
+    const div = document.createElement('div');
+    div.className = 'boku-chat-msg ' + type;
+    div.innerText = text;
+    body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  // Handle enter key
+  document.getElementById('bokuChatInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') sendBokuUserMsg();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "BOKU-CHATBOT",
+  "settings": [],
+  "presets": [
+    {
+      "name": "BOKU-CHATBOT"
+    }
+  ]
+}
+{% endschema %}
