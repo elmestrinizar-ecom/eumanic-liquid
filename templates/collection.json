@@ -1,8 +1,5 @@
 {
   "sections": {
-    "debug": {
-      "type": "DEBUG-PRODUCTS"
-    },
     "section": {
       "type": "section",
       "blocks": {
