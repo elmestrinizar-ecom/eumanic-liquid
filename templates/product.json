@@ -20,6 +20,11 @@
       "name": "BOKU-BEFORE-AFTER",
       "settings": {}
     },
+    "boku_tech_specs": {
+      "type": "OMNILUX-TECH-SPECS",
+      "name": "OMNILUX-TECH-SPECS",
+      "settings": {}
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -430,6 +435,7 @@
     "boku_videos_BBVQUU",
     "boku_marquee_product_Bt7W93",
     "boku_before_after",
+    "boku_tech_specs",
     "main",
     "product_recommendations_qggXJq"
   ]

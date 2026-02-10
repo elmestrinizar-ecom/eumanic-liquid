@@ -1,0 +1,225 @@
+{% comment %}
+  Section: OMNILUX-TECH-SPECS
+  Design inspiré d'Omnilux pour l'EyeLuxe Pro
+{% endcomment %}
+
+<style>
+  .omni-tech-section {
+    background: #ffffff;
+    padding: 80px 0;
+    font-family: 'Inter', sans-serif;
+    border-top: 1px solid #eee;
+  }
+  .omni-tech-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 0 40px;
+  }
+  
+  /* Colonne Gauche - Texte */
+  .omni-tech-col-left {
+    flex: 1;
+  }
+  .omni-tech-title {
+    color: #1D3557;
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 0 0 50px 0;
+    letter-spacing: -1px;
+  }
+  .omni-tech-list {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 25px 40px;
+    align-items: start;
+  }
+  .omni-tech-label {
+    color: #1D3557;
+    font-size: 0.85rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding-top: 2px;
+  }
+  .omni-tech-value {
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .omni-tech-value ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .omni-tech-value li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+  }
+  .omni-tech-value li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #E63946;
+    font-weight: bold;
+  }
+
+  /* Colonne Droite - Image Interactive */
+  .omni-tech-col-right {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+  }
+  .omni-tech-visual {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: grab;
+  }
+  .omni-tech-visual:hover {
+    transform: rotateY(-10deg) rotateX(5deg);
+  }
+  .omni-tech-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.08));
+  }
+  
+  /* Effet Pulse LED Rouge au Hover */
+  .omni-tech-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(230, 57, 70, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    mix-blend-mode: color-dodge;
+  }
+  .omni-tech-visual:hover .omni-tech-overlay {
+    opacity: 1;
+    animation: ba-pulse 2s infinite;
+  }
+  
+  @keyframes ba-pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.4; }
+  }
+
+  .omni-3d-badge {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 12px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #1D3557;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 1024px) {
+    .omni-tech-container {
+      flex-direction: column;
+      text-align: left;
+      gap: 50px;
+      padding: 0 30px;
+    }
+    .omni-tech-title { font-size: 2.2rem; margin-bottom: 40px; }
+    .omni-tech-list { grid-template-columns: 1fr; gap: 15px; }
+    .omni-tech-label { font-size: 0.75rem; }
+  }
+</style>
+
+<div class="omni-tech-section">
+  <div class="omni-tech-container">
+    
+    <!-- GAUCHE -->
+    <div class="omni-tech-col-left">
+      <h2 class="omni-tech-title">Spécifications techniques</h2>
+      
+      <div class="omni-tech-list">
+        <div class="omni-tech-label">Type de LED</div>
+        <div class="omni-tech-value">Rouge et infrarouge proche</div>
+        
+        <div class="omni-tech-label">Longueurs d'Onde</div>
+        <div class="omni-tech-value">633nm (rouge) et 830nm (infrarouge proche)</div>
+        
+        <div class="omni-tech-label">Nombre de LED</div>
+        <div class="omni-tech-value">
+          <ul>
+            <li>66 LED haute intensité</li>
+            <li>Double puce par ampoule</li>
+          </ul>
+        </div>
+        
+        <div class="omni-tech-label">Usage Cible</div>
+        <div class="omni-tech-value">Contour des yeux (Périoculaire)</div>
+        
+        <div class="omni-tech-label">Certifications</div>
+        <div class="omni-tech-value">FDA, CE, TGA</div>
+        
+        <div class="omni-tech-label">Garantie</div>
+        <div class="omni-tech-value">
+          <ul>
+            <li>2 ans : Appareil</li>
+            <li>2 ans : Contrôleur rechargeable</li>
+          </ul>
+        </div>
+        
+        <div class="omni-tech-label">Inclus</div>
+        <div class="omni-tech-value">
+          <ul>
+            <li>Masque EyeLuxe Pro en silicone souple</li>
+            <li>Contrôleur de batterie rechargeable</li>
+            <li>Alimentation et adaptateurs secteur</li>
+            <li>Câble USB-C vers USB-A</li>
+            <li>Sangles de maintien ajustables</li>
+            <li>Sac de transport premium</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DROITE -->
+    <div class="omni-tech-col-right">
+      <div class="omni-tech-visual">
+        <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" class="omni-tech-image" alt="EyeLuxe Pro Visual">
+        <div class="omni-tech-overlay"></div>
+        <div class="omni-3d-badge">
+          <span>Interaction 3D</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "OMNILUX-TECH-SPECS",
+  "settings": [],
+  "presets": [
+    {
+      "name": "OMNILUX-TECH-SPECS"
+    }
+  ]
+}
+{% endschema %}
