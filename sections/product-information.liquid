@@ -1,14 +1,18 @@
 
 
+{% liquid
+  assign product = section.settings.product | default: closest.product
+%}
+
 <script type="application/ld+json">
-  {{ closest.product | structured_data }}
+  {{ product | structured_data }}
 </script>
 
 {% capture media_gallery %}
   {%- content_for 'block',
     type: '_product-media-gallery',
     id: 'media-gallery',
-    closest.product: closest.product
+    closest.product: product
   -%}
 {% endcapture %}
 
@@ -16,7 +20,7 @@
   {% content_for 'block',
     type: '_product-details',
     id: 'product-details',
-    closest.product: closest.product
+    closest.product: product
   %}
 {% endcapture %}
 
@@ -716,6 +720,11 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:settings.product"
+    },
     {
       "type": "header",
       "content": "t:content.layout"

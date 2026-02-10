@@ -137,10 +137,129 @@
       }
     },
     "featured_product": {
-      "type": "featured-product",
+      "type": "product-information",
+      "blocks": {
+        "product-details": {
+          "type": "_product-details",
+          "blocks": {
+            "title": {
+              "type": "product-title",
+              "settings": {
+                "type_preset": "h2"
+              }
+            },
+            "subtitle": {
+              "type": "text",
+              "settings": {
+                "text": "Masseur Oculaire Intelligent - Technologie EMS & Lumière Rouge",
+                "alignment": "left"
+              }
+            },
+            "price": {
+              "type": "price",
+              "settings": {
+                "type_preset": "h4"
+              }
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "swatch"
+              }
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {}
+            },
+            "description": {
+              "type": "product-description",
+              "settings": {}
+            },
+            "accordion": {
+              "type": "accordion",
+              "settings": {
+                "icon": "plus",
+                "dividers": true
+              },
+              "blocks": {
+                "features": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Fonctionnalités",
+                    "open_by_default": true
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p><strong>Modes de Massage :</strong><br>- Lumière Rouge (Anti-Âge/Cernes)<br>- Lumière Bleue (Apaisant/Anti-bactérien)<br>- Chauffant (42°C pour la relaxation)<br>- Micro-courants EMS (Liftant)</p>"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                },
+                "usage": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Utilisation"
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>1. Appliquez votre crème contour des yeux.<br>2. Choisissez le mode (Rouge ou Bleu).<br>3. Massez délicatement le contour de l'œil pendant 5 à 10 minutes.</p>"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                },
+                "delivery": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Livraison & Retours"
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Livraison Gratuite en 48h.<br>Satisfait ou Remboursé pendant 30 jours.</p>"
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                }
+              },
+              "block_order": [
+                "features",
+                "usage",
+                "delivery"
+              ]
+            }
+          },
+          "block_order": [
+            "title",
+            "subtitle",
+            "price",
+            "variant_picker",
+            "buy_buttons",
+            "description",
+            "accordion"
+          ]
+        }
+      },
+      "block_order": [
+        "product-details"
+      ],
       "settings": {
         "product": "eumanic-pro",
-        "color_scheme": "scheme-1"
+        "desktop_media_position": "left",
+        "desktop_media_width": "medium"
       }
     }
   },
