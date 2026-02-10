@@ -41,6 +41,11 @@
       "name": "BOKU-FAQ-CONTACT",
       "settings": {}
     },
+    "boku_learn_more": {
+      "type": "BOKU-LEARN-MORE",
+      "name": "BOKU-LEARN-MORE",
+      "settings": {}
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -455,6 +460,7 @@
     "boku_tech_specs",
     "boku_customer_reviews",
     "boku_faq_contact",
+    "boku_learn_more",
     "main",
     "product_recommendations_qggXJq"
   ]
