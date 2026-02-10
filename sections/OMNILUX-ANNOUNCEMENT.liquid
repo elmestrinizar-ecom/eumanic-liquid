@@ -1,0 +1,43 @@
+<style>
+  /* FORCED GLOBAL RED IDENTITY */
+  .announcement-bar, #shopify-section-{{ section.id }} .omnilux-announcement {
+    background-color: #E63946 !important;
+    color: #ffffff !important;
+    text-align: center;
+    padding: 12px 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .announcement-bar *, #shopify-section-{{ section.id }} .omnilux-announcement * {
+    color: #ffffff !important;
+    text-decoration: none !important;
+  }
+
+  .omnilux-announcement__content {
+    display: block;
+    width: 100%;
+  }
+</style>
+
+<div class="omnilux-announcement">
+  <div class="omnilux-announcement__content">
+    LIVRAISON OFFERTE AUJOURD'HUI • PROFITEZ DE -50% SUR EYELUXE PRO
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "OMNILUX-ANNOUNCEMENT",
+  "settings": [],
+  "presets": [
+    {
+      "name": "OMNILUX-ANNOUNCEMENT"
+    }
+  ]
+}
+{% endschema %}

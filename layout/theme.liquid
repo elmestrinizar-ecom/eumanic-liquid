@@ -36,6 +36,23 @@
     {% endif %}
 
     {{ content_for_header }}
+    <style>
+      /* FORCED RED/WHITE IDENTITY */
+      .announcement-bar {
+        background-color: #E63946 !important;
+        color: #ffffff !important;
+      }
+      .announcement-bar * {
+        color: #ffffff !important;
+      }
+      .boku-hero__cta {
+        background-color: #E63946 !important;
+        color: #ffffff !important;
+      }
+      .announcement-bar__link, .announcement-bar__text {
+        color: #ffffff !important;
+      }
+    </style>
   </head>
 
   <body class="{% if settings.animations_reveal_on_scroll %} scroll-reveal{% endif %} color-{{ settings.color_scheme }} antialiased">
