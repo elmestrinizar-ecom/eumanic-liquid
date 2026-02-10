@@ -15,6 +15,11 @@
       "name": "BOKU-VIDEOS",
       "settings": {}
     },
+    "boku_before_after": {
+      "type": "BOKU-BEFORE-AFTER",
+      "name": "BOKU-BEFORE-AFTER",
+      "settings": {}
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -424,6 +429,7 @@
     "antigravity_test_CEr4qM",
     "boku_videos_BBVQUU",
     "boku_marquee_product_Bt7W93",
+    "boku_before_after",
     "main",
     "product_recommendations_qggXJq"
   ]
