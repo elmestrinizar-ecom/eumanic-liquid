@@ -1,5 +1,35 @@
 {
     "sections": {
+        "antigravity_test_CEr4qM": {
+            "type": "antigravity-test",
+            "name": "BOKU-PRODUCT-PAGE",
+            "settings": {}
+        },
+        "boku_marquee_product_Bt7W93": {
+            "type": "BOKU-MARQUEE-PRODUCT",
+            "name": "BOKU-MARQUEE-PRODUCT",
+            "settings": {}
+        },
+        "boku_videos_BBVQUU": {
+            "type": "BOKU-VIDEOS",
+            "name": "BOKU-VIDEOS",
+            "settings": {}
+        },
+        "boku_before_after": {
+            "type": "BOKU-BEFORE-AFTER",
+            "name": "BOKU-BEFORE-AFTER",
+            "settings": {}
+        },
+        "boku_expert_reviews": {
+            "type": "BOKU-EXPERT-REVIEWS",
+            "name": "BOKU-EXPERT-REVIEWS",
+            "settings": {}
+        },
+        "boku_tech_specs": {
+            "type": "OMNILUX-TECH-SPECS",
+            "name": "OMNILUX-TECH-SPECS",
+            "settings": {}
+        },
         "main": {
             "type": "product-information",
             "blocks": {
@@ -127,6 +157,12 @@
         }
     },
     "order": [
+        "antigravity_test_CEr4qM",
+        "boku_videos_BBVQUU",
+        "boku_marquee_product_Bt7W93",
+        "boku_before_after",
+        "boku_expert_reviews",
+        "boku_tech_specs",
         "main"
     ]
 }
