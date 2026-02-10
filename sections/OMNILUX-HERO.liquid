@@ -27,7 +27,8 @@
   .omnilux-hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 25%, rgba(255,255,255,0) 65%);
+    /* Dégradé beaucoup plus court pour laisser l'image du produit totalement visible */
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0) 50%);
     z-index: 2;
   }
 
@@ -44,7 +45,7 @@
     z-index: 3;
     max-width: 1200px;
     width: 100%;
-    padding: 140px 80px 80px; /* Padding top for header clearance */
+    padding: 220px 80px 100px; /* Augmentation massive du padding top pour descendre sous le logo */
     text-align: left;
   }
 
@@ -66,12 +67,12 @@
   }
 
   .omnilux-hero__title {
-    font-size: 3.4rem;
+    font-size: 3.2rem;
     font-weight: 800;
     line-height: 1.1;
     color: #000000;
     margin-bottom: 24px;
-    max-width: 600px;
+    max-width: 550px; /* Texte plus étroit pour ne pas déborder sur l'image */
   }
 
   @media (max-width: 768px) {
@@ -142,12 +143,12 @@
     <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" alt="EyeLuxe Pro">
   </div>
   
-  <div class="omnilux-hero__overlay"></div>
+  <div class="omnilux-hero__overlay" style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0) 45%); z-index: 2;"></div>
 
-  <div class="omnilux-hero__content">
-    <span class="omnilux-hero__trust">★★★★★ 150+ CLIENTS SATISFAITS</span>
-    <h1 class="omnilux-hero__title">Régénérez votre regard en 10 minutes par jour.</h1>
-    <p class="omnilux-hero__subtitle">La seule technologie combinant Lumière Rouge 633nm + Stimulation EMS cliniquement prouvée pour éliminer cernes, poches et rides, à domicile.</p>
+  <div class="omnilux-hero__content" style="position: relative; z-index: 3; max-width: 1200px; width: 100%; padding: 260px 80px 100px; text-align: left;">
+    <span class="omnilux-hero__trust" style="color: #E63946 !important; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 24px; display: block; text-transform: uppercase;">★★★★★ 150+ CLIENTS SATISFAITS</span>
+    <h1 class="omnilux-hero__title" style="font-size: 3rem; font-weight: 800; line-height: 1.1; color: #000000; margin-bottom: 24px; max-width: 500px;">Régénérez votre regard en 10 minutes par jour.</h1>
+    <p class="omnilux-hero__subtitle" style="font-size: 1.2rem; color: #333333; max-width: 500px; line-height: 1.6; margin-bottom: 40px;">La seule technologie combinant Lumière Rouge 633nm + Stimulation EMS cliniquement prouvée pour éliminer cernes, poches et rides, à domicile.</p>
     
     <a href="/products/eyeluxe-pro" class="omnilux-hero__cta">JE VEUX UN REGARD RADIEUX</a>
 
