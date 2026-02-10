@@ -1,0 +1,189 @@
+{% comment %}
+  Section: BOKU-CUSTOMER-REVIEWS
+  Carrousel d'avis clients inspiré de Boku
+{% endcomment %}
+
+<style>
+  .boku-reviews-section {
+    background: #ffffff;
+    padding: 80px 0;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+  }
+  .boku-reviews-header {
+    max-width: 1300px;
+    margin: 0 auto 50px auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .boku-reviews-title {
+    color: #1D3557;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0;
+    max-width: 600px;
+  }
+  
+  .boku-reviews-nav {
+    display: flex;
+    gap: 12px;
+  }
+  .boku-reviews-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid #1D3557;
+    background: transparent;
+    color: #1D3557;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .boku-reviews-btn:hover {
+    background: #1D3557;
+    color: #fff;
+  }
+
+  .boku-reviews-carousel {
+    display: flex;
+    gap: 25px;
+    padding: 0 40px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .boku-reviews-carousel::-webkit-scrollbar { display: none; }
+
+  .boku-reviews-card {
+    min-width: 380px;
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    padding: 0;
+    overflow: hidden;
+    /* box-shadow: 0 10px 30px rgba(0,0,0,0.03); */
+  }
+  .boku-reviews-img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    background: #f4f6f9; /* Placeholder */
+  }
+  .boku-reviews-content {
+    padding: 25px;
+  }
+  .boku-reviews-stars {
+    color: #E63946; /* Brand Red */
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+  .boku-reviews-card-title {
+    color: #1D3557;
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0 0 12px 0;
+  }
+  .boku-reviews-text {
+    color: #444;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .boku-reviews-title { font-size: 1.8rem; }
+    .boku-reviews-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .boku-reviews-card { min-width: 300px; }
+    .boku-reviews-img { height: 260px; }
+  }
+</style>
+
+<div class="boku-reviews-section">
+  <div class="boku-reviews-header">
+    <h2 class="boku-reviews-title">Rejoignez plus de 200,000 utilisateurs satisfaits 🍑</h2>
+    <div class="boku-reviews-nav">
+      <button class="boku-reviews-btn" onclick="slideReviews('left')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="boku-reviews-btn" onclick="slideReviews('right')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="boku-reviews-carousel" id="reviewsCarousel">
+    
+    <!-- CARD 1 -->
+    <div class="boku-reviews-card">
+      <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/page_produit_pic.png?v=1770711745" class="boku-reviews-img" alt="Review 1">
+      <div class="boku-reviews-content">
+        <div class="boku-reviews-stars">★★★★★</div>
+        <h3 class="boku-reviews-card-title">Une qualité bluffante</h3>
+        <p class="boku-reviews-text">Je suis vraiment satisfaite par la qualité du masque. C'est tout ce dont je rêvais, je ne peux plus m'en passer !</p>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="boku-reviews-card">
+      <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/pageeed_fj.png?v=1770711745" class="boku-reviews-img" alt="Review 2">
+      <div class="boku-reviews-content">
+        <div class="boku-reviews-stars">★★★★★</div>
+        <h3 class="boku-reviews-card-title">Super rapport qualité prix</h3>
+        <p class="boku-reviews-text">Le meilleur achat de 2023 pour moi. L'EyeLuxe Pro fait toute la différence et je l'utilise très souvent.</p>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="boku-reviews-card">
+      <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" class="boku-reviews-img" alt="Review 3">
+      <div class="boku-reviews-content">
+        <div class="boku-reviews-stars">★★★★★</div>
+        <h3 class="boku-reviews-card-title">Regard transformé</h3>
+        <p class="boku-reviews-text">Je regrette de ne pas l'avoir acheté plus tôt ! Mes cernes ont diminué et mon regard est plus réveillé.</p>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="boku-reviews-card">
+      <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/page_produit_pic.png?v=1770711745" class="boku-reviews-img" alt="Review 4">
+      <div class="boku-reviews-content">
+        <div class="boku-reviews-stars">★★★★★</div>
+        <h3 class="boku-reviews-card-title">C'est le top !</h3>
+        <p class="boku-reviews-text">Très simple d'utilisation et les résultats sont là après seulement 2 semaines d'utilisation quotidienne.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function slideReviews(direction) {
+    const carousel = document.getElementById('reviewsCarousel');
+    const scrollAmount = 400;
+    if (direction === 'left') {
+      carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "BOKU-CUSTOMER-REVIEWS",
+  "settings": [],
+  "presets": [
+    {
+      "name": "BOKU-CUSTOMER-REVIEWS"
+    }
+  ]
+}
+{% endschema %}

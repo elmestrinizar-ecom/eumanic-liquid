@@ -30,6 +30,11 @@
             "name": "OMNILUX-TECH-SPECS",
             "settings": {}
         },
+        "boku_customer_reviews": {
+            "type": "BOKU-CUSTOMER-REVIEWS",
+            "name": "BOKU-CUSTOMER-REVIEWS",
+            "settings": {}
+        },
         "main": {
             "type": "product-information",
             "blocks": {
@@ -163,6 +168,7 @@
         "boku_before_after",
         "boku_expert_reviews",
         "boku_tech_specs",
+        "boku_customer_reviews",
         "main"
     ]
 }
