@@ -2,87 +2,296 @@
   assign product = all_products['eyeluxe-pro'] | default: product
 %}
 
-<div class="boku-product-container" style="padding: 20px; font-family: sans-serif; background: #fff;">
-  <div style="display: flex; flex-wrap: wrap; gap: 40px;">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+  .boku-wrapper {
+    font-family: 'Inter', sans-serif;
+    color: #1a1a1a;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    background: #fff;
+  }
+
+  .boku-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .boku-grid { grid-template-columns: 1fr; gap: 30px; }
+    .boku-wrapper { padding: 30px 15px; }
+  }
+
+  .boku-media img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+
+  .boku-media img:hover {
+    transform: scale(1.02);
+  }
+
+  .boku-info {
+    position: sticky;
+    top: 40px;
+  }
+
+  .boku-tagline {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #d0021b; /* Medical Red */
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .boku-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    color: #000;
+  }
+
+  .boku-subtitle {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  .boku-price-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .boku-price {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .boku-compare-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1.2rem;
+  }
+
+  .boku-offer-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .boku-variants {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .boku-variant-card {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    position: relative;
+  }
+
+  .boku-variant-card.active {
+    border: 2px solid #000;
+    background: #fcfcfc;
+  }
+
+  .boku-variant-card .badge {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    background: #000;
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+  }
+
+  .boku-buy-btn {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-bottom: 15px;
+  }
+
+  .boku-buy-btn:hover {
+    background: #333;
+  }
+
+  .boku-guarantee {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 40px;
+  }
+
+  /* Accordions */
+  .boku-accordions {
+    border-top: 1px solid #eee;
+  }
+
+  .boku-accordion {
+    border-bottom: 1px solid #eee;
+  }
+
+  .boku-accordion summary {
+    list-style: none;
+    padding: 20px 0;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .boku-accordion summary::-webkit-details-marker { display: none; }
+
+  .boku-accordion summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+
+  .boku-accordion[open] summary::after {
+    content: '−';
+  }
+
+  .boku-accordion-content {
+    padding-bottom: 25px;
+    color: #444;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  .boku-accordion-content ul {
+    padding-left: 20px;
+    margin: 0;
+  }
+</style>
+
+<div class="boku-wrapper">
+  <div class="boku-grid">
     
-    <!-- Media Gallery (Simplifié pour le test) -->
-    <div style="flex: 1; min-width: 300px;">
+    <!-- Left: Gallery -->
+    <div class="boku-media">
       {% if product.featured_image %}
-        <img src="{{ product.featured_image | image_url: width: 800 }}" style="width: 100%; border-radius: 8px;">
+        <img src="{{ product.featured_image | image_url: width: 1000 }}" alt="{{ product.title }}">
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
       {% endif %}
     </div>
 
-    <!-- Product Info -->
-    <div style="flex: 1; min-width: 300px;">
-      <h1 style="font-size: 2.5rem; margin-bottom: 10px;">{{ product.title }}</h1>
-      <p style="color: #666; font-size: 1.1rem; margin-bottom: 20px;">Masseur Oculaire Intelligent - Technologie EMS & Lumière Rouge</p>
-      
-      <div style="font-size: 1.5rem; font-weight: bold; margin-bottom: 25px;">
-        {{ product.price | money }}
+    <!-- Right: Product Info -->
+    <div class="boku-info">
+      <span class="boku-tagline">Technologie Clinique • Anti-Âge</span>
+      <h1 class="boku-title">{{ product.title }}</h1>
+      <p class="boku-subtitle">Dites adieu aux cernes et poches grâce à la synergie de la Lumière Rouge et des micro-courants EMS.</p>
+
+      <div class="boku-price-row">
+        <span class="boku-price">{{ product.price | money }}</span>
+        {% if product.compare_at_price > product.price %}
+          <span class="boku-compare-price">{{ product.compare_at_price | money }}</span>
+        {% endif %}
       </div>
 
-      <!-- Fake Variant Picker for Boku Style -->
-      <div style="margin-bottom: 30px;">
-        <label style="display: block; font-weight: bold; margin-bottom: 10px;">CHOISISSEZ VOTRE OFFRE</1>
-        <div style="display: flex; gap: 10px;">
-          <div style="border: 2px solid #000; padding: 10px 20px; border-radius: 4px; cursor: pointer; background: #f9f9f9;">
-            <strong>SOLO</strong><br>1x Eumanic
-          </div>
-          <div style="border: 1px solid #ddd; padding: 10px 20px; border-radius: 4px; cursor: pointer;">
-            <strong>DUO (Best Seller)</strong><br>2x Eumanic (-20%)
-          </div>
+      <span class="boku-offer-label">Choisissez votre pack</span>
+      <div class="boku-variants">
+        <div class="boku-variant-card active">
+          <strong>PACK SOLO</strong>
+          <div style="font-size: 0.8rem; color: #666;">1x Masseur Oculaire</div>
+        </div>
+        <div class="boku-variant-card">
+          <span class="badge">-25% OFF</span>
+          <strong>PACK DUO</strong>
+          <div style="font-size: 0.8rem; color: #666;">2x Masseur (Idéal Cadeau)</div>
         </div>
       </div>
 
-      <!-- Add to Cart (Standard) -->
       {% form 'product', product %}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-        <button type="submit" style="width: 100%; padding: 15px; background: #000; color: #fff; border: none; border-radius: 4px; font-weight: bold; font-size: 1.1rem; cursor: pointer;">
-          AJOUTER AU PANIER
-        </button>
+        <button type="submit" class="boku-buy-btn">PROFITER DE L'OFFRE</button>
       {% endform %}
 
+      <div class="boku-guarantee">
+        <span>✅ Livraison 48h Offerte</span>
+        <span>🛡️ Garantie 30 Jours</span>
+      </div>
+
       <!-- Accordions -->
-      <div style="margin-top: 40px; border-top: 1px solid #eee;">
-        <details open style="padding: 15px 0; border-bottom: 1px solid #eee; cursor: pointer;">
-          <summary style="font-weight: bold; font-size: 1.1rem;">✨ Fonctionnalités</summary>
-          <div style="padding-top: 10px; color: #444; line-height: 1.6;">
+      <div class="boku-accordions">
+        <details class="boku-accordion" open>
+          <summary>✨ Pourquoi ça fonctionne ?</summary>
+          <div class="boku-accordion-content">
+            <p>Le EyeLuxe Pro combine trois technologies de pointe pour des résultats visibles en 7 jours :</p>
             <ul>
-              <li>Lumière Rouge (Anti-Âge/Cernes)</li>
-              <li>Micro-courants EMS (Liftant)</li>
-              <li>Chaleur Apaisante (42°C)</li>
+              <li><strong>Lumière Rouge 660nm :</strong> Stimule la production de collagène naturelle.</li>
+              <li><strong>Micro-courants EMS :</strong> Raffermit et lifte les muscles peauciers.</li>
+              <li><strong>Chaleur Thermale :</strong> Booste l'absorption de vos crèmes et sérums.</li>
             </ul>
           </div>
         </details>
-        
-        <details style="padding: 15px 0; border-bottom: 1px solid #eee; cursor: pointer;">
-          <summary style="font-weight: bold; font-size: 1.1rem;">📖 Utilisation</summary>
-          <div style="padding-top: 10px; color: #444;">
-            1. Appliquez votre sérum.<br>
-            2. Massez 5 min par œil.<br>
-            3. Admirez le résultat.
+
+        <details class="boku-accordion">
+          <summary>📖 Comment l'utiliser ?</summary>
+          <div class="boku-accordion-content">
+            <p>Une routine simple de 5 minutes par œil, 3 fois par semaine suffit :</p>
+            <ol>
+              <li>Nettoyez votre visage et appliquez votre contour des yeux habituel.</li>
+              <li>Allumez l'appareil et sélectionnez le mode souhaité.</li>
+              <li>Faites glisser doucement de l'intérieur vers l'extérieur de l'œil.</li>
+            </ol>
           </div>
         </details>
 
-        <details style="padding: 15px 0; border-bottom: 1px solid #eee; cursor: pointer;">
-          <summary style="font-weight: bold; font-size: 1.1rem;">🚚 Livraison & Retours</summary>
-          <div style="padding-top: 10px; color: #444;">
-            Livraison Gratuite (48h). Retours gratuits sous 30 jours.
+        <details class="boku-accordion">
+          <summary>📦 Livraison & Garantie</summary>
+          <div class="boku-accordion-content">
+            <p>Expédition sous 24h depuis nos entrepôts. Livraison suivie gratuite en France métropolitaine.</p>
+            <p>Si vous n'êtes pas satisfaite des résultats après 30 jours, nous vous remboursons intégralement, sans poser de questions.</p>
           </div>
         </details>
       </div>
-
     </div>
+
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "AAA-BOKU-DESIGN",
+  "name": "BOKU-PRODUCT-PAGE",
   "settings": [],
   "presets": [
     {
-      "name": "AAA-BOKU-DESIGN"
+      "name": "BOKU-PRODUCT-PAGE"
     }
   ]
 }
