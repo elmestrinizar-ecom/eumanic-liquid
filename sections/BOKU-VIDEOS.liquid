@@ -18,21 +18,22 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    width: 180px;
+    width: 120px; /* Reduced from 180px */
   }
   .boku-video-circle {
-    width: 150px;
-    height: 150px;
+    width: 100px; /* Reduced from 150px */
+    height: 100px; /* Reduced from 150px */
     border-radius: 50%;
-    border: 3px solid #E63946;
+    border: 3px solid transparent;
+    background: linear-gradient(#fff, #fff) padding-box,
+                linear-gradient(to right, #ff4d4d, #ff944d) border-box; /* Boku Gradient */
     overflow: hidden;
     position: relative;
     cursor: pointer;
     transition: transform 0.3s ease;
-    background: #f5f5f5;
   }
   .boku-video-circle:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
   .boku-video-circle img {
     width: 100%;
@@ -44,27 +45,21 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    background: rgba(230, 57, 70, 0.9);
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 20px;
-  }
-  .boku-video-title {
-    font-weight: 700;
-    color: #1D3557;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    color: #E63946;
+    font-size: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   }
   @media (max-width: 768px) {
-    .boku-videos-grid { gap: 20px; }
-    .boku-video-circle { width: 120px; height: 120px; }
-    .boku-video-item { width: 140px; }
+    .boku-videos-grid { gap: 15px; }
+    .boku-video-circle { width: 85px; height: 85px; }
+    .boku-video-item { width: 100px; }
   }
 </style>
 
@@ -77,7 +72,6 @@
         <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" alt="Le Concept">
         <div class="boku-video-play">▶</div>
       </div>
-      <span class="boku-video-title">Le concept</span>
     </div>
 
     <!-- UTILISATION -->
@@ -86,7 +80,6 @@
         <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" alt="Utilisation">
         <div class="boku-video-play">▶</div>
       </div>
-      <span class="boku-video-title">Utilisation</span>
     </div>
 
     <!-- INSTALLATION -->
@@ -95,7 +88,6 @@
         <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" alt="Installation">
         <div class="boku-video-play">▶</div>
       </div>
-      <span class="boku-video-title">Installation</span>
     </div>
 
   </div>

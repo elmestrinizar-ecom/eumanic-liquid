@@ -1,48 +1,103 @@
 <style>
-  .boku-marquee-wrapper {
-    background: #f8f9fa;
-    padding: 25px 0;
-    overflow: hidden;
-    border-top: 1px solid #eee;
+  .boku-trust-section {
+    background: #f4f6f9;
+    padding: 40px 0;
     font-family: 'Inter', sans-serif;
   }
-  .boku-marquee-content {
+  .boku-trust-grid {
+    max-width: 1300px;
+    margin: 0 auto;
     display: flex;
-    white-space: nowrap;
-    animation: marquee 30s linear infinite;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
-  .boku-marquee-item {
+  .boku-trust-grid::-webkit-scrollbar { display: none; }
+
+  .boku-trust-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px 25px;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  }
+  .boku-trust-header {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 0 60px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #1D3557;
+    gap: 10px;
+    color: #4a5af7; /* Boku Blue/Violet */
+    font-weight: 800;
+    font-size: 0.95rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
   }
-  .boku-marquee-dot {
-    width: 6px;
-    height: 6px;
-    background: #E63946;
+  .boku-trust-icon {
+    width: 22px;
+    height: 22px;
+    background: #4a5af7;
+    color: white;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
   }
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  .boku-trust-desc {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 400;
+  }
+  @media (max-width: 768px) {
+    .boku-trust-grid { justify-content: flex-start; }
+    .boku-trust-card { min-width: 240px; }
   }
 </style>
 
-<div class="boku-marquee-wrapper">
-  <div class="boku-marquee-content">
-    {% for i in (1..4) %}
-      <div class="boku-marquee-item"><span class="boku-marquee-dot"></span> 🔵 LIVRAISON EN 48H</div>
-      <div class="boku-marquee-item"><span class="boku-marquee-dot"></span> 🔵 LIVRAISON GRATUITE</div>
-      <div class="boku-marquee-item"><span class="boku-marquee-dot"></span> 🔵 ESSAI 14J</div>
-      <div class="boku-marquee-item"><span class="boku-marquee-dot"></span> 🔵 GARANTIE 2 ANS</div>
-      <div class="boku-marquee-item"><span class="boku-marquee-dot"></span> 🤝 +250 CLIENTS SATISFAITS</div>
-    {% endfor %}
+<div class="boku-trust-section">
+  <div class="boku-trust-grid">
+    
+    <!-- CARD 1 -->
+    <div class="boku-trust-card">
+      <div class="boku-trust-header">
+        <span class="boku-trust-icon">✓</span>
+        GARANTIE 2 ANS
+      </div>
+      <p class="boku-trust-desc">+250 clients satisfaits</p>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="boku-trust-card">
+      <div class="boku-trust-header">
+        <span class="boku-trust-icon">✓</span>
+        LIVRAISON EN 48H
+      </div>
+      <p class="boku-trust-desc">Recevez votre colis en 48h</p>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="boku-trust-card">
+      <div class="boku-trust-header">
+        <span class="boku-trust-icon">✓</span>
+        LIVRAISON GRATUITE
+      </div>
+      <p class="boku-trust-desc">Dès 90 € d'achat</p>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="boku-trust-card">
+      <div class="boku-trust-header">
+        <span class="boku-trust-icon">✓</span>
+        ESSAI 14J
+      </div>
+      <p class="boku-trust-desc">100% satisfait ou remboursé</p>
+    </div>
+
   </div>
 </div>
 
