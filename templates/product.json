@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "antigravity_test_CEr4qM": {
@@ -27,6 +36,7 @@
     },
     "boku_tech_specs": {
       "type": "OMNILUX-TECH-SPECS",
+      "disabled": true,
       "name": "OMNILUX-TECH-SPECS",
       "settings": {}
     },
