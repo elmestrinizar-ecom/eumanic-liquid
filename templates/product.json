@@ -19,6 +19,7 @@
       "blocks": {
         "media-gallery": {
           "type": "_product-media-gallery",
+          "disabled": true,
           "static": true,
           "settings": {
             "media_presentation": "grid",
@@ -48,6 +49,7 @@
         },
         "product-details": {
           "type": "_product-details",
+          "disabled": true,
           "static": true,
           "settings": {
             "width": "fill",
