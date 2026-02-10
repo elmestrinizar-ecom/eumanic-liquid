@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "antigravity_test_CEr4qM": {
@@ -5,14 +14,14 @@
       "name": "BOKU-PRODUCT-PAGE",
       "settings": {}
     },
-    "boku_videos": {
-      "type": "BOKU-VIDEOS",
-      "name": "BOKU-VIDEOS",
+    "boku_marquee_product_Bt7W93": {
+      "type": "BOKU-MARQUEE-PRODUCT",
+      "name": "BOKU-MARQUEE-PRODUCT",
       "settings": {}
     },
-    "boku_marquee": {
-      "type": "BOKU-MARQUEE-PRODUCT",
-      "name": "BOKU-MARQUEE",
+    "boku_videos_BBVQUU": {
+      "type": "BOKU-VIDEOS",
+      "name": "BOKU-VIDEOS",
       "settings": {}
     },
     "main": {
@@ -422,6 +431,8 @@
   },
   "order": [
     "antigravity_test_CEr4qM",
+    "boku_marquee_product_Bt7W93",
+    "boku_videos_BBVQUU",
     "main",
     "product_recommendations_qggXJq"
   ]
