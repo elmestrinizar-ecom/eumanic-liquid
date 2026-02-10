@@ -14,6 +14,11 @@
       "name": "OMNILUX-HERO",
       "settings": {}
     },
+    "eumanic_trust_bar": {
+      "type": "EUMANIC-TRUST-BAR",
+      "name": "EUMANIC-TRUST-BAR",
+      "settings": {}
+    },
     "boku_hero_bNEkEN": {
       "type": "boku-hero",
       "disabled": true,
@@ -632,6 +637,7 @@
   },
   "order": [
     "omnilux_hero_UYUBLP",
+    "eumanic_trust_bar",
     "boku_hero_bNEkEN",
     "product_list_themegen",
     "section_x8mrnx",

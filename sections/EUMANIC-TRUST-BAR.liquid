@@ -1,22 +1,24 @@
 {% comment %}
   Section: EUMANIC-TRUST-BAR
-  Barre de réassurance inspirée de CurrentBody avec défilement infini
+  Barre de réassurance Elite - Style CurrentBody
+  Fond Rouge, Texte Blanc, 5 Items spécifiques
 {% endcomment %}
 
 <style>
   .eumanic-trust-bar {
-    background: #ffffff;
-    border-bottom: 1px solid #eeeeee;
-    padding: 25px 0;
+    background: #E63946; /* Brand Red */
+    padding: 20px 0;
     overflow: hidden;
     font-family: 'Inter', sans-serif;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
   }
   
   .eumanic-trust-marquee {
     display: flex;
     overflow: hidden;
     user-select: none;
-    gap: 50px;
+    gap: 60px;
   }
   
   .eumanic-trust-track {
@@ -24,46 +26,47 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    gap: 50px;
+    gap: 60px;
     min-width: 100%;
-    animation: eumanic-scroll 40s linear infinite;
+    animation: eumanic-scroll-elite 35s linear infinite;
   }
   
-  @keyframes eumanic-scroll {
+  @keyframes eumanic-scroll-elite {
     from { transform: translateX(0); }
-    to { transform: translateX(calc(-100% - 50px)); }
+    to { transform: translateX(calc(-100% - 60px)); }
   }
 
   .eumanic-trust-item {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     flex-shrink: 0;
   }
   
   .eumanic-trust-icon {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    border: 1px solid #1D3557; /* Navy */
+    border: 1px solid rgba(255,255,255,0.6);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #1D3557;
+    color: #ffffff;
     flex-shrink: 0;
   }
   
   .eumanic-trust-icon svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.5px;
   }
   
   .eumanic-trust-text {
-    color: #1D3557;
-    font-size: 0.75rem;
+    color: #ffffff;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     white-space: nowrap;
   }
 
@@ -73,11 +76,11 @@
   }
 
   @media (max-width: 768px) {
-    .eumanic-trust-bar { padding: 20px 0; }
-    .eumanic-trust-track { gap: 30px; animation-duration: 25s; }
-    .eumanic-trust-icon { width: 40px; height: 40px; }
-    .eumanic-trust-icon svg { width: 20px; height: 20px; }
-    .eumanic-trust-text { font-size: 0.65rem; }
+    .eumanic-trust-bar { padding: 15px 0; }
+    .eumanic-trust-track { gap: 40px; animation-duration: 25s; }
+    .eumanic-trust-icon { width: 36px; height: 36px; }
+    .eumanic-trust-icon svg { width: 18px; height: 18px; }
+    .eumanic-trust-text { font-size: 0.6rem; letter-spacing: 0.5px; }
   }
 </style>
 
@@ -86,52 +89,44 @@
     
     <!-- TRACK 1 -->
     <div class="eumanic-trust-track">
-      <!-- Item 1: Dermato -->
+      <!-- Item 1: Microscope -->
       <div class="eumanic-trust-item">
         <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path><path d="M9 14h2"></path><path d="M9 12a2 2 0 1 1-2-2V4h6v4a2 2 0 1 1-2 2"></path></svg>
         </div>
-        <span class="eumanic-trust-text">AGRÉÉ DES DERMATOLOGUES</span>
+        <span class="eumanic-trust-text">TESTS DE PRODUITS INDÉPENDANTS</span>
       </div>
       
-      <!-- Item 2: FDA -->
+      <!-- Item 2: Shield -->
       <div class="eumanic-trust-item">
         <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-        </div>
-        <span class="eumanic-trust-text">APPROUVÉ PAR LA FDA</span>
-      </div>
-      
-      <!-- Item 3: Clinique -->
-      <div class="eumanic-trust-item">
-        <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
-        </div>
-        <span class="eumanic-trust-text">VÉRIFIÉ EN CLINIQUE</span>
-      </div>
-      
-      <!-- Item 4: Labs -->
-      <div class="eumanic-trust-item">
-        <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path><path d="M9 14h2"></path><path d="M9 12a2 2 0 1 1-2-2V4h6v4a2 2 0 1 1-2 2"></path></svg>
-        </div>
-        <span class="eumanic-trust-text">TESTS INDÉPENDANTS</span>
-      </div>
-      
-      <!-- Item 5: Security -->
-      <div class="eumanic-trust-item">
-        <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
         </div>
         <span class="eumanic-trust-text">SÉCURITÉ GARANTIE</span>
       </div>
       
-      <!-- Item 6: Tech -->
+      <!-- Item 3: Badge -->
       <div class="eumanic-trust-item">
         <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z"></path></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-2 5l2 2l2-2l-2-5z"></path><path d="M15.42 10.93a5.5 5.5 0 1 0-6.83 0"></path><path d="M10.42 16.93a5.5 5.5 0 0 0 3.16 0"></path><circle cx="12" cy="8" r="4"></circle></svg>
         </div>
-        <span class="eumanic-trust-text">TECHNOLOGIE NASA</span>
+        <span class="eumanic-trust-text">TECHNOLOGIE BREVETÉE</span>
+      </div>
+      
+      <!-- Item 4: Award -->
+      <div class="eumanic-trust-item">
+        <div class="eumanic-trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+        </div>
+        <span class="eumanic-trust-text">PRODUITS PRIMÉS</span>
+      </div>
+      
+      <!-- Item 5: Globe -->
+      <div class="eumanic-trust-item">
+        <div class="eumanic-trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </div>
+        <span class="eumanic-trust-text">DES MILLIONS VENDUS DANS LE MONDE</span>
       </div>
     </div>
 
@@ -139,39 +134,33 @@
     <div class="eumanic-trust-track" aria-hidden="true">
       <div class="eumanic-trust-item">
         <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path><path d="M9 14h2"></path><path d="M9 12a2 2 0 1 1-2-2V4h6v4a2 2 0 1 1-2 2"></path></svg>
         </div>
-        <span class="eumanic-trust-text">AGRÉÉ DES DERMATOLOGUES</span>
+        <span class="eumanic-trust-text">TESTS DE PRODUITS INDÉPENDANTS</span>
       </div>
       <div class="eumanic-trust-item">
         <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-        </div>
-        <span class="eumanic-trust-text">APPROUVÉ PAR LA FDA</span>
-      </div>
-      <div class="eumanic-trust-item">
-        <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
-        </div>
-        <span class="eumanic-trust-text">VÉRIFIÉ EN CLINIQUE</span>
-      </div>
-      <div class="eumanic-trust-item">
-        <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"></path><path d="M3 22h18"></path><path d="M14 22a7 7 0 1 0 0-14h-1"></path><path d="M9 14h2"></path><path d="M9 12a2 2 0 1 1-2-2V4h6v4a2 2 0 1 1-2 2"></path></svg>
-        </div>
-        <span class="eumanic-trust-text">TESTS INDÉPENDANTS</span>
-      </div>
-      <div class="eumanic-trust-item">
-        <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
         </div>
         <span class="eumanic-trust-text">SÉCURITÉ GARANTIE</span>
       </div>
       <div class="eumanic-trust-item">
         <div class="eumanic-trust-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z"></path></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-2 5l2 2l2-2l-2-5z"></path><path d="M15.42 10.93a5.5 5.5 0 1 0-6.83 0"></path><path d="M10.42 16.93a5.5 5.5 0 0 0 3.16 0"></path><circle cx="12" cy="8" r="4"></circle></svg>
         </div>
-        <span class="eumanic-trust-text">TECHNOLOGIE NASA</span>
+        <span class="eumanic-trust-text">TECHNOLOGIE BREVETÉE</span>
+      </div>
+      <div class="eumanic-trust-item">
+        <div class="eumanic-trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+        </div>
+        <span class="eumanic-trust-text">PRODUITS PRIMÉS</span>
+      </div>
+      <div class="eumanic-trust-item">
+        <div class="eumanic-trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </div>
+        <span class="eumanic-trust-text">DES MILLIONS VENDUS DANS LE MONDE</span>
       </div>
     </div>
 
