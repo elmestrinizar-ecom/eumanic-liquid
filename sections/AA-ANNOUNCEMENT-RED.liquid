@@ -1,0 +1,31 @@
+<style>
+  .aa-announcement-{{ section.id }} {
+    background-color: #E63946 !important;
+    color: #ffffff !important;
+    text-align: center;
+    padding: 12px 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: block;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+</style>
+
+<div class="aa-announcement-{{ section.id }}">
+  LIVRAISON OFFERTE AUJOURD'HUI • PROFITEZ DE -50% SUR EYELUXE PRO
+</div>
+
+{% schema %}
+{
+  "name": "AA-ANNOUNCEMENT-RED",
+  "settings": [],
+  "presets": [
+    {
+      "name": "AA-ANNOUNCEMENT-RED"
+    }
+  ]
+}
+{% endschema %}
