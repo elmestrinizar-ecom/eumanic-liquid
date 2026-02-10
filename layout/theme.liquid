@@ -39,6 +39,9 @@
   </head>
 
   <body class="{% if settings.animations_reveal_on_scroll %} scroll-reveal{% endif %} color-{{ settings.color_scheme }} antialiased">
+  <div style="background: red; color: white; padding: 10px; text-align: center; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 99999;">
+    SYNC DEBUG: RED FLAG | Theme: {{ theme.name }} ({{ theme.id }}) | Template: {{ template }} | Product: {{ product.title }} | Suffix: {{ product.template_suffix }} | Type: {{ request.page_type }}
+  </div>
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
     <div id="header-group">
       {% sections 'header-group' %}
