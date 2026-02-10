@@ -225,7 +225,47 @@
     <div class="boku-info">
       <span class="boku-tagline">Technologie Clinique • Anti-Âge</span>
       <h1 class="boku-title">{{ product.title }}</h1>
-      <p class="boku-subtitle">Dites adieu aux cernes et poches grâce à la synergie de la Lumière Rouge et des micro-courants EMS.</p>
+      <p class="boku-subtitle" style="margin-bottom: 10px !important;">Dites adieu aux cernes et poches grâce à la synergie de la Lumière Rouge et des micro-courants EMS.</p>
+
+      <!-- BLOC AVIS (Style Boku - Étoiles Rouges) -->
+      <div style="display: flex !important; align-items: center !important; gap: 8px !important; margin-bottom: 25px !important;">
+        <div style="display: flex !important; color: #E63946 !important; font-size: 1rem !important;">
+          ★★★★★
+        </div>
+        <span style="font-size: 0.9rem !important; fontWeight: 600 !important; color: #1D3557 !important;">
+          +<strong>250 utilisateurs</strong> quotidiens satisfaits
+        </span>
+      </div>
+
+      <!-- LISTE D'AVANTAGES (Bullet Points Rouges) -->
+      <div class="boku-benefits" style="margin-bottom: 30px !important;">
+        <ul style="list-style: none !important; padding: 0 !important; margin: 0 !important;">
+          <li style="display: flex !important; align-items: center !important; gap: 12px !important; margin-bottom: 12px !important; font-size: 1.05rem !important; font-weight: 500 !important; color: #1D3557 !important;">
+            <span style="display: flex !important; align-items: center !important; justify-content: center !important; width: 22px !important; height: 22px !important; background: #E63946 !important; border-radius: 50% !important; color: white !important; font-size: 12px !important;">✓</span>
+            Nettoie vos cernes grâce à la Photothérapie
+          </li>
+          <li style="display: flex !important; align-items: center !important; gap: 12px !important; margin-bottom: 12px !important; font-size: 1.05rem !important; font-weight: 500 !important; color: #1D3557 !important;">
+            <span style="display: flex !important; align-items: center !important; justify-content: center !important; width: 22px !important; height: 22px !important; background: #E63946 !important; border-radius: 50% !important; color: white !important; font-size: 12px !important;">✓</span>
+            Élimine les poches en 10 minutes <strong>sans travaux, sans électricité</strong>
+          </li>
+          <li style="display: flex !important; align-items: center !important; gap: 12px !important; margin-bottom: 12px !important; font-size: 1.05rem !important; font-weight: 500 !important; color: #1D3557 !important;">
+            <span style="display: flex !important; align-items: center !important; justify-content: center !important; width: 22px !important; height: 22px !important; background: #E63946 !important; border-radius: 50% !important; color: white !important; font-size: 12px !important;">✓</span>
+            10x plus efficace que les crèmes classiques
+          </li>
+          <li style="display: flex !important; align-items: center !important; gap: 12px !important; margin-bottom: 12px !important; font-size: 1.05rem !important; font-weight: 500 !important; color: #1D3557 !important;">
+            <span style="display: flex !important; align-items: center !important; justify-content: center !important; width: 22px !important; height: 22px !important; background: #E63946 !important; border-radius: 50% !important; color: white !important; font-size: 12px !important;">✓</span>
+            Massage relaxant et anti-rides par micro-vibrations
+          </li>
+          <li style="display: flex !important; align-items: center !important; gap: 12px !important; margin-bottom: 12px !important; font-size: 1.05rem !important; font-weight: 500 !important; color: #1D3557 !important;">
+            <span style="display: flex !important; align-items: center !important; justify-content: center !important; width: 22px !important; height: 22px !important; background: #E63946 !important; border-radius: 50% !important; color: white !important; font-size: 12px !important;">✓</span>
+            Résultats cliniques visibles dès 7 jours
+          </li>
+          <li style="display: flex !important; align-items: center !important; gap: 12px !important; margin-bottom: 12px !important; font-size: 1.05rem !important; font-weight: 500 !important; color: #1D3557 !important;">
+            <span style="display: flex !important; align-items: center !important; justify-content: center !important; width: 22px !important; height: 22px !important; background: #E63946 !important; border-radius: 50% !important; color: white !important; font-size: 12px !important;">✓</span>
+            Réduit vos rides du visage de 80%
+          </li>
+        </ul>
+      </div>
 
       <div class="boku-price-row">
         <span class="boku-price">{{ product.price | money }}</span>
@@ -241,7 +281,7 @@
           <div style="font-size: 0.8rem; color: #666;">1x Masseur Oculaire</div>
         </div>
         <div class="boku-variant-card">
-          <span class="badge">-25% OFF</span>
+          <span class="badge" style="background: #E63946 !important;">-25% OFF</span>
           <strong>PACK DUO</strong>
           <div style="font-size: 0.8rem; color: #666;">2x Masseur (Idéal Cadeau)</div>
         </div>
@@ -249,12 +289,12 @@
 
       {% form 'product', product %}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-        <button type="submit" class="boku-buy-btn">PROFITER DE L'OFFRE</button>
+        <button type="submit" class="boku-buy-btn" style="background: #E63946 !important;">PROFITER DE L'OFFRE</button>
       {% endform %}
 
       <div class="boku-guarantee">
-        <span>✅ Livraison 48h Offerte</span>
-        <span>🛡️ Garantie 30 Jours</span>
+        <span style="color: #E63946 !important; font-weight: 700 !important;">✅ Livraison 48h Offerte</span>
+        <span style="color: #E63946 !important; font-weight: 700 !important;">🛡️ Garantie 30 Jours</span>
       </div>
 
       <!-- Accordions -->

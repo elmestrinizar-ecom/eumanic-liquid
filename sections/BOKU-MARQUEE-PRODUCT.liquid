@@ -1,0 +1,59 @@
+<style>
+  .boku-marquee-wrapper {
+    background: #f8f9fa;
+    padding: 25px 0;
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    font-family: 'Inter', sans-serif;
+  }
+  .boku-marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+  }
+  .boku-marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 60px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1D3557;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .boku-marquee-dot {
+    width: 6px;
+    height: 6px;
+    background: #E63946;
+    border-radius: 50%;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
+<div class="boku-marquee-wrapper">
+  <div class="boku-marquee-content">
+    {% for i in (1..4) %}
+      <div class="boku-marquee-item"><span class="boku-marquee-dot"></span> 🔵 LIVRAISON EN 48H</div>
+      <div class="boku-marquee-item"><span class="boku-marquee-dot"></span> 🔵 LIVRAISON GRATUITE</div>
+      <div class="boku-marquee-item"><span class="boku-marquee-dot"></span> 🔵 ESSAI 14J</div>
+      <div class="boku-marquee-item"><span class="boku-marquee-dot"></span> 🔵 GARANTIE 2 ANS</div>
+      <div class="boku-marquee-item"><span class="boku-marquee-dot"></span> 🤝 +250 CLIENTS SATISFAITS</div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BOKU-MARQUEE-PRODUCT",
+  "settings": [],
+  "presets": [
+    {
+      "name": "BOKU-MARQUEE-PRODUCT"
+    }
+  ]
+}
+{% endschema %}

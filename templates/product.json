@@ -5,6 +5,16 @@
       "name": "BOKU-PRODUCT-PAGE",
       "settings": {}
     },
+    "boku_videos": {
+      "type": "BOKU-VIDEOS",
+      "name": "BOKU-VIDEOS",
+      "settings": {}
+    },
+    "boku_marquee": {
+      "type": "BOKU-MARQUEE-PRODUCT",
+      "name": "BOKU-MARQUEE",
+      "settings": {}
+    },
     "main": {
       "type": "product-information",
       "blocks": {
