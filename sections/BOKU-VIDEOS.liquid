@@ -18,15 +18,15 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    width: 120px; /* Reduced from 180px */
+    width: 90px;
   }
   .boku-video-circle {
-    width: 100px; /* Reduced from 150px */
-    height: 100px; /* Reduced from 150px */
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    border: 3px solid transparent;
+    border: 2px solid transparent;
     background: linear-gradient(#fff, #fff) padding-box,
-                linear-gradient(to right, #ff4d4d, #ff944d) border-box; /* Boku Gradient */
+                linear-gradient(to right, #ff4d4d, #ff944d) border-box; 
     overflow: hidden;
     position: relative;
     cursor: pointer;
@@ -45,21 +45,23 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #E63946;
-    font-size: 14px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
-  @media (max-width: 768px) {
-    .boku-videos-grid { gap: 15px; }
-    .boku-video-circle { width: 85px; height: 85px; }
-    .boku-video-item { width: 100px; }
+  .boku-video-play > div {
+    width: 0; 
+    height: 0; 
+    border-top: 5px solid transparent; 
+    border-bottom: 5px solid transparent; 
+    border-left: 8px solid #E63946; 
+    margin-left: 2px;
   }
 </style>
 
@@ -71,7 +73,7 @@
       <div class="boku-video-circle">
         <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" alt="Le Concept">
         <div class="boku-video-play">
-          <div style="width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 10px solid #E63946; margin-left: 2px;"></div>
+          <div></div>
         </div>
       </div>
     </div>
@@ -81,7 +83,7 @@
       <div class="boku-video-circle">
         <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" alt="Utilisation">
         <div class="boku-video-play">
-          <div style="width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 10px solid #E63946; margin-left: 2px;"></div>
+          <div></div>
         </div>
       </div>
     </div>
@@ -91,7 +93,7 @@
       <div class="boku-video-circle">
         <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" alt="Installation">
         <div class="boku-video-play">
-          <div style="width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 10px solid #E63946; margin-left: 2px;"></div>
+          <div></div>
         </div>
       </div>
     </div>
