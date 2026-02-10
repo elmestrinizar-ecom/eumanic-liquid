@@ -161,13 +161,13 @@
                 "type_preset": "h4"
               }
             },
-            "variant_picker": {
+            "variant-picker": {
               "type": "variant-picker",
               "settings": {
                 "variant_style": "swatch"
               }
             },
-            "buy_buttons": {
+            "buy-buttons": {
               "type": "buy-buttons",
               "settings": {}
             },
@@ -246,8 +246,8 @@
             "title",
             "subtitle",
             "price",
-            "variant_picker",
-            "buy_buttons",
+            "variant-picker",
+            "buy-buttons",
             "description",
             "accordion"
           ]
