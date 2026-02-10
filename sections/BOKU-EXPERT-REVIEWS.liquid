@@ -1,0 +1,198 @@
+{% comment %}
+  Section: BOKU-EXPERT-REVIEWS
+  Slider d'avis d'experts inspiré de CurrentBody
+{% endcomment %}
+
+<style>
+  .boku-expert-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 100px 0;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  .boku-expert-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+  }
+  
+  .boku-expert-slider {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .boku-expert-slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  .boku-expert-slide.active {
+    opacity: 1;
+  }
+
+  .boku-expert-content {
+    flex: 1.2;
+  }
+  .boku-expert-label {
+    color: #E63946;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .boku-expert-name {
+    color: #1D3557;
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+  }
+  .boku-expert-title {
+    color: #457B9D;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+  .boku-expert-quote {
+    color: #1D3557;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    font-style: italic;
+    font-weight: 400;
+    margin: 0;
+    position: relative;
+  }
+  
+  .boku-expert-visual {
+    flex: 0.8;
+    position: relative;
+  }
+  .boku-expert-img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    display: block;
+  }
+
+  /* Slider Controls */
+  .boku-expert-dots {
+    display: flex;
+    gap: 12px;
+    margin-top: 50px;
+  }
+  .boku-expert-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+  }
+  .boku-expert-dot.active {
+    background: #E63946;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 991px) {
+    .boku-expert-slide {
+      flex-direction: column-reverse;
+      text-align: center;
+      gap: 40px;
+    }
+    .boku-expert-name { font-size: 1.8rem; }
+    .boku-expert-quote { font-size: 1.1rem; }
+    .boku-expert-dots { justify-content: center; }
+  }
+</style>
+
+<div class="boku-expert-section">
+  <div class="boku-expert-container">
+    
+    <div class="boku-expert-slider" id="expertSlider">
+      
+      <!-- SLIDE 1 -->
+      <div class="boku-expert-slide active" data-index="0">
+        <div class="boku-expert-content">
+          <span class="boku-expert-label">Avis d'expert</span>
+          <h2 class="boku-expert-name">Dr. Elizabeth Hawkes</h2>
+          <p class="boku-expert-title">Ophtalmologiste Consultante et Chirurgien Oculoplastique</p>
+          <p class="boku-expert-quote">
+            « La lumière rouge LED est une référence absolue pour traiter les signes du vieillissement autour des yeux. Sa capacité à stimuler le collagène sans agresser la peau fine est inégalée. »
+          </p>
+        </div>
+        <div class="boku-expert-visual">
+          <img src="{{ 'expert-surgeon.png' | asset_url }}" class="boku-expert-img" alt="Dr. Elizabeth Hawkes">
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="boku-expert-slide" data-index="1" style="display: none;">
+        <div class="boku-expert-content">
+          <span class="boku-expert-label">Avis d'expert</span>
+          <h2 class="boku-expert-name">Dr. Alexis Young</h2>
+          <p class="boku-expert-title">Dermatologue certifiée</p>
+          <p class="boku-expert-quote">
+            « La photobiomodulation stimule les cellules pour produire du collagène et de l'élastine, essentiels pour réduire les rides et les poches tout en calmant les inflammations. »
+          </p>
+        </div>
+        <div class="boku-expert-visual">
+          <img src="{{ 'expert-dermatologist.png' | asset_url }}" class="boku-expert-img" alt="Dr. Alexis Young">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="boku-expert-dots">
+      <button class="boku-expert-dot active" data-slide="0" onclick="goToExpertSlide(0)"></button>
+      <button class="boku-expert-dot" data-slide="1" onclick="goToExpertSlide(1)"></button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  let currentExpertSlide = 0;
+  const expertSlides = document.querySelectorAll('.boku-expert-slide');
+  const expertDots = document.querySelectorAll('.boku-expert-dot');
+
+  function goToExpertSlide(n) {
+    expertSlides[currentExpertSlide].classList.remove('active');
+    expertSlides[currentExpertSlide].style.display = 'none';
+    expertDots[currentExpertSlide].classList.remove('active');
+    
+    currentExpertSlide = n;
+    
+    expertSlides[currentExpertSlide].style.display = 'flex';
+    setTimeout(() => {
+      expertSlides[currentExpertSlide].classList.add('active');
+    }, 10);
+    expertDots[currentExpertSlide].classList.add('active');
+  }
+
+  // Auto slide every 8 seconds
+  setInterval(() => {
+    let next = (currentExpertSlide + 1) % expertSlides.length;
+    goToExpertSlide(next);
+  }, 8000);
+</script>
+
+{% schema %}
+{
+  "name": "BOKU-EXPERT-REVIEWS",
+  "settings": [],
+  "presets": [
+    {
+      "name": "BOKU-EXPERT-REVIEWS"
+    }
+  ]
+}
+{% endschema %}
