@@ -143,9 +143,11 @@
           "type": "_product-details",
           "blocks": {
             "title": {
-              "type": "product-title",
+              "type": "text",
               "settings": {
-                "type_preset": "h2"
+                "text": "<h1>{{ closest.product.title }}</h1>",
+                "type_preset": "h2",
+                "alignment": "left"
               }
             },
             "subtitle": {
