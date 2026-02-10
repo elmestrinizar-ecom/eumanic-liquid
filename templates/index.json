@@ -10,16 +10,23 @@
             "content_direction": "column",
             "horizontal_alignment": "center",
             "vertical_alignment": "center",
-            "gap": 24,
+            "gap": 16,
             "width": "fit-content",
             "padding-block-start": 40,
             "padding-block-end": 40
           },
           "blocks": {
+            "hero_trust": {
+              "type": "text",
+              "settings": {
+                "text": "<p style='color: #E63946; font-weight: 700; font-size: 0.9rem; margin-bottom: -10px;'>★★★★★ 600,000+ CLIENTS SATISFAITS</p>",
+                "alignment": "center"
+              }
+            },
             "hero_title": {
               "type": "text",
               "settings": {
-                "text": "<h1>Adieu Cernes & Poches. <br>Définitivement.</h1>",
+                "text": "<h1 style='font-size: 3.5rem; line-height: 1.1;'>Régénérez votre regard en 10 minutes.</h1>",
                 "type_preset": "h1",
                 "color": "#000000"
               }
@@ -27,14 +34,14 @@
             "hero_subtitle": {
               "type": "text",
               "settings": {
-                "text": "<p style='font-size: 1.2rem;'>Obtenez un regard rajeuni en 10 minutes par jour grâce à la combinaison cliniquement prouvée de Lumière Rouge + EMS.</p>",
+                "text": "<p style='font-size: 1.2rem; color: #444;'>La seule technologie de photothérapie LED cliniquement prouvée pour éliminer cernes et poches, à domicile.</p>",
                 "max_width": "narrow"
               }
             },
             "hero_cta": {
               "type": "button",
               "settings": {
-                "label": "PROFITER DE L'OFFRE -50%",
+                "label": "DÉCOUVRIR EYELUXE PRO",
                 "link": "shopify://products/eyeluxe-pro",
                 "style_class": "button primary",
                 "width": "fit-content"
@@ -42,6 +49,7 @@
             }
           },
           "block_order": [
+            "hero_trust",
             "hero_title",
             "hero_subtitle",
             "hero_cta"
@@ -50,8 +58,10 @@
       },
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/eumanic_before_after_1.png",
-        "section_height": "large"
+        "image_1": "https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587",
+        "section_height": "large",
+        "desktop_content_position": "middle-center",
+        "show_text_overlay": true
       }
     },
     "featured_product": {
