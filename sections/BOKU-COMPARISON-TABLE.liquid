@@ -1,0 +1,199 @@
+<style>
+  .boku-compare-section {
+    background: #fdfdfd;
+    padding: 80px 20px;
+    font-family: 'Inter', sans-serif;
+    color: #1D3557;
+    text-align: center;
+  }
+  .boku-compare-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .boku-compare-section h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+  }
+  .boku-compare-subtitle {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 60px;
+    display: block;
+  }
+
+  /* Table Grid */
+  .boku-compare-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1.1fr 1fr 1fr;
+    align-items: center;
+    position: relative;
+  }
+  @media (max-width: 768px) {
+    .boku-compare-grid {
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      font-size: 0.85rem;
+    }
+  }
+
+  .boku-compare-header {
+    font-weight: 800;
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  .boku-compare-row-label {
+    text-align: left;
+    padding: 15px 10px;
+    font-weight: 600;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  /* Highlighting the Core Column (EyeLuxe Pro) */
+  .boku-compare-col-highlight {
+    background: #1D3557;
+    color: #ffffff;
+    border-radius: 15px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 15px 40px rgba(29, 53, 87, 0.15);
+    margin: -10px 0; /* Makes the column taller */
+    padding: 10px 0;
+  }
+  .boku-compare-col-highlight .boku-compare-row-value {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .boku-compare-row-value {
+    padding: 15px 10px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+  }
+
+  /* Icons */
+  .boku-compare-check {
+    font-size: 1.4rem;
+    font-weight: 900;
+  }
+  .boku-compare-col-highlight .boku-compare-check { color: #ffffff; }
+  .boku-compare-check-alt { color: #E63946; }
+  .boku-compare-cross { color: #E63946; font-size: 1.4rem; font-weight: 300; }
+
+  /* Budget Row Specifity */
+  .boku-compare-budget-label {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    background: #f8f9fa;
+  }
+  .boku-compare-budget-val {
+    background: #f8f9fa;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .boku-compare-col-highlight.boku-compare-budget-val {
+    background: #1D3557;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .boku-compare-budget-price {
+    font-size: 1.4rem;
+    font-weight: 900;
+  }
+
+  /* Footnote */
+  .boku-compare-footnote {
+    margin-top: 50px;
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+<div class="boku-compare-section">
+  <div class="boku-compare-container">
+    <h2>EyeLuxe Pro vs Alternatives : le verdict est clair !</h2>
+    <span class="boku-compare-subtitle">Changer votre quotidien avec une méthode validée et sans effets secondaires</span>
+
+    <div class="boku-compare-grid">
+      <!-- Headers -->
+      <div></div>
+      <div class="boku-compare-header boku-compare-col-highlight">EyeLuxe Pro</div>
+      <div class="boku-compare-header">Crèmes Contour Yeux</div>
+      <div class="boku-compare-header">Injections Botox</div>
+
+      <!-- Rows -->
+      <div class="boku-compare-row-label">Sans effet secondaire</div>
+      <div class="boku-compare-row-value boku-compare-col-highlight"><span class="boku-compare-check">✓</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-cross">✕</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-cross">✕</span></div>
+
+      <div class="boku-compare-row-label">Aucun risque de dépendance</div>
+      <div class="boku-compare-row-value boku-compare-col-highlight"><span class="boku-compare-check">✓</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-cross">✕</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-cross">✕</span></div>
+
+      <div class="boku-compare-row-label">Facilité d'utilisation</div>
+      <div class="boku-compare-row-value boku-compare-col-highlight"><span class="boku-compare-check">✓</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-check boku-compare-check-alt">✓</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-cross">✕</span></div>
+
+      <div class="boku-compare-row-label">Résultats rapides</div>
+      <div class="boku-compare-row-value boku-compare-col-highlight"><span class="boku-compare-check">✓</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-cross">✕</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-check boku-compare-check-alt">✓</span></div>
+
+      <div class="boku-compare-row-label">Écologique</div>
+      <div class="boku-compare-row-value boku-compare-col-highlight"><span class="boku-compare-check">✓</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-cross">✕</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-cross">✕</span></div>
+
+      <div class="boku-compare-row-label">Préventif</div>
+      <div class="boku-compare-row-value boku-compare-col-highlight"><span class="boku-compare-check">✓</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-check boku-compare-check-alt">✓</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-cross">✕</span></div>
+
+      <div class="boku-compare-row-label">Améliore la qualité de vie</div>
+      <div class="boku-compare-row-value boku-compare-col-highlight"><span class="boku-compare-check">✓</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-cross">✕</span></div>
+      <div class="boku-compare-row-value"><span class="boku-compare-cross">✕</span></div>
+
+      <!-- Budget Row -->
+      <div class="boku-compare-row-label boku-compare-budget-label">Budget</div>
+      <div class="boku-compare-row-value boku-compare-col-highlight boku-compare-budget-val">
+        <span>Achat unique</span>
+        <span class="boku-compare-budget-price">100 euros</span>
+      </div>
+      <div class="boku-compare-row-value boku-compare-budget-val">+200€/an</div>
+      <div class="boku-compare-row-value boku-compare-budget-val">Jusqu'à 600€ /séance</div>
+
+    </div>
+
+    <p class="boku-compare-footnote">
+      *Si vous n'êtes pas satisfait, faites-le-nous savoir dans les 30 jours et nous vous rembourserons intégralement.
+    </p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BOKU-COMPARISON-TABLE",
+  "settings": [],
+  "presets": [
+    {
+      "name": "BOKU-COMPARISON-TABLE"
+    }
+  ]
+}
+{% endschema %}
