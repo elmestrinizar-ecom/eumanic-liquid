@@ -275,6 +275,11 @@
         "padding-block-end": 48
       }
     },
+    "boku_reviews_carousel_GBgFk6": {
+      "type": "BOKU-REVIEWS-CAROUSEL",
+      "name": "BOKU-REVIEWS-CAROUSEL",
+      "settings": {}
+    },
     "section_x8mrnx": {
       "type": "section",
       "blocks": {
@@ -652,6 +657,7 @@
     "boku_product_hero_alt_zQMEjR",
     "boku_hero_bNEkEN",
     "product_list_themegen",
+    "boku_reviews_carousel_GBgFk6",
     "section_x8mrnx",
     "media_with_content_xMM9EF",
     "media_with_content_nrnzPh",
