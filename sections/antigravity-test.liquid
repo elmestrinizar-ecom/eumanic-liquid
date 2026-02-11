@@ -2,6 +2,27 @@
   assign product = all_products['eyeluxe-pro'] | default: product
 %}
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const colorRadios = document.querySelectorAll('input[name="color-choice"]');
+    const mediaContainer = document.querySelector('.boku-media');
+
+    colorRadios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        const selectedColor = this.value;
+        const targetIndex = selectedColor === 'blanc' ? '0' : '1';
+        const targetMedia = mediaContainer.querySelector(`.boku-media-item[data-index="${targetIndex}"]`);
+
+        if (targetMedia && mediaContainer.firstChild !== targetMedia) {
+          mediaContainer.prepend(targetMedia);
+          // Scroll to top of media container to show the change
+          mediaContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  });
+</script>
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
@@ -196,6 +217,23 @@
     padding-left: 20px;
     margin: 0;
   }
+
+  /* Color Selector Styles */
+  .boku-color-swatch-wrapper {
+    cursor: pointer;
+    text-align: center;
+  }
+  .boku-color-swatch {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 0 auto;
+  }
+  .boku-color-swatch-wrapper input:checked + .boku-color-swatch {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #1a1a1a;
+  }
 </style>
 
 <div class="boku-wrapper">
@@ -204,7 +242,7 @@
     <!-- Left: Gallery (Loop through all images) -->
     <div class="boku-media">
       {% for media in product.media %}
-        <div class="boku-media-item" style="margin-bottom: 20px;">
+        <div class="boku-media-item" data-index="{{ forloop.index0 }}" style="margin-bottom: 20px;">
           {% case media.media_type %}
             {% when 'image' %}
               {{ media | image_url: width: 1000 | image_tag: loading: 'lazy', alt: media.alt | escape }}
@@ -272,6 +310,26 @@
         {% if product.compare_at_price > product.price %}
           <span class="boku-compare-price">{{ product.compare_at_price | money }}</span>
         {% endif %}
+      </div>
+
+      <div id="DEBUG-SELECTOR" style="background: yellow; color: black; padding: 10px; border: 2px solid black; font-weight: bold; margin-bottom: 20px;">
+        COLOR SELECTOR IS HERE
+      </div>
+
+      <div class="boku-color-selector" style="margin-bottom: 30px;">
+        <span class="boku-offer-label">Choisissez votre COULEUR</span>
+        <div style="display: flex; gap: 15px;">
+          <label class="boku-color-swatch-wrapper">
+            <input type="radio" name="color-choice" value="blanc" checked style="display: none;">
+            <div class="boku-color-swatch" style="background: #FFFFFF; border: 1px solid #e0e0e0; width: 35px; height: 35px; border-radius: 50%;" title="Blanc"></div>
+            <span style="font-size: 0.8rem; font-weight: 600; margin-top: 5px; display: block;">Blanc</span>
+          </label>
+          <label class="boku-color-swatch-wrapper">
+            <input type="radio" name="color-choice" value="rouge" style="display: none;">
+            <div class="boku-color-swatch" style="background: #E63946; width: 35px; height: 35px; border-radius: 50%;" title="Rouge"></div>
+            <span style="font-size: 0.8rem; font-weight: 600; margin-top: 5px; display: block;">Rouge</span>
+          </label>
+        </div>
       </div>
 
       <span class="boku-offer-label">Choisissez votre pack</span>
