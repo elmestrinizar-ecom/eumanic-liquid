@@ -27,7 +27,6 @@
     },
     "product_list_themegen": {
       "type": "product-list",
-      "disabled": true,
       "blocks": {
         "static-header": {
           "type": "_product-list-content",
@@ -244,6 +243,7 @@
           ]
         }
       },
+      "disabled": true,
       "name": "t:names.products_grid",
       "settings": {
         "collection": "beauty-example-products",
@@ -467,8 +467,8 @@
           ]
         }
       },
-      "custom_css": [],
       "disabled": true,
+      "custom_css": [],
       "name": "t:names.media_with_text",
       "settings": {
         "media_position": "left",
