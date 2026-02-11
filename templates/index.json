@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "omnilux_hero_UYUBLP": {
@@ -8,6 +17,11 @@
     "eumanic_trust_bar": {
       "type": "EUMANIC-TRUST-BAR",
       "name": "EUMANIC-TRUST-BAR",
+      "settings": {}
+    },
+    "boku_product_benefits_4jHbAB": {
+      "type": "BOKU-PRODUCT-BENEFITS",
+      "name": "BOKU-PRODUCT-BENEFITS",
       "settings": {}
     },
     "boku_hero_bNEkEN": {
@@ -629,6 +643,7 @@
   "order": [
     "omnilux_hero_UYUBLP",
     "eumanic_trust_bar",
+    "boku_product_benefits_4jHbAB",
     "boku_hero_bNEkEN",
     "product_list_themegen",
     "section_x8mrnx",
