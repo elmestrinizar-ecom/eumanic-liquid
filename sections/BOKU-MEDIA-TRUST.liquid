@@ -1,0 +1,56 @@
+<style>
+  .boku-media-trust {
+    padding: 30px 20px;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: center;
+  }
+  .boku-media-trust-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .boku-media-trust-image {
+    max-width: 100%;
+    height: auto;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  .boku-media-trust-image:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+  @media (max-width: 768px) {
+    .boku-media-trust {
+      padding: 20px 10px;
+    }
+  }
+</style>
+
+<div class="boku-media-trust">
+  <div class="boku-media-trust-container">
+    <img 
+      src="{{ 'media-trust-logos.png' | asset_url }}" 
+      alt="France 5, Top Santé, Naturelles, Le Mag de la Santé" 
+      class="boku-media-trust-image"
+      loading="lazy"
+      width="1000"
+      height="250"
+    >
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BOKU-MEDIA-TRUST",
+  "settings": [],
+  "presets": [
+    {
+      "name": "BOKU-MEDIA-TRUST"
+    }
+  ]
+}
+{% endschema %}
