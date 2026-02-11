@@ -1,45 +1,72 @@
 <style>
-  .boku-media-trust {
-    padding: 30px 20px;
-    background: #fff;
+  .boku-media-trust-section {
+    background: #ffffff;
+    padding: 20px 0;
+    overflow: hidden;
+    border-top: 1px solid #f0f0f0;
     border-bottom: 1px solid #f0f0f0;
-    text-align: center;
   }
-  .boku-media-trust-container {
-    max-width: 1200px;
-    margin: 0 auto;
+  .boku-media-track-container {
     display: flex;
-    justify-content: center;
+    overflow: hidden;
+    user-select: none;
+  }
+  .boku-media-track {
+    flex-shrink: 0;
+    display: flex;
     align-items: center;
+    gap: 60px;
+    padding: 0 30px;
+    animation: scroll-media-logos 60s linear infinite;
   }
-  .boku-media-trust-image {
-    max-width: 100%;
-    height: auto;
+  @keyframes scroll-media-logos {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+  .boku-media-logo-img {
+    height: 28px;
+    width: auto;
     filter: grayscale(100%);
-    opacity: 0.7;
-    transition: opacity 0.3s ease, filter 0.3s ease;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    display: block;
   }
-  .boku-media-trust-image:hover {
-    opacity: 1;
+  .boku-media-logo-img:hover {
     filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
   }
+  
+  /* Pause on hover */
+  .boku-media-track-container:hover .boku-media-track {
+    animation-play-state: paused;
+  }
+
   @media (max-width: 768px) {
-    .boku-media-trust {
-      padding: 20px 10px;
+    .boku-media-logo-img {
+      height: 22px;
+    }
+    .boku-media-track {
+      gap: 40px;
     }
   }
 </style>
 
-<div class="boku-media-trust">
-  <div class="boku-media-trust-container">
-    <img 
-      src="{{ 'media-trust-logos.png' | asset_url }}" 
-      alt="France 5, Top Santé, Naturelles, Le Mag de la Santé" 
-      class="boku-media-trust-image"
-      loading="lazy"
-      width="1000"
-      height="250"
-    >
+<div class="boku-media-trust-section">
+  <div class="boku-media-track-container">
+    {%- capture logo_row -%}
+      <img src="{{ 'media-trust-logos-v2.png' | asset_url }}" alt="Media Trust" class="boku-media-logo-img" loading="lazy">
+      <img src="{{ 'media-trust-logos-v2.png' | asset_url }}" alt="Media Trust" class="boku-media-logo-img" loading="lazy">
+    {%- endcapture -%}
+    
+    <div class="boku-media-track">
+      {{ logo_row }}
+      {{ logo_row }}
+    </div>
+    <div class="boku-media-track" aria-hidden="true">
+      {{ logo_row }}
+      {{ logo_row }}
+    </div>
   </div>
 </div>
 
