@@ -1,10 +1,10 @@
 <style>
   .boku-media-trust-section {
     background: #ffffff;
-    padding: 20px 0;
+    padding: 15px 0; /* Thinner section */
     overflow: hidden;
-    border-top: 1px solid #f0f0f0;
-    border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
   }
   .boku-media-track-container {
     display: flex;
@@ -15,8 +15,7 @@
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    gap: 60px;
-    padding: 0 30px;
+    gap: 0; /* Gap is inside the image strip now */
     animation: scroll-media-logos 60s linear infinite;
   }
   @keyframes scroll-media-logos {
@@ -24,17 +23,12 @@
     to { transform: translateX(-100%); }
   }
   .boku-media-logo-img {
-    height: 28px;
+    height: 25px; /* Perfect height like Sinezy */
     width: auto;
-    filter: grayscale(100%);
-    opacity: 0.6;
-    transition: all 0.3s ease;
+    filter: none; /* No more grey/faint filter */
+    opacity: 1; /* Full opacity */
     display: block;
-  }
-  .boku-media-logo-img:hover {
-    filter: grayscale(0%);
-    opacity: 1;
-    transform: scale(1.05);
+    margin: 0;
   }
   
   /* Pause on hover */
@@ -43,29 +37,26 @@
   }
 
   @media (max-width: 768px) {
-    .boku-media-logo-img {
-      height: 22px;
+    .boku-media-trust-section {
+      padding: 10px 0;
     }
-    .boku-media-track {
-      gap: 40px;
+    .boku-media-logo-img {
+      height: 18px;
     }
   }
 </style>
 
 <div class="boku-media-trust-section">
   <div class="boku-media-track-container">
-    {%- capture logo_row -%}
-      <img src="{{ 'media-trust-logos-v2.png' | asset_url }}" alt="Media Trust" class="boku-media-logo-img" loading="lazy">
-      <img src="{{ 'media-trust-logos-v2.png' | asset_url }}" alt="Media Trust" class="boku-media-logo-img" loading="lazy">
-    {%- endcapture -%}
-    
     <div class="boku-media-track">
-      {{ logo_row }}
-      {{ logo_row }}
+      <img src="{{ 'media-trust-logos-v3.png' | asset_url }}" alt="Media Trust" class="boku-media-logo-img" loading="lazy">
+      <img src="{{ 'media-trust-logos-v3.png' | asset_url }}" alt="Media Trust" class="boku-media-logo-img" loading="lazy">
+      <img src="{{ 'media-trust-logos-v3.png' | asset_url }}" alt="Media Trust" class="boku-media-logo-img" loading="lazy">
     </div>
     <div class="boku-media-track" aria-hidden="true">
-      {{ logo_row }}
-      {{ logo_row }}
+      <img src="{{ 'media-trust-logos-v3.png' | asset_url }}" alt="Media Trust" class="boku-media-logo-img" loading="lazy">
+      <img src="{{ 'media-trust-logos-v3.png' | asset_url }}" alt="Media Trust" class="boku-media-logo-img" loading="lazy">
+      <img src="{{ 'media-trust-logos-v3.png' | asset_url }}" alt="Media Trust" class="boku-media-logo-img" loading="lazy">
     </div>
   </div>
 </div>
