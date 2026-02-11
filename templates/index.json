@@ -280,6 +280,11 @@
       "name": "BOKU-REVIEWS-CAROUSEL",
       "settings": {}
     },
+    "boku_comparison_table_raYLdM": {
+      "type": "BOKU-COMPARISON-TABLE",
+      "name": "BOKU-COMPARISON-TABLE",
+      "settings": {}
+    },
     "section_x8mrnx": {
       "type": "section",
       "blocks": {
@@ -658,6 +663,7 @@
     "boku_hero_bNEkEN",
     "product_list_themegen",
     "boku_reviews_carousel_GBgFk6",
+    "boku_comparison_table_raYLdM",
     "section_x8mrnx",
     "media_with_content_xMM9EF",
     "media_with_content_nrnzPh",
