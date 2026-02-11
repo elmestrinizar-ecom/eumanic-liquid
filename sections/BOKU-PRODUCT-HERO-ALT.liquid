@@ -1,0 +1,274 @@
+<style>
+  .boku-hero-alt-section {
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    padding: 60px 20px;
+    font-family: 'Inter', sans-serif;
+    color: #1D3557;
+  }
+  .boku-hero-alt-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media (max-width: 991px) {
+    .boku-hero-alt-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 40px 0;
+      text-align: center;
+    }
+  }
+
+  /* Social Proof Bar */
+  .boku-hero-rating {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  @media (max-width: 991px) {
+    .boku-hero-rating { justify-content: center; }
+  }
+  .boku-hero-avatars {
+    display: flex;
+    margin-right: 5px;
+  }
+  .boku-hero-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-left: -10px;
+    background: #eee;
+    object-fit: cover;
+  }
+  .boku-hero-avatar:first-child { margin-left: 0; }
+  .boku-rating-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .boku-rating-text span {
+    color: #2FBF71; /* Green from Sinezy */
+    font-weight: 700;
+  }
+
+  /* Tipography */
+  .boku-hero-alt-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    line-height: 1.1;
+  }
+  .boku-hero-alt-subtitle {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1D3557;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .boku-hero-alt-desc {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    color: #444;
+  }
+
+  /* List */
+  .boku-hero-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+  }
+  .boku-hero-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  @media (max-width: 991px) {
+    .boku-hero-feature-item { justify-content: center; }
+  }
+  .boku-feature-check {
+    color: #E63946;
+    font-weight: 900;
+    font-size: 1.2rem;
+  }
+  .boku-feature-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* CTA Button */
+  .boku-hero-cta {
+    background: #1D3557;
+    color: #ffffff;
+    padding: 18px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 10px 20px rgba(29, 53, 87, 0.2);
+  }
+  .boku-hero-cta:hover {
+    transform: translateY(-3px);
+    background: #2a4a75;
+  }
+
+  /* Right Side Image */
+  .boku-hero-image-side {
+    position: relative;
+  }
+  .boku-hero-main-img {
+    width: 100%;
+    border-radius: 30px;
+    display: block;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+  }
+  
+  /* Trust Seal Overlays */
+  .boku-trust-seals {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .boku-trust-seal {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.6rem;
+    font-weight: 800;
+    border: 1px dashed #E63946;
+    color: #1D3557;
+    line-height: 1.2;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+  .boku-trust-seal strong {
+    color: #E63946;
+    font-size: 0.8rem;
+    display: block;
+  }
+
+  .boku-hero-image-bottom-text {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    border-bottom: 3px solid #fff;
+    padding-bottom: 5px;
+  }
+  .boku-hero-image-bottom-text span {
+    font-weight: 400;
+    font-size: 1rem;
+    display: block;
+  }
+</style>
+
+<div class="boku-hero-alt-section">
+  <div class="boku-hero-alt-container">
+    
+    <!-- Left Content -->
+    <div class="boku-hero-alt-content">
+      <div class="boku-hero-rating">
+        <div class="boku-hero-avatars">
+          <img src="https://avatar.vercel.sh/user1" class="boku-hero-avatar" alt="User">
+          <img src="https://avatar.vercel.sh/user2" class="boku-hero-avatar" alt="User">
+          <img src="https://avatar.vercel.sh/user3" class="boku-hero-avatar" alt="User">
+        </div>
+        <div class="boku-rating-text">Noté <span>4.8/5</span> par +250 utilisateurs satisfaits.</div>
+      </div>
+
+      <h1>EyeLuxe Pro</h1>
+      <span class="boku-hero-alt-subtitle">NOUVELLE GÉNÉRATION 2026</span>
+      
+      <p class="boku-hero-alt-desc">
+        Dites adieu aux cernes et poches avec la thérapie par lumière rouge et micro-vibrations apaisantes.
+      </p>
+
+      <ul class="boku-hero-features">
+        <li class="boku-hero-feature-item">
+          <span class="boku-feature-check">✓</span> Sans aucun effet secondaire.
+        </li>
+        <li class="boku-hero-feature-item">
+          <span class="boku-feature-check">✓</span> Compact, pratique et efficace où que vous soyez.
+        </li>
+        <li class="boku-hero-feature-item">
+          <span class="boku-feature-check">✓</span> 10x moins cher que les traitements professionnels.
+        </li>
+        <li class="boku-hero-feature-item">
+          <div class="boku-feature-icon">
+            <svg viewBox="0 0 24 24" fill="#E63946" width="20"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2zm4 8h-2V7h2v10z"></path></svg>
+          </div>
+          Méthode validée scientifiquement
+        </li>
+      </ul>
+
+      <a href="#product-form" class="boku-hero-cta">J'efface mes cernes</a>
+    </div>
+
+    <!-- Right Image -->
+    <div class="boku-hero-image-side">
+      <img src="{{ 'eyeluxe-pro-hero.jpg' | asset_url }}" alt="EyeLuxe Pro" class="boku-hero-main-img">
+      
+      <div class="boku-trust-seals">
+        <div class="boku-trust-seal">
+          ESSAI GRATUIT
+          <strong>30 JOURS</strong>
+          OU REMBOURSÉ
+        </div>
+        <div class="boku-trust-seal">
+          <svg viewBox="0 0 24 24" fill="#E63946" width="20"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71L12 2z"></path></svg>
+          <strong>Dermatologiquement</strong>
+          TESTÉ
+        </div>
+        <div class="boku-trust-seal">
+          <svg viewBox="0 0 24 24" fill="#E63946" width="20"><path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"></path></svg>
+          <strong>100%</strong>
+          NATUREL
+        </div>
+      </div>
+
+      <div class="boku-hero-image-bottom-text">
+        30 Jours d'essai
+        <span>100% <strong>satisfait</strong> ou <strong>remboursé</strong></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BOKU-PRODUCT-HERO-ALT",
+  "settings": [],
+  "presets": [
+    {
+      "name": "BOKU-PRODUCT-HERO-ALT"
+    }
+  ]
+}
+{% endschema %}
