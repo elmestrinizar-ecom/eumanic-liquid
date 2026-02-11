@@ -1,0 +1,287 @@
+<style>
+  .boku-reviews-carousel-section {
+    background: #FFFAFA; /* Soft pinkish white like Sinezy */
+    padding: 80px 20px;
+    font-family: 'Inter', sans-serif;
+    color: #1D3557;
+    text-align: center;
+  }
+  .boku-reviews-header {
+    margin-bottom: 50px;
+  }
+  .boku-reviews-trust-top {
+    color: #E63946; /* Red for trust */
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    display: block;
+  }
+  .boku-reviews-stars-top {
+    color: #E63946;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    display: block;
+  }
+  .boku-reviews-carousel-section h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0;
+  }
+
+  /* Carousel Container */
+  .boku-reviews-carousel-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px 0;
+  }
+  .boku-reviews-track {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+  }
+  .boku-reviews-track::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  /* Review Card */
+  .boku-review-card {
+    background: #ffffff;
+    min-width: 320px;
+    width: 320px;
+    border-radius: 20px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+  @media (max-width: 768px) {
+    .boku-review-card { min-width: 280px; width: 280px; }
+  }
+
+  .boku-review-img-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+  .boku-review-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .boku-review-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .boku-review-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+  .boku-review-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f2f2f2;
+    padding-top: 15px;
+  }
+  .boku-review-stars {
+    color: #E63946;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .boku-review-verified {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #1D3557;
+    background: #f1f1f1;
+    padding: 3px 10px;
+    border-radius: 5px;
+  }
+  .boku-review-author {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #1D3557;
+  }
+
+  /* Progress/Nav Dots */
+  .boku-reviews-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  .boku-reviews-arrow {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  .boku-reviews-arrow:hover {
+    background: #1D3557;
+    color: #fff;
+    border-color: #1D3557;
+  }
+  .boku-reviews-arrow svg {
+    width: 18px;
+    height: auto;
+  }
+</style>
+
+<div class="boku-reviews-carousel-section">
+  <div class="boku-reviews-header">
+    <span class="boku-reviews-trust-top">+250 clients convaincus par Eumanic</span>
+    <span class="boku-reviews-stars-top">Note 4.8/5 ★★★★★</span>
+    <h2>Rejoignez +250 personnes soulagées</h2>
+  </div>
+
+  <div class="boku-reviews-carousel-wrapper">
+    <div class="boku-reviews-track" id="bokuReviewsTrack">
+      
+      <!-- Review 1 -->
+      <div class="boku-review-card">
+        <div class="boku-review-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop" class="boku-review-img" alt="Avis Client Eumanic">
+        </div>
+        <div class="boku-review-content">
+          <p class="boku-review-text">"Souffrant de cernes chroniques, j'étais sceptique. Mais là, après une semaine d'utilisation d'EyeLuxe Pro, mon regard est transformé !"</p>
+          <div class="boku-review-footer">
+            <span class="boku-review-stars">★★★★★</span>
+            <span class="boku-review-verified">Vérifié</span>
+          </div>
+          <div class="boku-review-author">Sophie D. 🇫🇷</div>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="boku-review-card">
+        <div class="boku-review-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop" class="boku-review-img" alt="Avis Client Eumanic">
+        </div>
+        <div class="boku-review-content">
+          <p class="boku-review-text">"Effet relaxant immédiat. Les micro-vibrations apaisent mes yeux fatigués par les écrans. Je recommande à 100%."</p>
+          <div class="boku-review-footer">
+            <span class="boku-review-stars">★★★★★</span>
+            <span class="boku-review-verified">Vérifié</span>
+          </div>
+          <div class="boku-review-author">Marc L. 🇧🇪</div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="boku-review-card">
+        <div class="boku-review-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop" class="boku-review-img" alt="Avis Client Eumanic">
+        </div>
+        <div class="boku-review-content">
+          <p class="boku-review-text">"Un vrai rituel jeunesse. Mes poches sous les yeux ont quasiment disparu. C'est magique !"</p>
+          <div class="boku-review-footer">
+            <span class="boku-review-stars">★★★★★</span>
+            <span class="boku-review-verified">Vérifié</span>
+          </div>
+          <div class="boku-review-author">Amandine R. 🇨🇭</div>
+        </div>
+      </div>
+
+      <!-- Review 4 -->
+      <div class="boku-review-card">
+        <div class="boku-review-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop" class="boku-review-img" alt="Avis Client Eumanic">
+        </div>
+        <div class="boku-review-content">
+          <p class="boku-review-text">"La qualité est là. Le design V-Shape épouse parfaitement le contour de l'œil. Très satisfait de mon achat."</p>
+          <div class="boku-review-footer">
+            <span class="boku-review-stars">★★★★★</span>
+            <span class="boku-review-verified">Vérifié</span>
+          </div>
+          <div class="boku-review-author">Julian B. 🇫🇷</div>
+        </div>
+      </div>
+
+      <!-- Review 5 -->
+      <div class="boku-review-card">
+        <div class="boku-review-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop" class="boku-review-img" alt="Avis Client Eumanic">
+        </div>
+        <div class="boku-review-content">
+          <p class="boku-review-text">"J'adore la chaleur apaisante. Mes yeux ne sont plus gonflés le matin. Un indispensable beauté !"</p>
+          <div class="boku-review-footer">
+            <span class="boku-review-stars">★★★★★</span>
+            <span class="boku-review-verified">Vérifié</span>
+          </div>
+          <div class="boku-review-author">Camille M. 🇫🇷</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation -->
+    <div class="boku-reviews-nav">
+      <div class="boku-reviews-arrow" onclick="document.getElementById('bokuReviewsTrack').scrollBy({left: -350, behavior: 'smooth'})">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </div>
+      <div class="boku-reviews-arrow" onclick="document.getElementById('bokuReviewsTrack').scrollBy({left: 350, behavior: 'smooth'})">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Optional: Automatic scroll behavior
+  (function() {
+    const track = document.getElementById('bokuReviewsTrack');
+    let scrollAmount = 0;
+    const scrollStep = 1;
+    let isHovered = false;
+
+    track.addEventListener('mouseenter', () => isHovered = true);
+    track.addEventListener('mouseleave', () => isHovered = false);
+
+    function autoScroll() {
+      if (!isHovered) {
+        track.scrollLeft += scrollStep;
+        if (track.scrollLeft >= (track.scrollWidth - track.clientWidth)) {
+          track.scrollLeft = 0;
+        }
+      }
+      requestAnimationFrame(autoScroll);
+    }
+    // Uncomment the next line to enable continuous auto-scroll
+    // autoScroll();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "BOKU-REVIEWS-CAROUSEL",
+  "settings": [],
+  "presets": [
+    {
+      "name": "BOKU-REVIEWS-CAROUSEL"
+    }
+  ]
+}
+{% endschema %}
