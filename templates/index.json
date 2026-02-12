@@ -285,6 +285,11 @@
       "name": "BOKU-COMPARISON-TABLE",
       "settings": {}
     },
+    "boku_social_proof_stats_c4MGPC": {
+      "type": "BOKU-SOCIAL-PROOF-STATS",
+      "name": "BOKU-SOCIAL-PROOF-STATS",
+      "settings": {}
+    },
     "section_x8mrnx": {
       "type": "section",
       "blocks": {
@@ -664,6 +669,7 @@
     "product_list_themegen",
     "boku_reviews_carousel_GBgFk6",
     "boku_comparison_table_raYLdM",
+    "boku_social_proof_stats_c4MGPC",
     "section_x8mrnx",
     "media_with_content_xMM9EF",
     "media_with_content_nrnzPh",
