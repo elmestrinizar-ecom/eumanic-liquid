@@ -21,7 +21,7 @@
       "settings": {}
     },
     "boku_before_after_transform": {
-      "type": "boku-before-after-transform",
+      "type": "BOKU-BEFORE-AFTER-TRANSFORM",
       "name": "BOKU-BEFORE-AFTER-TRANSFORM",
       "settings": {}
     },
