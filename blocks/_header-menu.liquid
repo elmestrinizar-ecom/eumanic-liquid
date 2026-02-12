@@ -37,16 +37,24 @@
             role="list"
           >
             {% for link in block_settings.menu.links %}
+              {% liquid
+                assign link_url = link.url
+                assign link_title = link.title
+                if link.title == 'Catalogue' or link.title == 'Catalog'
+                  assign link_url = '/products/masseur-oculaire-intelligent'
+                  assign link_title = 'EyeLuxe Pro'
+                endif
+              %}
               <li>
                 <a
-                  href="{{ link.url }}"
+                  href="{{ link_url }}"
                   id="MenuItem-{{ link.handle }}"
                   class="menu-list__item"
                   {% if link.current %}
                     aria-current="page"
                   {% endif %}
                 >
-                  {{- link.title -}}
+                  {{- link_title -}}
                 </a>
               </li>
             {% endfor %}
@@ -82,6 +90,14 @@
 
     {% capture children %}
       {% for link in block_settings.menu.links %}
+        {% liquid
+          assign link_url = link.url
+          assign link_title = link.title
+          if link.title == 'Catalogue' or link.title == 'Catalog'
+            assign link_url = '/products/masseur-oculaire-intelligent'
+            assign link_title = 'EyeLuxe Pro'
+          endif
+        %}
         <li
           role="presentation"
           class="menu-list__list-item"
@@ -91,7 +107,7 @@
           on:pointerleave="/deactivate"
         >
           <a
-            href="{{ link.url }}"
+            href="{{ link_url }}"
             data-skip-node-update="true"
             class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}"
             {%- if link.links != blank -%}
@@ -101,7 +117,7 @@
             {%- endif -%}
             ref="menuitem"
           >
-            <span class="menu-list__link-title">{{- link.title -}}</span>
+            <span class="menu-list__link-title">{{- link_title -}}</span>
           </a>
           {%- if link.links != blank -%}
             <div class="menu-list__submenu{{ color_scheme_classes }}" ref="submenu[]">
