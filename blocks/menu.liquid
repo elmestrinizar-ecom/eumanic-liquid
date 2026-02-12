@@ -58,9 +58,17 @@
         {% if menu %}
           <ul class="list-unstyled">
             {% for link in menu.links %}
+              {% liquid
+                assign link_url = link.url
+                assign link_title = link.title
+                if link.title == 'Catalogue' or link.title == 'Catalog'
+                  assign link_url = '/products/masseur-oculaire-intelligent'
+                  assign link_title = 'EyeLuxe Pro'
+                endif
+              %}
               <li class="menu__item {{ block_settings.link_preset }}">
-                <a href="{{ link.url }}">
-                  {{ link.title }}
+                <a href="{{ link_url }}">
+                  {{ link_title }}
                 </a>
               </li>
             {% endfor %}
