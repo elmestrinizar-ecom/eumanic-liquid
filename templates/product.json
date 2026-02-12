@@ -34,21 +34,6 @@
       "name": "BOKU-PRODUCT-BENEFITS",
       "settings": {}
     },
-    "boku_product_hero_alt": {
-      "type": "BOKU-PRODUCT-HERO-ALT",
-      "name": "BOKU-PRODUCT-HERO-ALT",
-      "settings": {}
-    },
-    "boku_reviews_carousel": {
-      "type": "BOKU-REVIEWS-CAROUSEL",
-      "name": "BOKU-REVIEWS-CAROUSEL",
-      "settings": {}
-    },
-    "boku_comparison_table": {
-      "type": "BOKU-COMPARISON-TABLE",
-      "name": "BOKU-COMPARISON-TABLE",
-      "settings": {}
-    },
     "boku_before_after": {
       "type": "BOKU-BEFORE-AFTER",
       "name": "BOKU-BEFORE-AFTER",
@@ -486,9 +471,6 @@
     }
   },
   "order": [
-    "boku_product_hero_alt",
-    "boku_reviews_carousel",
-    "boku_comparison_table",
     "antigravity_test_CEr4qM",
     "boku_videos_BBVQUU",
     "boku_marquee_product_Bt7W93",
