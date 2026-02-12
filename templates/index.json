@@ -29,6 +29,11 @@
       "name": "BOKU-PRODUCT-HERO-ALT",
       "settings": {}
     },
+    "boku_before_after_transform": {
+      "type": "BOKU-BEFORE-AFTER-TRANSFORM",
+      "name": "BOKU-BEFORE-AFTER-TRANSFORM",
+      "settings": {}
+    },
     "boku_hero_bNEkEN": {
       "type": "boku-hero",
       "disabled": true,
@@ -664,6 +669,7 @@
     "omnilux_hero_UYUBLP",
     "eumanic_trust_bar",
     "boku_product_benefits_4jHbAB",
+    "boku_before_after_transform",
     "boku_product_hero_alt_zQMEjR",
     "boku_hero_bNEkEN",
     "product_list_themegen",

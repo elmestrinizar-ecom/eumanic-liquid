@@ -1,0 +1,204 @@
+<style>
+  .boku-transform-section {
+    background: #ffffff;
+    padding: 100px 20px;
+    font-family: 'Inter', sans-serif;
+    color: #1D3557;
+    text-align: center;
+  }
+  .boku-transform-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .boku-transform-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1.2;
+  }
+  .boku-transform-section h2 em {
+    font-style: italic;
+    color: #E63946;
+  }
+  .boku-transform-section h2 .highlight {
+    text-decoration: underline;
+    text-decoration-color: #E63946;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 5px;
+  }
+  .boku-transform-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 60px;
+  }
+
+  /* Before/After Grid */
+  .boku-transform-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+    align-items: end;
+  }
+  @media (max-width: 768px) {
+    .boku-transform-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  }
+
+  .boku-transform-item {
+    position: relative;
+  }
+  .boku-transform-image-wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    background: #f5f5f5;
+  }
+  .boku-transform-image {
+    width: 100%;
+    display: block;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+
+  /* Timeline */
+  .boku-timeline-wrapper {
+    position: relative;
+    margin-top: 30px;
+  }
+  .boku-timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: #E5E7EB;
+    transform: translateY(-50%);
+  }
+  .boku-timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(90deg, #1D3557 0%, #E63946 100%);
+  }
+  .boku-timeline-dots {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .boku-timeline-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #E63946;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 8px rgba(230, 57, 70, 0.3);
+    position: relative;
+    z-index: 2;
+  }
+  .boku-timeline-dot.inactive {
+    background: #D1D5DB;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  /* Labels */
+  .boku-transform-label {
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1D3557;
+  }
+  .boku-transform-description {
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  /* CTA */
+  .boku-transform-cta {
+    margin-top: 50px;
+  }
+  .boku-transform-btn {
+    display: inline-block;
+    background: #E63946;
+    color: #ffffff;
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(230, 57, 70, 0.2);
+  }
+  .boku-transform-btn:hover {
+    background: #cc333e;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(230, 57, 70, 0.3);
+  }
+</style>
+
+<div class="boku-transform-section">
+  <div class="boku-transform-container">
+    
+    <h2>Retrouvez votre <em>meilleur vous-même</em> en seulement <span class="highlight">4 semaines.</span></h2>
+    <p class="boku-transform-subtitle">Des résultats visibles et durables, validés par des milliers d'utilisateurs.</p>
+
+    <div class="boku-transform-grid">
+      
+      <!-- Before -->
+      <div class="boku-transform-item">
+        <div class="boku-transform-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600&h=800&fit=crop&q=80" alt="Avant EyeLuxe Pro" class="boku-transform-image">
+        </div>
+        <div class="boku-transform-label">0-1 mois</div>
+        <div class="boku-transform-description">Résultats initiaux avec amélioration visible du teint et de la texture.</div>
+      </div>
+
+      <!-- After -->
+      <div class="boku-transform-item">
+        <div class="boku-transform-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1619895092538-128341789043?w=600&h=800&fit=crop&q=80" alt="Après EyeLuxe Pro" class="boku-transform-image">
+        </div>
+        <div class="boku-transform-label">1-2 mois</div>
+        <div class="boku-transform-description">Résultats les plus visibles avec une utilisation continue et régulière.</div>
+      </div>
+
+    </div>
+
+    <!-- Timeline -->
+    <div class="boku-timeline-wrapper">
+      <div class="boku-timeline-line">
+        <div class="boku-timeline-progress"></div>
+      </div>
+      <div class="boku-timeline-dots">
+        <div class="boku-timeline-dot"></div>
+        <div class="boku-timeline-dot"></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="boku-transform-cta">
+      <a href="#product-form" class="boku-transform-btn">Commencer ma transformation →</a>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BOKU-BEFORE-AFTER-TRANSFORM",
+  "settings": [],
+  "presets": [
+    {
+      "name": "BOKU-BEFORE-AFTER-TRANSFORM"
+    }
+  ]
+}
+{% endschema %}
