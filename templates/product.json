@@ -25,8 +25,14 @@
       "name": "BOKU-PRODUCT-BENEFITS",
       "settings": {}
     },
+    "boku_before_after_transform": {
+      "type": "boku-before-after-transform",
+      "name": "BOKU-BEFORE-AFTER-TRANSFORM",
+      "settings": {}
+    },
     "boku_before_after": {
       "type": "BOKU-BEFORE-AFTER",
+      "disabled": true,
       "name": "BOKU-BEFORE-AFTER",
       "settings": {}
     },
@@ -467,7 +473,7 @@
     "boku_marquee_product_Bt7W93",
     "boku_media_trust",
     "boku_product_benefits",
-    "boku_before_after",
+    "boku_before_after_transform",
     "boku_expert_reviews",
     "boku_tech_specs",
     "boku_customer_reviews",
