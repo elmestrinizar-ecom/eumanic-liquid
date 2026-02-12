@@ -150,18 +150,26 @@
     <h2>Retrouvez votre <em>meilleur vous-même</em> en seulement <span class="highlight">4 semaines.</span></h2>
     <p class="boku-transformation-subtitle">Des résultats visibles et durables, validés par des milliers d'utilisateurs.</p>
 
-    <div style="max-width: 800px; margin: 0 auto 40px;">
-      <img src="{{ 'transformation-combined.png' | asset_url }}" alt="Avant/Après EyeLuxe Pro" style="width: 100%; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; text-align: center;">
-        <div>
-          <div class="boku-transformation-label">Avant</div>
-          <div class="boku-transformation-description">Cernes visibles et teint fatigué</div>
+    <div class="boku-transformation-grid">
+      
+      <!-- Before -->
+      <div class="boku-transformation-item">
+        <div class="boku-transformation-image-wrapper">
+          <img src="{{ 'transformation-before.png' | asset_url }}" alt="Avant EyeLuxe Pro" class="boku-transformation-image">
         </div>
-        <div>
-          <div class="boku-transformation-label">Après 4 semaines</div>
-          <div class="boku-transformation-description">Regard frais et lumineux</div>
-        </div>
+        <div class="boku-transformation-label">Avant</div>
+        <div class="boku-transformation-description">Cernes visibles et teint fatigué</div>
       </div>
+
+      <!-- After -->
+      <div class="boku-transformation-item">
+        <div class="boku-transformation-image-wrapper">
+          <img src="{{ 'transformation-after.png' | asset_url }}" alt="Après EyeLuxe Pro" class="boku-transformation-image">
+        </div>
+        <div class="boku-transformation-label">Après 4 semaines</div>
+        <div class="boku-transformation-description">Regard frais et lumineux</div>
+      </div>
+
     </div>
 
     <!-- Timeline -->
