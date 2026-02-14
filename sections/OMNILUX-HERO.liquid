@@ -1,48 +1,185 @@
-<div id="omnilux-hero-{{ section.id }}" 
-     style="position: relative !important; width: 100% !important; min-height: 80vh !important; background: #ffffff !important; overflow: hidden !important; display: block !important; font-family: 'Inter', sans-serif !important;">
+<div id="omnilux-hero-{{ section.id }}" class="omnilux-hero-section">
   
-  <!-- Image de fond 100% nette -->
-  <div class="omnilux-hero__bg" style="position: absolute !important; inset: 0 !important; z-index: 1 !important;">
-    <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/6c9f2d19544bbd60319f83c4c2ed810e.png?v=1771083671"  
-         style="width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: 85% center !important;" 
-         alt="EyeLuxe Pro">
+  <!-- Image de fond -->
+  <div class="omnilux-hero__bg">
+    <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/product_page_acceuil.png?v=1771089157" 
+         alt="EyeLuxe Pro"
+         loading="eager"
+         width="2000"
+         height="1000">
   </div>
   
-  <!-- Zone de contenu avec Spacer -->
-  <div class="omnilux-hero__container" style="position: relative !important; z-index: 5 !important; max-width: 1300px !important; margin: 0 auto !important; padding: 0 50px !important; box-sizing: border-box !important;">
-    
-    <!-- ESPACEUR PHYSIQUE POUR LE LOGO (200px) -->
-    <div class="omnilux-hero__spacer" style="height: 200px !important; width: 100% !important; pointer-events: none !important;"></div>
-    
-    <!-- Boîte de texte localisée (pour ne pas flouter toute l'image) -->
-    <div class="omnilux-hero__text-box" style="max-width: 550px !important; background: rgba(255,255,255,0.7) !important; padding: 30px !important; border-radius: 8px !important; backdrop-filter: blur(5px) !important;">
-      
-      <span style="color: #E63946 !important; font-weight: 700 !important; font-size: 0.9rem !important; letter-spacing: 2px !important; margin-bottom: 20px !important; display: block !important; text-transform: uppercase !important;">
-        ★★★★★ 150+ CLIENTS SATISFAITS
-      </span>
-      
-      <h1 style="font-size: 2.8rem !important; font-weight: 900 !important; line-height: 1.1 !important; color: #000000 !important; margin: 0 0 20px 0 !important;">
-        Régénérez votre regard en 10 minutes par jour.
-      </h1>
-      
-      <p style="font-size: 1.15rem !important; color: #111111 !important; line-height: 1.5 !important; margin: 0 0 35px 0 !important;">
-        La seule technologie combinant Lumière Rouge 633nm + Stimulation EMS cliniquement prouvée pour éliminer cernes, poches et rides, à domicile.
-      </p>
-      
-      <a href="/products/masseur-oculaire-intelligent" 
-         style="display: inline-block !important; background-color: #E63946 !important; color: #ffffff !important; padding: 20px 50px !important; font-size: 1.1rem !important; font-weight: 800 !important; text-decoration: none !important; border-radius: 4px !important; box-shadow: 0 10px 25px rgba(230, 57, 70, 0.4) !important; text-transform: uppercase !important; letter-spacing: 1px !important;">
-        JE VEUX UN REGARD RADIEUX
-      </a>
+  <!-- Zone de contenu -->
+  <div class="omnilux-hero__container">
+    <div class="omnilux-hero__content">
+      <div class="omnilux-hero__text-box">
+        
+        <span class="omnilux-hero__badge">
+          ★★★★★ 150+ CLIENTS SATISFAITS
+        </span>
+        
+        <h1 class="omnilux-hero__title">
+          Régénérez votre regard en 10 minutes par jour.
+        </h1>
+        
+        <p class="omnilux-hero__subtitle">
+          La seule technologie combinant Lumière Rouge 633nm + Stimulation EMS cliniquement prouvée pour éliminer cernes, poches et rides, à domicile.
+        </p>
+        
+        <a href="/products/masseur-oculaire-intelligent" class="omnilux-hero__cta">
+          JE VEUX UN REGARD RADIEUX
+        </a>
 
-      <div style="display: flex !important; gap: 25px !important; margin-top: 40px !important; flex-wrap: wrap !important;">
-        <div style="font-size: 0.75rem !important; font-weight: 700 !important; color: #333333 !important; text-transform: uppercase !important;">✅ Efficacité Clinique</div>
-        <div style="font-size: 0.75rem !important; font-weight: 700 !important; color: #333333 !important; text-transform: uppercase !important;">👨‍⚕️ Recommandé Experts</div>
-        <div style="font-size: 0.75rem !important; font-weight: 700 !important; color: #333333 !important; text-transform: uppercase !important;">🛡️ 30 Jours d'Essai</div>
+        <div class="omnilux-hero__features">
+          <div class="omnilux-hero__feature">✅ Efficacité Clinique</div>
+          <div class="omnilux-hero__feature">👨‍⚕️ Recommandé Experts</div>
+          <div class="omnilux-hero__feature">🛡️ 30 Jours d'Essai</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
+<style>
+  .omnilux-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    background: #ffffff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .omnilux-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .omnilux-hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .omnilux-hero__container {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px; /* Reduced vertical padding since flex fills height */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: flex-start; /* Align Left */
+    min-height: 80vh;
+  }
+
+  .omnilux-hero__text-box {
+    max-width: 550px;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 40px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  }
+
+  .omnilux-hero__badge {
+    color: #E63946;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .omnilux-hero__title {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #000000;
+    margin: 0 0 24px 0;
+  }
+
+  .omnilux-hero__subtitle {
+    font-size: 1.2rem;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0 0 40px 0;
+  }
+
+  .omnilux-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E63946;
+    color: #ffffff;
+    padding: 20px 40px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(230, 57, 70, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+  }
+
+  .omnilux-hero__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(230, 57, 70, 0.5);
+  }
+
+  .omnilux-hero__features {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .omnilux-hero__feature {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #333333;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  @media (max-width: 768px) {
+    .omnilux-hero-section {
+      min-height: 70vh;
+      align-items: flex-end; /* Push text closer to bottom on mobile maybe? Or center? */
+    }
+
+    .omnilux-hero__container {
+      justify-content: center; /* Center horizontally on mobile */
+      padding: 40px 20px;
+      min-height: auto;
+    }
+
+    .omnilux-hero__text-box {
+      width: 100%;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .omnilux-hero__title {
+      font-size: 2.2rem;
+    }
+
+    .omnilux-hero__features {
+      justify-content: center;
+    }
+  }
+</style>
+  
 {% schema %}
 {
   "name": "OMNILUX-HERO",
