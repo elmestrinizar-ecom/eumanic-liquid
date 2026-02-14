@@ -376,7 +376,7 @@
               "type": "button",
               "settings": {
                 "label": "Acheter maintenant",
-                "link": "shopify://collections/all",
+                "link": "/products/eyeluxe-pro",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
@@ -489,7 +489,7 @@
               "type": "button",
               "settings": {
                 "label": "Acheter maintenant",
-                "link": "shopify://collections/all",
+                "link": "/products/eyeluxe-pro",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "width": "fit-content",
