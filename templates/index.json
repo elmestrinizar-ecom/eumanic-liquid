@@ -9,14 +9,6 @@
  */
 {
   "sections": {
-    "separator_section": {
-      "type": "separator",
-      "settings": {
-        "height": 50,
-        "height_mobile": 30,
-        "color": "#ffffff"
-      }
-    },
     "omnilux_hero_UYUBLP": {
       "type": "OMNILUX-HERO",
       "name": "OMNILUX-HERO",
@@ -311,7 +303,6 @@
           "static": true,
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/beauty-natural-4.jpg",
             "link": "",
             "video_loop": true,
             "video_autoplay": false,
@@ -424,7 +415,6 @@
           "static": true,
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/beauty-natural-10.jpg",
             "link": "",
             "video_loop": true,
             "video_autoplay": false,
@@ -571,7 +561,6 @@
     }
   },
   "order": [
-    "separator_section",
     "omnilux_hero_UYUBLP",
     "eumanic_trust_bar",
     "boku_product_benefits_4jHbAB",
