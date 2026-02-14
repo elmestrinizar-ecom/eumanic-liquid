@@ -1,0 +1,76 @@
+{% schema %}
+{
+  "name": "Séparateur",
+  "settings": [
+    {
+      "type": "range",
+      "id": "height",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "label": "Hauteur (Desktop)",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Hauteur (Mobile)",
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Couleur de fond",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "border",
+      "label": "Afficher une bordure inférieure",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Couleur de bordure",
+      "default": "#e5e5e5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Séparateur"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="separator-section" style="background-color: {{ section.settings.color }};">
+  <div class="separator-inner {% if section.settings.border %}separator-border{% endif %}"></div>
+</div>
+
+<style>
+  .separator-section {
+    width: 100%;
+    display: block;
+  }
+  
+  .separator-inner {
+    width: 100%;
+    height: {{ section.settings.height }}px;
+  }
+  
+  .separator-border {
+    border-bottom: 1px solid {{ section.settings.border_color }};
+  }
+
+  @media (max-width: 768px) {
+    .separator-inner {
+      height: {{ section.settings.height_mobile }}px;
+    }
+  }
+</style>

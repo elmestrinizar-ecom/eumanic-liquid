@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "separator_section": {
+      "type": "separator",
+      "settings": {
+        "height": 50,
+        "height_mobile": 30,
+        "color": "#ffffff"
+      }
+    },
     "omnilux_hero_UYUBLP": {
       "type": "OMNILUX-HERO",
       "name": "OMNILUX-HERO",
@@ -563,6 +571,7 @@
     }
   },
   "order": [
+    "separator_section",
     "omnilux_hero_UYUBLP",
     "eumanic_trust_bar",
     "boku_product_benefits_4jHbAB",
