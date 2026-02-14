@@ -69,7 +69,7 @@
           "name": "t:names.button",
           "settings": {
             "label": "Continue shopping",
-            "link": "/products/eyeluxe-pro",
+            "link": "/products/masseur-oculaire-intelligent",
             "open_in_new_tab": false,
             "style_class": "button",
             "width": "fit-content",
