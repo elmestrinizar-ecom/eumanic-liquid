@@ -1,43 +1,70 @@
 <div id="omnilux-hero-{{ section.id }}" class="omnilux-hero-section">
   <div class="omnilux-hero__wrapper">
     
-    <!-- Left Column: Image (Linked) -->
-    <a href="/products/masseur-oculaire-intelligent" class="omnilux-hero__image-container">
-      <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/product_page_acceuil.png?v=1771089157" 
-           alt="EyeLuxe Pro - Masseur Oculaire Intelligent - Rajeunir mon regard"
-           class="omnilux-hero__image"
-           loading="eager"
-           width="1000"
-           height="1000">
-    </a>
-    
-    <!-- Right Column: Content -->
-    <div class="omnilux-hero__content">
-      <span class="omnilux-hero__badge">
-        ★★★★★ 150+ CLIENTS SATISFAITS
-      </span>
+    <div class="omnilux-hero__card">
       
-      <h1 class="omnilux-hero__title">
-        Régénérez votre regard<br>en 10 minutes par jour.
-      </h1>
-      
-      <p class="omnilux-hero__subtitle">
-        La seule technologie combinant <strong>Lumière Rouge 633nm</strong> + <strong>Stimulation EMS</strong> cliniquement prouvée pour éliminer cernes, poches et rides, à domicile.
-      </p>
-      
-      <!-- CTA removed as requested -->
+      <!-- Left Column: Content -->
+      <div class="omnilux-hero__content">
+        <span class="omnilux-hero__badge">
+          ★★★★★ 150+ CLIENTS SATISFAITS
+        </span>
+        
+        <h1 class="omnilux-hero__title">
+          Régénérez votre regard<br>en 10 minutes par jour.
+        </h1>
+        
+        <p class="omnilux-hero__subtitle">
+          La seule technologie combinant <strong>Lumière Rouge 633nm</strong> + <strong>Stimulation EMS</strong> cliniquement prouvée pour éliminer cernes, poches et rides, à domicile.
+        </p>
+        
+        <!-- CTA removed previously, kept removed -->
 
-      <div class="omnilux-hero__features">
-        <div class="omnilux-hero__feature">
-          <span class="icon">✅</span> Efficacité Clinique
+        <div class="omnilux-hero__features">
+          <div class="omnilux-hero__feature">
+            <span class="icon">
+              <!-- Red Checkmark SVG -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6L9 17L4 12" stroke="#E63946" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span> 
+            Efficacité Clinique
+          </div>
+          <div class="omnilux-hero__feature">
+            <span class="icon">
+              <!-- Red Checkmark SVG -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6L9 17L4 12" stroke="#E63946" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Recommandé Experts
+          </div>
+          <div class="omnilux-hero__feature">
+            <span class="icon">
+              <!-- Red Checkmark SVG -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6L9 17L4 12" stroke="#E63946" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            30 Jours d'Essai
+          </div>
         </div>
-        <div class="omnilux-hero__feature">
-          <span class="icon">👨‍⚕️</span> Recommandé Experts
-        </div>
-        <div class="omnilux-hero__feature">
-          <span class="icon">🛡️</span> 30 Jours d'Essai
+        
+        <!-- Trust/Ratings (Optional, inspired by Bleame bottom left) -->
+        <div class="omnilux-hero__rating-preview">
+          <span style="color: #666; font-size: 0.9em;">Excellent <strong>4.8</strong> | 7,322 avis vérifiés</span>
         </div>
       </div>
+
+      <!-- Right Column: Image (Linked) -->
+      <a href="/products/masseur-oculaire-intelligent" class="omnilux-hero__image-container">
+        <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/product_page_acceuil.png?v=1771089157" 
+             alt="EyeLuxe Pro - Masseur Oculaire Intelligent - Rajeunir mon regard"
+             class="omnilux-hero__image"
+             loading="eager"
+             width="1000"
+             height="1000">
+      </a>
+      
     </div>
 
   </div>
@@ -46,150 +73,187 @@
 <style>
   .omnilux-hero-section {
     width: 100%;
-    background-color: #fafafa;
+    /* Bleame style background is usually light purple or white, here we use white or very light grey to match brand */
+    background-color: #f9f9f9; 
     font-family: 'Inter', sans-serif;
-    overflow: hidden;
+    padding: 60px 0; /* Add vertical spacing around the card */
   }
 
   .omnilux-hero__wrapper {
-    display: flex;
-    flex-direction: column; /* Mobile: Image top, Text bottom */
-    align-items: center;
-    max-width: 1400px;
+    max-width: 1200px; /* Standard container width */
     margin: 0 auto;
-    min-height: 85vh;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* CARD STYLING */
+  .omnilux-hero__card {
+    display: flex;
+    flex-direction: column-reverse; /* Mobile: Image top (by reversing column), Text bottom? Wait. Bleame mobile usually Image top. */
+    /* Update: If I use column-reverse, exact text/image order depends on HTML. 
+       HTML: Text First, Image Second. 
+       Mobile (column-reverse): Image Top, Text Bottom. Correct. 
+       Desktop (row): Text Left, Image Right. Correct. */
+    
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    overflow: hidden; /* Clips the image image at corners */
+    width: 100%;
+    min-height: 500px; /* Reasonable height for hero card */
   }
 
   /* Desktop Layout */
   @media (min-width: 990px) {
-    .omnilux-hero__wrapper {
-      flex-direction: row; /* Image Left, Text Right naturally because of HTML order */
-      justify-content: space-between;
-      gap: 60px;
-      padding: 0 5%;
+    .omnilux-hero__card {
+      flex-direction: row; /* Text Left, Image Right */
+      align-items: stretch; /* Image fills height */
+      min-height: 550px;
     }
 
     .omnilux-hero__content {
       flex: 1;
-      max-width: 600px;
-      padding-top: 40px;
-      padding-bottom: 40px;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
       text-align: left;
     }
 
     .omnilux-hero__image-container {
       flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      text-decoration: none; /* Remove underline from link wrapper */
-      transition: transform 0.3s ease;
-    }
-    
-    .omnilux-hero__image-container:hover {
-      transform: scale(1.02); /* Subtle zoom effect on hover to indicate clickability */
+      position: relative;
+      background-color: #f0f0f0; /* Fallback */
+      overflow: hidden;
+      min-height: 100%;
     }
     
     .omnilux-hero__image {
-      max-height: 85vh;
-      width: auto;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* "Pas réduit mais peut être dans un cadre" -> Cover fills the area */
+      display: block;
+      transition: transform 0.5s ease;
     }
   }
 
   /* Mobile Layout */
   @media (max-width: 989px) {
-    .omnilux-hero__wrapper {
-      padding: 40px 20px;
-      gap: 30px;
+    .omnilux-hero__card {
+      border-radius: 16px;
+      flex-direction: column-reverse; /* Put Image (2nd in HTML) on Top, Text (1st) on Bottom */
     }
 
     .omnilux-hero__content {
+      padding: 30px 20px;
       text-align: center;
-      width: 100%;
+      align-items: center;
     }
 
     .omnilux-hero__image-container {
       width: 100%;
-      text-decoration: none;
+      height: 300px; /* Fixed height for image area on mobile */
+      overflow: hidden;
     }
     
     .omnilux-hero__image {
       width: 100%;
-      height: auto;
-      max-width: 500px;
+      height: 100%;
+      object-fit: cover;
     }
+    
+    .omnilux-hero__features {
+      align-items: center !important; /* Force center on mobile */
+    }
+  }
+
+  /* Image Hover Effect (Clickable) */
+  .omnilux-hero__image-container {
+    display: block; /* anchor tag */
+    cursor: pointer;
+  }
+  .omnilux-hero__image-container:hover .omnilux-hero__image {
+    transform: scale(1.03);
   }
 
   /* Typography & Elements */
   .omnilux-hero__badge {
     display: inline-block;
-    color: #E63946;
+    color: #E63946; /* Brand Red */
     font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 1.5px;
-    margin-bottom: 24px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
     text-transform: uppercase;
-    background: rgba(230, 57, 70, 0.1);
+    background: #FFF0F1; /* Light red bg */
     padding: 6px 12px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
 
   .omnilux-hero__title {
-    font-size: clamp(2.5rem, 4vw, 3.8rem);
-    font-weight: 900;
-    line-height: 1.1;
-    color: #111;
-    margin: 0 0 24px 0;
-    letter-spacing: -1px;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: #1a1a1a;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.5px;
   }
 
   .omnilux-hero__subtitle {
-    font-size: 1.15rem;
-    color: #444;
+    font-size: 1.05rem;
+    color: #555;
     line-height: 1.6;
-    margin: 0 0 40px 0;
+    margin: 0 0 30px 0;
     font-weight: 400;
   }
 
   .omnilux-hero__subtitle strong {
-    color: #000;
+    color: #111;
     font-weight: 600;
   }
 
-  /* Features Styling inspired by "Boku-Details" clean look */
+  /* Features List with Red Icons */
   .omnilux-hero__features {
     display: flex;
-    flex-direction: column; /* Stack vertically for varied look? Or stick to flex-wrap? User asked for "different details". Vertical list is cleaner like the reference section. */
-    gap: 15px;
-    margin-top: 30px;
-    align-items: flex-start; /* Left align */
-  }
-
-  @media (max-width: 989px) {
-    .omnilux-hero__features {
-      align-items: center; /* Center on mobile */
-    }
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+    width: 100%;
   }
 
   .omnilux-hero__feature {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #333;
     display: flex;
     align-items: center;
     gap: 12px;
-    background: transparent;
-    padding: 0;
-    border: none;
-    box-shadow: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
   }
 
   .omnilux-hero__feature .icon {
-    font-size: 1.2em;
-    color: #E63946; /* Use brand color for icons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    width: 24px;
   }
+  
+  .omnilux-hero__rating-preview {
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    width: 100%;
+  }
+  
+  /* Mobile adjustments for center alignment */
+  @media (max-width: 989px) {
+    .omnilux-hero__rating-preview {
+      text-align: center;
+    }
+  }
+
 </style>
 
 {% schema %}
