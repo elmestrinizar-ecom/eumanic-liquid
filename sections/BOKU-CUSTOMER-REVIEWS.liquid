@@ -1,231 +1,286 @@
-{% comment %}
-  Section: BOKU-CUSTOMER-REVIEWS
-  Carrousel d'avis clients inspiré de Boku - Version Finalisée
-{% endcomment %}
-
-<style>
-  .boku-reviews-section {
-    background: #ffffff;
-    padding: 80px 0;
-    font-family: 'Inter', sans-serif;
-    overflow: hidden;
-  }
-  .boku-reviews-header {
-    max-width: 1300px;
-    margin: 0 auto 50px auto;
-    padding: 0 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-  .boku-reviews-title {
-    color: #1D3557;
-    font-size: 2.2rem;
-    font-weight: 800;
-    margin: 0;
-    max-width: 600px;
-  }
-  
-  .boku-reviews-nav {
-    display: flex;
-    gap: 12px;
-  }
-  .boku-reviews-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1.5px solid #1D3557;
-    background: transparent;
-    color: #1D3557;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .boku-reviews-btn:hover {
-    background: #1D3557;
-    color: #fff;
-  }
-
-  .boku-reviews-carousel {
-    display: flex;
-    gap: 25px;
-    padding: 0 40px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  .boku-reviews-carousel::-webkit-scrollbar { display: none; }
-
-  .boku-reviews-card {
-    min-width: 320px;
-    flex-shrink: 0;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 20px;
-    padding: 0;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  .boku-reviews-card:hover {
-    transform: translateY(-5px);
-  }
-  .boku-reviews-img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    display: block;
-    background: #f4f6f9;
-  }
-  .boku-reviews-content {
-    padding: 20px 25px;
-  }
-  .boku-reviews-stars {
-    color: #E63946;
-    font-size: 1.2rem;
-    margin-bottom: 12px;
-    letter-spacing: 2px;
-  }
-  .boku-reviews-card-title {
-    color: #1D3557;
-    font-size: 1.25rem;
-    font-weight: 800;
-    margin: 0 0 12px 0;
-  }
-  .boku-reviews-text {
-    color: #444;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .boku-red-light {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-color: #E63946;
-    border-radius: 50%;
-    margin-left: 8px;
-    box-shadow: 0 0 10px #E63946;
-    animation: pulse-red 2s infinite;
-    vertical-align: middle;
-  }
-  @keyframes pulse-red {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(230, 57, 70, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
-  }
-
-  @media (max-width: 768px) {
-    .boku-reviews-title { font-size: 1.8rem; }
-    .boku-reviews-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-    .boku-reviews-card { min-width: 280px; }
-    .boku-reviews-img { height: 350px; }
-  }
-</style>
-
-<div class="boku-reviews-section">
-  <div class="boku-reviews-header">
-    <h2 class="boku-reviews-title">Rejoignez plus de 250 utilisateurs satisfaits <span class="boku-red-light"></span></h2>
-    <div class="boku-reviews-nav">
-      <button class="boku-reviews-btn" onclick="slideReviews('left'); stopAutoScroll();">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </button>
-      <button class="boku-reviews-btn" onclick="slideReviews('right'); stopAutoScroll();">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
-    </div>
-  </div>
-
-  <div class="boku-reviews-carousel" id="reviewsCarousel">
+<div class="botanique-reviews-section">
+  <div class="botanique-reviews__container">
     
-    <!-- CARD 1 -->
-    <div class="boku-reviews-card">
-      <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/page_produit_pic.png?v=1770711745" class="boku-reviews-img" alt="Review 1">
-      <div class="boku-reviews-content">
-        <div class="boku-reviews-stars">★★★★★</div>
-        <h3 class="boku-reviews-card-title">Une qualité bluffante</h3>
-        <p class="boku-reviews-text">Je suis vraiment satisfaite par la qualité du masque. C'est tout ce dont je rêvais, je ne peux plus m'en passer !</p>
+    <div class="botanique-reviews__track-container">
+      <div class="botanique-reviews__track" id="reviewsTrack-{{ section.id }}">
+        
+        <!-- Slide 1 -->
+        <div class="botanique-review__slide">
+          <div class="botanique-review__content">
+            <div class="botanique-review__image-wrapper">
+              <img src="https://botaniqueparis.com/cdn/shop/files/3_1.jpg?v=1755951388&width=200" alt="Client Satisfait" class="botanique-review__image">
+            </div>
+            <div class="botanique-review__text-wrapper">
+              <p class="botanique-review__quote">"Mes cernes marqués me donnaient toujours l'air fatiguée. Depuis que j'utilise EyeLuxe Pro, mon regard est transformé. On me demande souvent ce que j'ai changé !"</p>
+              <div class="botanique-review__author">
+                - Sophie M. 
+                <span class="verified-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: text-bottom; margin-right: 4px;">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#00C853"/>
+                    <path d="M8 12L11 15L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Acheteur Vérifié
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="botanique-review__slide">
+          <div class="botanique-review__content">
+            <div class="botanique-review__image-wrapper">
+              <img src="https://botaniqueparis.com/cdn/shop/files/Anje.png?v=1747185589&width=200" alt="Client Satisfait" class="botanique-review__image">
+            </div>
+            <div class="botanique-review__text-wrapper">
+              <p class="botanique-review__quote">"Un vrai moment de détente le soir. La chaleur douce est très agréable et je vois une nette différence sur mes poches au réveil."</p>
+              <div class="botanique-review__author">
+                - Angélique D.
+                <span class="verified-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: text-bottom; margin-right: 4px;">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#00C853"/>
+                    <path d="M8 12L11 15L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Acheteur Vérifié
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="botanique-review__slide">
+          <div class="botanique-review__content">
+            <div class="botanique-review__image-wrapper">
+              <img src="https://botaniqueparis.com/cdn/shop/files/1_1.png?v=1755951306&width=200" alt="Client Satisfait" class="botanique-review__image">
+            </div>
+            <div class="botanique-review__text-wrapper">
+              <p class="botanique-review__quote">"J'étais sceptique au début mais les résultats sont là. Ma peau est plus lisse autour des yeux. Je recommande vivement !"</p>
+              <div class="botanique-review__author">
+                - Marie L.
+                <span class="verified-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: text-bottom; margin-right: 4px;">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#00C853"/>
+                    <path d="M8 12L11 15L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Acheteur Vérifié
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="botanique-review__slide">
+          <div class="botanique-review__content">
+            <div class="botanique-review__image-wrapper">
+              <img src="https://botaniqueparis.com/cdn/shop/files/IMG_6699.jpg?v=1755951426&width=200" alt="Client Satisfait" class="botanique-review__image">
+            </div>
+            <div class="botanique-review__text-wrapper">
+              <p class="botanique-review__quote">"Livraison rapide et produit conforme. La qualité est top, on sent que c'est du solide. Très satisfaite de mon achat."</p>
+              <div class="botanique-review__author">
+                - Claire T.
+                <span class="verified-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: text-bottom; margin-right: 4px;">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#00C853"/>
+                    <path d="M8 12L11 15L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Acheteur Vérifié
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- CARD 2 -->
-    <div class="boku-reviews-card">
-      <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/pageeed_fj.png?v=1770711745" class="boku-reviews-img" alt="Review 2">
-      <div class="boku-reviews-content">
-        <div class="boku-reviews-stars">★★★★★</div>
-        <h3 class="boku-reviews-card-title">Super rapport qualité prix</h3>
-        <p class="boku-reviews-text">Le meilleur achat de 2023 pour moi. L'EyeLuxe Pro fait toute la différence et je l'utilise très souvent.</p>
-      </div>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="boku-reviews-card">
-      <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" class="boku-reviews-img" alt="Review 3">
-      <div class="boku-reviews-content">
-        <div class="boku-reviews-stars">★★★★★</div>
-        <h3 class="boku-reviews-card-title">Regard transformé</h3>
-        <p class="boku-reviews-text">Je regrette de ne pas l'avoir acheté plus tôt ! Mes cernes ont diminué et mon regard est plus réveillé.</p>
-      </div>
-    </div>
-
-    <!-- CARD 4 -->
-    <div class="boku-reviews-card">
-      <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/page_produit_pic.png?v=1770711745" class="boku-reviews-img" alt="Review 4">
-      <div class="boku-reviews-content">
-        <div class="boku-reviews-stars">★★★★★</div>
-        <h3 class="boku-reviews-card-title">C'est le top !</h3>
-        <p class="boku-reviews-text">Très simple d'utilisation et les résultats sont là après seulement 2 semaines d'utilisation quotidienne.</p>
-      </div>
+    <div class="botanique-reviews__dots" id="reviewsDots-{{ section.id }}">
+      <button class="dot active" data-index="0"></button>
+      <button class="dot" data-index="1"></button>
+      <button class="dot" data-index="2"></button>
+      <button class="dot" data-index="3"></button>
     </div>
 
   </div>
 </div>
 
-<script>
-  function slideReviews(direction) {
-    const carousel = document.getElementById('reviewsCarousel');
-    const firstCard = carousel.querySelector('.boku-reviews-card');
-    const cardWidth = firstCard ? firstCard.offsetWidth + 25 : 400;
-    
-    if (direction === 'left') {
-      carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-    } else {
-      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-      if (carousel.scrollLeft >= maxScroll - 10) {
-        carousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-      }
+<style>
+  .botanique-reviews-section {
+    padding: 60px 0;
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+
+  .botanique-reviews__container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .botanique-reviews__track-container {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .botanique-reviews__track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+  }
+
+  .botanique-review__slide {
+    min-width: 100%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .botanique-review__content {
+    display: flex;
+    align-items: center;
+    max-width: 90%;
+    gap: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .botanique-review__content {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
     }
   }
 
-  let autoScrollInterval;
-  function startAutoScroll() {
-    autoScrollInterval = setInterval(() => {
-      slideReviews('right');
-    }, 4000);
+  .botanique-review__image-wrapper {
+    flex-shrink: 0;
   }
 
-  function stopAutoScroll() {
-    clearInterval(autoScrollInterval);
+  .botanique-review__image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
 
-  // Handle interaction to stop auto-scroll
-  const reviewsCarousel = document.getElementById('reviewsCarousel');
-  reviewsCarousel.addEventListener('mouseenter', stopAutoScroll);
-  reviewsCarousel.addEventListener('mouseleave', startAutoScroll);
-  reviewsCarousel.addEventListener('touchstart', stopAutoScroll, {passive: true});
+  .botanique-review__text-wrapper {
+    flex: 1;
+  }
 
-  // Handle manual clicks
-  document.querySelectorAll('.boku-reviews-btn').forEach(btn => {
-    btn.addEventListener('click', stopAutoScroll);
+  .botanique-review__quote {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: #333;
+    font-style: italic; /* Botanique style */
+    margin: 0 0 15px 0;
+  }
+
+  @media (max-width: 768px) {
+    .botanique-review__quote {
+      font-size: 1.1rem;
+    }
+  }
+
+  .botanique-review__author {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .botanique-review__author {
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+
+  .verified-badge {
+    color: #00C853; /* Green for verified */
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Dots Navigation */
+  .botanique-reviews__dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .botanique-reviews__dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #E0E0E0; /* Light grey inactive */
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+  }
+
+  .botanique-reviews__dots .dot.active {
+    background-color: #000; /* Active dot color (Botanique has black active) */
+  }
+  
+  /* Brand color adaptation: User said "couleurs doivent rimer avec mon site" -> Eumanic has Red #E63946 */
+  /* If user wants dots to be red: */
+  .botanique-reviews__dots .dot.active {
+    background-color: #E63946; 
+  }
+
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('reviewsTrack-{{ section.id }}');
+    const dots = document.querySelectorAll('#reviewsDots-{{ section.id }} .dot');
+    let currentIndex = 0;
+    const slideCount = dots.length;
+
+    // Function to update slider
+    function updateSlider(index) {
+      const percentage = index * -100;
+      track.style.transform = `translateX(${percentage}%)`;
+      
+      // Update dots
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+      
+      currentIndex = index;
+    }
+
+    // Click events for dots
+    dots.forEach(dot => {
+      dot.addEventListener('click', function() {
+        const index = parseInt(this.getAttribute('data-index'));
+        updateSlider(index);
+      });
+    });
+
+    // Optional: Auto-play
+    // setInterval(() => {
+    //   let nextIndex = (currentIndex + 1) % slideCount;
+    //   updateSlider(nextIndex);
+    // }, 5000); 
+    // Botanique is usually manual? Left manual for now as it's cleaner UX for reading testimonials.
   });
-
-  // Start initially
-  startAutoScroll();
 </script>
 
 {% schema %}
