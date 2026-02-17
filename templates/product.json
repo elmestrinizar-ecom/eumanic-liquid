@@ -10,11 +10,6 @@
       "name": "BOKU-VIDEOS",
       "settings": {}
     },
-    "boku_customer_reviews_new": {
-      "type": "BOKU-CUSTOMER-REVIEWS",
-      "name": "BOKU-CUSTOMER-REVIEWS",
-      "settings": {}
-    },
     "boku_marquee_product_Bt7W93": {
       "type": "BOKU-MARQUEE-PRODUCT",
       "name": "BOKU-MARQUEE-PRODUCT",
@@ -464,7 +459,6 @@
   },
   "order": [
     "antigravity_test_CEr4qM",
-    "boku_customer_reviews_new",
     "boku_videos_BBVQUU",
     "boku_marquee_product_Bt7W93",
     "boku_media_trust",

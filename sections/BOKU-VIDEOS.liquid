@@ -9,7 +9,7 @@
   .boku-videos-grid {
     display: flex;
     justify-content: center;
-    gap: 50px; /* Wider gap for labels */
+    gap: 40px;
     flex-wrap: wrap;
     margin-top: 30px;
   }
@@ -17,16 +17,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    width: 110px;
+    width: 90px;
     cursor: pointer;
   }
   .boku-video-circle {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    border: 3px solid #E63946; /* Red border matching brand */
-    padding: 3px; /* Space between border and image */
+    border: 3px solid #E63946;
+    padding: 3px;
     background: #fff;
     overflow: hidden;
     position: relative;
@@ -37,12 +36,12 @@
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(230, 57, 70, 0.2);
   }
-  .boku-video-circle img {
+  .boku-video-circle video.boku-thumb-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    filter: brightness(0.9);
+    pointer-events: none;
   }
   /* Overlay Play Icon */
   .boku-video-play-icon {
@@ -63,13 +62,7 @@
     width: 14px;
     height: 14px;
     fill: #E63946;
-    margin-left: 2px; /* Visual center adjustment */
-  }
-
-  .boku-video-label {
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: #1a1a1a;
+    margin-left: 2px;
   }
 
   /* MODAL STYLES */
@@ -109,7 +102,7 @@
     background: none;
     border: none;
   }
-  .boku-video-modal video {
+  .boku-video-modal video#bokuModalVideo {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -119,37 +112,34 @@
 <div class="boku-videos-section">
   <div class="boku-videos-grid">
     
-    <!-- Video 1: Le Concept -->
+    <!-- Video 1 -->
     <div class="boku-video-item" onclick="openBokuModal('https://cdn.shopify.com/videos/c/o/v/e3d64f45ae274ed7a1ed9b7c7e2d3aa5.mp4')">
       <div class="boku-video-circle">
-        <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/product_page_acceuil.png?v=1771089157" alt="Le concept">
+        <video class="boku-thumb-video" src="https://cdn.shopify.com/videos/c/o/v/e3d64f45ae274ed7a1ed9b7c7e2d3aa5.mp4#t=0.5" muted playsinline preload="metadata"></video>
         <div class="boku-video-play-icon">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </div>
       </div>
-      <div class="boku-video-label">Le concept</div>
     </div>
 
-    <!-- Video 2: Utilisation -->
+    <!-- Video 2 -->
     <div class="boku-video-item" onclick="openBokuModal('https://cdn.shopify.com/videos/c/o/v/677aca826c594dd389018a913edb6009.mp4')">
       <div class="boku-video-circle">
-        <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Un_regard_repose_en_10_minutes.png?v=1770486587" alt="Utilisation">
+        <video class="boku-thumb-video" src="https://cdn.shopify.com/videos/c/o/v/677aca826c594dd389018a913edb6009.mp4#t=0.5" muted playsinline preload="metadata"></video>
         <div class="boku-video-play-icon">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </div>
       </div>
-      <div class="boku-video-label">Utilisation</div>
     </div>
 
-    <!-- Video 3: Installation -->
+    <!-- Video 3 -->
     <div class="boku-video-item" onclick="openBokuModal('https://cdn.shopify.com/videos/c/o/v/69ac637172c749399c5c0211312ffb57.mp4')">
       <div class="boku-video-circle">
-        <img src="https://botaniqueparis.com/cdn/shop/files/3_1.jpg?v=1755951388&width=200" alt="Installation">
+        <video class="boku-thumb-video" src="https://cdn.shopify.com/videos/c/o/v/69ac637172c749399c5c0211312ffb57.mp4#t=0.5" muted playsinline preload="metadata"></video>
         <div class="boku-video-play-icon">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </div>
       </div>
-      <div class="boku-video-label">Installation</div>
     </div>
 
   </div>
@@ -157,9 +147,9 @@
 
 <!-- Modal Structure -->
 <div id="bokuVideoModal" class="boku-video-modal" onclick="closeBokuModal(event)">
-  <div class="boku-video-modal-content" onclick="event.stopPropagation()"> <!-- Stop click from closing modal when clicking content -->
+  <div class="boku-video-modal-content" onclick="event.stopPropagation()">
     <button class="boku-video-modal-close" onclick="closeBokuModal(event)">&times;</button>
-    <video id="bokuModalVideo" controls playsinline muted>
+    <video id="bokuModalVideo" playsinline muted>
       <source src="" type="video/mp4">
       Votre navigateur ne supporte pas la vidéo.
     </video>
@@ -178,14 +168,13 @@
   }
 
   function closeBokuModal(event) {
-    // If event is provided (click), it's handled. IF just calling function, it works too.
     const modal = document.getElementById('bokuVideoModal');
     const video = document.getElementById('bokuModalVideo');
     if (modal && video) {
       modal.classList.remove('active');
       video.pause();
       video.currentTime = 0;
-      video.src = ''; // Clear source to stop buffering
+      video.src = '';
     }
   }
 </script>
