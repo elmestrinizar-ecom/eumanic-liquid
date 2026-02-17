@@ -13,7 +13,7 @@
       "type": "custom-liquid",
       "name": "t:names.custom_liquid",
       "settings": {
-        "custom_liquid": "<div id=\"achat-produit\"></div>",
+        "custom_liquid": "{% unless request.page_type == 'index' %}\n  <div id=\"achat-produit\"></div>\n{% endunless %}",
         "color_scheme": "",
         "section_width": "page-width",
         "padding-block-start": 0,
