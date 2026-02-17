@@ -9,6 +9,17 @@
  */
 {
   "sections": {
+    "custom_liquid_mLAThj": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"achat-produit\"></div>",
+        "color_scheme": "",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "antigravity_test_CEr4qM": {
       "type": "antigravity-test",
       "name": "BOKU-PRODUCT-PAGE",
@@ -467,6 +478,7 @@
     }
   },
   "order": [
+    "custom_liquid_mLAThj",
     "antigravity_test_CEr4qM",
     "boku_videos_BBVQUU",
     "boku_marquee_product_Bt7W93",
