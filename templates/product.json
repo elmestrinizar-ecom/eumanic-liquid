@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "antigravity_test_CEr4qM": {
@@ -17,6 +8,11 @@
     "boku_videos_BBVQUU": {
       "type": "BOKU-VIDEOS",
       "name": "BOKU-VIDEOS",
+      "settings": {}
+    },
+    "boku_customer_reviews_new": {
+      "type": "BOKU-CUSTOMER-REVIEWS",
+      "name": "BOKU-CUSTOMER-REVIEWS",
       "settings": {}
     },
     "boku_marquee_product_Bt7W93": {
@@ -49,11 +45,6 @@
       "type": "OMNILUX-TECH-SPECS",
       "disabled": true,
       "name": "OMNILUX-TECH-SPECS",
-      "settings": {}
-    },
-    "boku_customer_reviews": {
-      "type": "BOKU-CUSTOMER-REVIEWS",
-      "name": "BOKU-CUSTOMER-REVIEWS",
       "settings": {}
     },
     "boku_faq_contact": {
@@ -473,6 +464,7 @@
   },
   "order": [
     "antigravity_test_CEr4qM",
+    "boku_customer_reviews_new",
     "boku_videos_BBVQUU",
     "boku_marquee_product_Bt7W93",
     "boku_media_trust",
@@ -480,7 +472,6 @@
     "boku_before_after",
     "boku_expert_reviews",
     "boku_tech_specs",
-    "boku_customer_reviews",
     "boku_faq_contact",
     "boku_learn_more",
     "main",
