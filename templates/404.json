@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<h1>Page not found</h1>",
+            "text": "<h1>Oups ! Cette page a disparu 👀</h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -42,7 +42,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>The link may be incorrect, or the page has been removed. </p>",
+            "text": "<p>Pas de panique, votre regard mérite toujours le meilleur. Retrouvez notre solution anti-cernes EyeLuxe Pro.</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -68,7 +68,7 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Continue shopping",
+            "label": "Découvrir EyeLuxe Pro ✨",
             "link": "/products/masseur-oculaire-intelligent",
             "open_in_new_tab": false,
             "style_class": "button",
@@ -85,7 +85,7 @@
         "text_Ua9XAW",
         "button_PAQMwR"
       ],
-      "disabled": true,
+      "disabled": false,
       "settings": {
         "content_direction": "column",
         "section_width": "page-width",
@@ -138,7 +138,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Discover something new</p>",
+                "text": "<p>Nos solutions anti-cernes</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
