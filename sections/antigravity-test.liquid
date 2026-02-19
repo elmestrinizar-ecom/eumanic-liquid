@@ -347,15 +347,50 @@
       <script>
       (function() {
         /* ── Build variant map from Shopify product data ── */
+        var allVariants = [];
         var variantsByColor = {};
+        var firstVariant = null;
         {% for variant in product.variants %}
-          {% assign color_option = variant.option1 | downcase | strip %}
-          variantsByColor['{{ color_option }}'] = {
-            id: {{ variant.id }},
-            price: {{ variant.price }},
-            comparePrice: {{ variant.compare_at_price | default: 0 }}
-          };
+          {% assign v_title = variant.title | downcase | strip %}
+          {% assign v_opt1 = variant.option1 | downcase | strip %}
+          {% assign v_opt2 = variant.option2 | downcase | strip %}
+          {% assign v_opt3 = variant.option3 | downcase | strip %}
+          (function() {
+            var vData = {
+              id: {{ variant.id }},
+              title: '{{ v_title }}',
+              option1: '{{ v_opt1 }}',
+              option2: '{{ v_opt2 }}',
+              option3: '{{ v_opt3 }}',
+              price: {{ variant.price }},
+              comparePrice: {{ variant.compare_at_price | default: 0 }}
+            };
+            allVariants.push(vData);
+            if (!firstVariant) firstVariant = vData;
+
+            /* Check ALL option fields + title for color keywords */
+            var fields = [vData.option1, vData.option2, vData.option3, vData.title];
+            for (var f = 0; f < fields.length; f++) {
+              var val = fields[f];
+              if (val.match(/blanc|white|blanche/i)) { variantsByColor['blanc'] = vData; }
+              if (val.match(/rouge|red/i)) { variantsByColor['rouge'] = vData; }
+            }
+          })();
         {% endfor %}
+
+        /* Debug: log all variants to console so we can see what Shopify returns */
+        console.log('[EyeLuxe] All variants:', allVariants);
+        console.log('[EyeLuxe] Mapped by color:', variantsByColor);
+
+        /* If no color mapping found, map the first variant to both colors as fallback */
+        if (!variantsByColor['blanc'] && firstVariant) {
+          console.warn('[EyeLuxe] No "blanc" variant found, using first variant as fallback');
+          variantsByColor['blanc'] = firstVariant;
+        }
+        if (!variantsByColor['rouge'] && firstVariant) {
+          console.warn('[EyeLuxe] No "rouge" variant found, using first variant as fallback');
+          variantsByColor['rouge'] = firstVariant;
+        }
 
         /* ── State ── */
         var selectedPack = 'solo'; // 'solo' or 'duo'
