@@ -342,94 +342,12 @@
         </div>
       </div>
 
-      <!-- Custom Cart Overlay -->
-      <div id="custom-cart-overlay" style="display:none; position:fixed; inset:0; z-index:9998; background:rgba(0,0,0,0.5); opacity:0; transition: opacity 0.3s ease;"></div>
-      <div id="custom-cart-drawer" style="
-        display:none; position:fixed; top:0; right:0; bottom:0; z-index:9999;
-        width:420px; max-width:92vw; background:#fff; box-shadow:-8px 0 30px rgba(0,0,0,0.15);
-        transform:translateX(100%); transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);
-        font-family:'Inter',sans-serif; overflow-y:auto;
-      ">
-        <!-- Header -->
-        <div style="display:flex; align-items:center; justify-content:space-between; padding:20px 24px; border-bottom:1px solid #eee;">
-          <h3 style="margin:0; font-size:1.1rem; font-weight:700; color:#1D3557;">🛒 Votre Panier</h3>
-          <button id="custom-cart-close" style="background:none; border:none; font-size:1.6rem; cursor:pointer; color:#999; line-height:1; padding:4px 8px;">✕</button>
-        </div>
-
-        <!-- Product Summary -->
-        <div style="padding:24px;">
-          <div style="display:flex; gap:16px; margin-bottom:20px;">
-            {% if product.featured_image %}
-              <img src="{{ product.featured_image | image_url: width: 120 }}" alt="{{ product.title }}" style="width:90px; height:90px; object-fit:cover; border-radius:10px; border:1px solid #eee;">
-            {% endif %}
-            <div style="flex:1;">
-              <p style="margin:0 0 4px 0; font-weight:700; font-size:1rem; color:#1D3557;">{{ product.title }}</p>
-              <p id="cart-drawer-color" style="margin:0 0 4px 0; font-size:0.85rem; color:#666;">Couleur : <strong>Blanc</strong></p>
-              <p id="cart-drawer-pack" style="margin:0 0 4px 0; font-size:0.85rem; color:#666;">Pack : <strong>SOLO (1x)</strong></p>
-              <p id="cart-drawer-price" style="margin:0; font-size:1.15rem; font-weight:700; color:#E63946;">{{ product.price | money }}</p>
-            </div>
-          </div>
-
-          <!-- Divider -->
-          <div style="border-top:1px solid #eee; margin:20px 0;"></div>
-
-          <!-- Promo Code -->
-          <div style="margin-bottom:20px;">
-            <label style="display:block; font-size:0.85rem; font-weight:600; color:#1D3557; margin-bottom:8px;">Code de réduction</label>
-            <div style="display:flex; gap:8px;">
-              <input id="promo-code-input" type="text" placeholder="Entrer le code" style="
-                flex:1; padding:12px 14px; border:1.5px solid #ddd; border-radius:8px;
-                font-size:0.9rem; outline:none; transition:border-color 0.2s;
-                font-family:'Inter',sans-serif;
-              ">
-              <button id="promo-code-apply" style="
-                background:#1D3557; color:#fff; border:none; padding:12px 18px;
-                border-radius:8px; font-size:0.85rem; font-weight:700; cursor:pointer;
-                transition:background 0.2s; white-space:nowrap;
-              ">Appliquer</button>
-            </div>
-            <p id="promo-code-msg" style="margin:6px 0 0 0; font-size:0.8rem; display:none;"></p>
-          </div>
-
-          <!-- Totals -->
-          <div style="background:#f8f9fa; border-radius:10px; padding:16px; margin-bottom:20px;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-              <span style="font-size:0.9rem; color:#666;">Sous-total</span>
-              <span id="cart-subtotal" style="font-size:0.9rem; font-weight:600;">{{ product.price | money }}</span>
-            </div>
-            <div id="cart-discount-row" style="display:none; justify-content:space-between; margin-bottom:8px;">
-              <span style="font-size:0.9rem; color:#2d8a4e;">Réduction</span>
-              <span id="cart-discount-amount" style="font-size:0.9rem; font-weight:600; color:#2d8a4e;">-€0,00</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-              <span style="font-size:0.9rem; color:#666;">Livraison</span>
-              <span style="font-size:0.9rem; font-weight:600; color:#2d8a4e;">GRATUITE</span>
-            </div>
-            <div style="border-top:1px solid #ddd; padding-top:10px; margin-top:10px; display:flex; justify-content:space-between;">
-              <span style="font-size:1rem; font-weight:700; color:#1D3557;">Total</span>
-              <span id="cart-total" style="font-size:1.15rem; font-weight:800; color:#1D3557;">{{ product.price | money }}</span>
-            </div>
-          </div>
-
-          <!-- Checkout Button -->
-          <a id="cart-checkout-btn" href="/checkout" style="
-            display:block; text-align:center; background:#E63946; color:#fff !important;
-            text-decoration:none; padding:18px; border-radius:10px; font-size:1.05rem;
-            font-weight:800; letter-spacing:0.5px; transition:background 0.2s;
-            text-transform:uppercase;
-          ">PASSER À LA CAISSE</a>
-
-
-        </div>
-      </div>
-
       <button
         type="button"
         id="ajax-add-to-cart"
         class="boku-buy-btn"
         style="background: #E63946 !important;"
         data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-        data-product-price="{{ product.price }}"
       >PROFITER DE L'OFFRE</button>
 
       <script>
@@ -438,25 +356,9 @@
         if (!addBtn) return;
 
         var variantId = parseInt(addBtn.getAttribute('data-variant-id'));
-        var unitPrice = parseInt(addBtn.getAttribute('data-product-price'));
         var selectedPack = 'solo';
-        var selectedColor = 'Blanc';
 
-        /* ══ Cart Drawer Elements ══ */
-        var overlay = document.getElementById('custom-cart-overlay');
-        var drawer = document.getElementById('custom-cart-drawer');
-        var closeBtn = document.getElementById('custom-cart-close');
-        var drawerColor = document.getElementById('cart-drawer-color');
-        var drawerPack = document.getElementById('cart-drawer-pack');
-        var drawerPrice = document.getElementById('cart-drawer-price');
-        var subtotalEl = document.getElementById('cart-subtotal');
-        var totalEl = document.getElementById('cart-total');
-
-        function formatPrice(cents) {
-          return '€' + (cents / 100).toFixed(2).replace('.', ',');
-        }
-
-        /* ── Pack selection (Solo = 1x, Duo = 2x) ── */
+        /* ── Pack selection ── */
         var variantCards = document.querySelectorAll('.boku-variant-card');
         variantCards.forEach(function(card, index) {
           card.addEventListener('click', function() {
@@ -466,49 +368,7 @@
           });
         });
 
-        /* ── Color selection ── */
-        document.querySelectorAll('input[name="color-choice"]').forEach(function(radio) {
-          radio.addEventListener('change', function() {
-            selectedColor = (this.value === 'rouge') ? 'Rouge' : 'Blanc';
-          });
-        });
-
-        /* ── Open / Close Custom Cart Drawer ── */
-        function openCustomCart(qty) {
-          var total = unitPrice * qty;
-          var packLabel = (selectedPack === 'duo') ? 'DUO (2x)' : 'SOLO (1x)';
-
-          drawerColor.innerHTML = 'Couleur : <strong>' + selectedColor + '</strong>';
-          drawerPack.innerHTML = 'Pack : <strong>' + packLabel + '</strong>';
-          drawerPrice.textContent = formatPrice(total);
-          subtotalEl.textContent = formatPrice(total);
-          totalEl.textContent = formatPrice(total);
-
-          overlay.style.display = 'block';
-          drawer.style.display = 'block';
-          requestAnimationFrame(function() {
-            requestAnimationFrame(function() {
-              overlay.style.opacity = '1';
-              drawer.style.transform = 'translateX(0)';
-            });
-          });
-          document.body.style.overflow = 'hidden';
-        }
-
-        function closeCustomCart() {
-          overlay.style.opacity = '0';
-          drawer.style.transform = 'translateX(100%)';
-          setTimeout(function() {
-            overlay.style.display = 'none';
-            drawer.style.display = 'none';
-            document.body.style.overflow = '';
-          }, 350);
-        }
-
-        closeBtn.addEventListener('click', closeCustomCart);
-        overlay.addEventListener('click', closeCustomCart);
-
-        /* ── AJAX Add to Cart ── */
+        /* ── AJAX Add to Cart → open native theme cart drawer ── */
         addBtn.addEventListener('click', function() {
           var quantity = (selectedPack === 'duo') ? 2 : 1;
 
@@ -524,13 +384,49 @@
             if (!res.ok) return res.json().then(function(e) { throw new Error(e.description || 'Erreur'); });
             return res.json();
           })
-          .then(function() {
+          .then(function(data) {
             addBtn.textContent = '✓ AJOUTÉ !';
             setTimeout(function() {
               addBtn.disabled = false;
               addBtn.textContent = 'PROFITER DE L\'OFFRE';
             }, 2500);
-            openCustomCart(quantity);
+
+            /* Refresh the cart drawer section so it shows the new item */
+            fetch('/?sections=header')
+              .then(function(r) { return r.json(); })
+              .then(function(sections) {
+                if (sections.header) {
+                  var headerEl = document.getElementById('shopify-section-header');
+                  if (headerEl) {
+                    var tmp = document.createElement('div');
+                    tmp.innerHTML = sections.header;
+                    var newCartItems = tmp.querySelector('cart-items-component');
+                    var oldCartItems = document.querySelector('cart-items-component');
+                    if (newCartItems && oldCartItems) {
+                      oldCartItems.innerHTML = newCartItems.innerHTML;
+                    }
+                  }
+                }
+              })
+              .catch(function() {});
+
+            /* Dispatch the CartAddEvent that the theme listens for */
+            document.dispatchEvent(new CustomEvent('cart:add', { bubbles: true, detail: data }));
+
+            /* Open the native theme cart drawer */
+            setTimeout(function() {
+              var drawerComponent = document.querySelector('cart-drawer-component');
+              if (drawerComponent) {
+                if (typeof drawerComponent.open === 'function') {
+                  drawerComponent.open();
+                } else if (typeof drawerComponent.showDialog === 'function') {
+                  drawerComponent.showDialog();
+                }
+              } else {
+                var cartTrigger = document.querySelector('[data-testid="cart-drawer-trigger"], a[href="/cart"]');
+                if (cartTrigger) cartTrigger.click();
+              }
+            }, 300);
           })
           .catch(function(err) {
             addBtn.disabled = false;
@@ -539,89 +435,8 @@
           });
         });
 
-        /* ── Promo Code ── */
-        var promoInput = document.getElementById('promo-code-input');
-        var promoBtn = document.getElementById('promo-code-apply');
-        var promoMsg = document.getElementById('promo-code-msg');
-
-        promoInput.addEventListener('focus', function() {
-          this.style.borderColor = '#E63946';
-        });
-        promoInput.addEventListener('blur', function() {
-          this.style.borderColor = '#ddd';
-        });
-
-        promoBtn.addEventListener('click', function() {
-          var code = promoInput.value.trim();
-          if (!code) return;
-
-          promoBtn.textContent = '...';
-          promoBtn.disabled = true;
-
-          /* Apply discount code via Shopify's discount URL mechanism */
-          fetch('/discount/' + encodeURIComponent(code), {
-            method: 'GET',
-            redirect: 'follow'
-          })
-          .then(function() {
-            /* Fetch updated cart to check if discount applied */
-            return fetch('/cart.js').then(function(r) { return r.json(); });
-          })
-          .then(function(cart) {
-            promoBtn.textContent = 'Appliquer';
-            promoBtn.disabled = false;
-
-            if (cart.cart_level_discount_applications && cart.cart_level_discount_applications.length > 0) {
-              var discount = cart.cart_level_discount_applications[0];
-              promoMsg.style.display = 'block';
-              promoMsg.style.color = '#2d8a4e';
-              promoMsg.textContent = '✓ Code "' + discount.title + '" appliqué !';
-
-              var discountRow = document.getElementById('cart-discount-row');
-              discountRow.style.display = 'flex';
-              document.getElementById('cart-discount-amount').textContent = '-' + formatPrice(discount.total_allocated_amount);
-              totalEl.textContent = formatPrice(cart.total_price);
-            } else {
-              /* Check line-level discounts */
-              var hasLineDiscount = false;
-              var totalDiscount = 0;
-              cart.items.forEach(function(item) {
-                if (item.line_level_discount_allocations && item.line_level_discount_allocations.length > 0) {
-                  hasLineDiscount = true;
-                  item.line_level_discount_allocations.forEach(function(d) {
-                    totalDiscount += d.amount;
-                  });
-                }
-              });
-
-              if (hasLineDiscount) {
-                promoMsg.style.display = 'block';
-                promoMsg.style.color = '#2d8a4e';
-                promoMsg.textContent = '✓ Code appliqué !';
-                var discountRow = document.getElementById('cart-discount-row');
-                discountRow.style.display = 'flex';
-                document.getElementById('cart-discount-amount').textContent = '-' + formatPrice(totalDiscount);
-                totalEl.textContent = formatPrice(cart.total_price);
-              } else {
-                promoMsg.style.display = 'block';
-                promoMsg.style.color = '#E63946';
-                promoMsg.textContent = '✗ Code invalide ou expiré';
-              }
-            }
-          })
-          .catch(function() {
-            promoBtn.textContent = 'Appliquer';
-            promoBtn.disabled = false;
-            promoMsg.style.display = 'block';
-            promoMsg.style.color = '#E63946';
-            promoMsg.textContent = '✗ Erreur, veuillez réessayer';
-          });
-        });
-
       })();
       </script>
-
-
       <div class="boku-guarantee">
         <span style="color: #E63946 !important; font-weight: 700 !important;">✅ Livraison 48h Offerte</span>
         <span style="color: #E63946 !important; font-weight: 700 !important;">🛡️ Garantie 30 Jours</span>
