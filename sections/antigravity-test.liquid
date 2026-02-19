@@ -342,10 +342,166 @@
         </div>
       </div>
 
-      {% form 'product', product %}
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-        <button type="submit" class="boku-buy-btn" style="background: #E63946 !important;">PROFITER DE L'OFFRE</button>
-      {% endform %}
+      <button type="button" id="ajax-add-to-cart" class="boku-buy-btn" style="background: #E63946 !important;">PROFITER DE L'OFFRE</button>
+
+      <script>
+      (function() {
+        /* ── Build variant map from Shopify product data ── */
+        var variantsByColor = {};
+        {% for variant in product.variants %}
+          {% assign color_option = variant.option1 | downcase | strip %}
+          variantsByColor['{{ color_option }}'] = {
+            id: {{ variant.id }},
+            price: {{ variant.price }},
+            comparePrice: {{ variant.compare_at_price | default: 0 }}
+          };
+        {% endfor %}
+
+        /* ── State ── */
+        var selectedPack = 'solo'; // 'solo' or 'duo'
+        var selectedColor = 'blanc';
+
+        /* ── Pack selection ── */
+        var variantCards = document.querySelectorAll('.boku-variant-card');
+        variantCards.forEach(function(card, index) {
+          card.addEventListener('click', function() {
+            variantCards.forEach(function(c) { c.classList.remove('active'); });
+            card.classList.add('active');
+            selectedPack = (index === 0) ? 'solo' : 'duo';
+            updateDisplayedPrice();
+          });
+        });
+
+        /* ── Color selection ── */
+        var colorRadios = document.querySelectorAll('input[name="color-choice"]');
+        colorRadios.forEach(function(radio) {
+          radio.addEventListener('change', function() {
+            selectedColor = this.value;
+            updateDisplayedPrice();
+          });
+        });
+
+        /* ── Update price display based on pack ── */
+        function updateDisplayedPrice() {
+          var v = variantsByColor[selectedColor];
+          if (!v) return;
+          var qty = (selectedPack === 'duo') ? 2 : 1;
+          var priceEl = document.querySelector('.boku-price');
+          var compareEl = document.querySelector('.boku-compare-price');
+          if (priceEl) {
+            priceEl.textContent = formatMoney(v.price * qty);
+          }
+          if (compareEl && v.comparePrice > 0) {
+            compareEl.textContent = formatMoney(v.comparePrice * qty);
+            compareEl.style.display = '';
+          }
+        }
+
+        function formatMoney(cents) {
+          return (cents / 100).toFixed(2).replace('.', ',') + ' €';
+        }
+
+        /* ── AJAX Add to Cart ── */
+        var addBtn = document.getElementById('ajax-add-to-cart');
+        addBtn.addEventListener('click', function() {
+          var variant = variantsByColor[selectedColor];
+          if (!variant) {
+            alert('Variante introuvable. Veuillez sélectionner une couleur.');
+            return;
+          }
+
+          var quantity = (selectedPack === 'duo') ? 2 : 1;
+
+          // Visual feedback
+          addBtn.disabled = true;
+          addBtn.textContent = 'AJOUT EN COURS…';
+
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ items: [{ id: variant.id, quantity: quantity }] })
+          })
+          .then(function(res) {
+            if (!res.ok) throw new Error('Erreur réseau');
+            return res.json();
+          })
+          .then(function() {
+            addBtn.textContent = '✓ AJOUTÉ !';
+            setTimeout(function() {
+              addBtn.disabled = false;
+              addBtn.textContent = 'PROFITER DE L\'OFFRE';
+            }, 2000);
+
+            /* ── Open cart drawer ── */
+            openCartDrawer();
+          })
+          .catch(function(err) {
+            console.error('Add to cart error:', err);
+            addBtn.disabled = false;
+            addBtn.textContent = 'PROFITER DE L\'OFFRE';
+            alert('Une erreur est survenue. Veuillez réessayer.');
+          });
+        });
+
+        /* ── Cart Drawer opener (compatible with most Shopify themes) ── */
+        function openCartDrawer() {
+          // Method 1: Dispatch a common Shopify custom event
+          document.documentElement.dispatchEvent(
+            new CustomEvent('cart:refresh', { bubbles: true })
+          );
+
+          // Method 2: Try common cart drawer selectors
+          var drawerSelectors = [
+            'cart-drawer',                          // Dawn / OS 2.0
+            '#cart-drawer',
+            '#CartDrawer',
+            '.cart-drawer',
+            '[data-cart-drawer]',
+            '#mini-cart',
+            '.mini-cart',
+            '.js-cart-drawer',
+            '#sidebar-cart',
+            'cart-notification'                     // Dawn notification
+          ];
+
+          var drawer = null;
+          for (var i = 0; i < drawerSelectors.length; i++) {
+            drawer = document.querySelector(drawerSelectors[i]);
+            if (drawer) break;
+          }
+
+          if (drawer) {
+            // Dawn theme: cart-drawer or cart-notification custom element
+            if (typeof drawer.open === 'function') {
+              drawer.open();
+            } else if (drawer.hasAttribute('open') !== undefined) {
+              drawer.setAttribute('open', '');
+              drawer.classList.add('active', 'is-open', 'is-visible');
+            } else {
+              drawer.classList.add('active', 'is-open', 'is-visible');
+              drawer.style.display = '';
+              drawer.removeAttribute('hidden');
+            }
+          }
+
+          // Method 3: Click the cart icon link as a fallback
+          setTimeout(function() {
+            // Check if drawer actually opened; if not, try clicking cart icon
+            var stillHidden = drawer && (drawer.offsetParent === null || getComputedStyle(drawer).display === 'none');
+            if (!drawer || stillHidden) {
+              var cartLink = document.querySelector('a[href="/cart"], .cart-icon-bubble, .site-header__cart, [data-cart-toggle], .js-drawer-open-right');
+              if (cartLink) cartLink.click();
+            }
+          }, 300);
+
+          // Method 4: Fetch updated cart HTML for themes that need a section re-render
+          fetch('/cart?sections=cart-drawer,mini-cart,cart-bubble,cart-icon-bubble')
+            .then(function(r) { return r.json(); })
+            .catch(function() {});
+        }
+
+      })();
+      </script>
 
       <div class="boku-guarantee">
         <span style="color: #E63946 !important; font-weight: 700 !important;">✅ Livraison 48h Offerte</span>
