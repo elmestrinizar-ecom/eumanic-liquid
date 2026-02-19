@@ -342,58 +342,66 @@
         </div>
       </div>
 
-      <button type="button" id="ajax-add-to-cart" class="boku-buy-btn" style="background: #E63946 !important;">PROFITER DE L'OFFRE</button>
+      <!-- DEBUG: Visible variant info (remove once working) -->
+      <div id="eyeluxe-debug" style="background: #fff3cd; border: 2px solid #ffc107; padding: 12px; margin-bottom: 15px; border-radius: 8px; font-size: 0.8rem; font-family: monospace;">
+        <strong>🔧 DEBUG VARIANTES:</strong><br>
+        Produit: {{ product.title | default: 'NON TROUVÉ' }}<br>
+        Handle: {{ product.handle | default: 'AUCUN' }}<br>
+        Nombre de variantes: {{ product.variants.size | default: '0' }}<br>
+        1ère variante dispo: {{ product.selected_or_first_available_variant.id | default: 'AUCUNE' }} - "{{ product.selected_or_first_available_variant.title | default: 'N/A' }}"<br>
+        {% for variant in product.variants %}
+          Variante {{ forloop.index }}: ID={{ variant.id }} | Titre="{{ variant.title }}" | Opt1="{{ variant.option1 }}" | Opt2="{{ variant.option2 }}" | Opt3="{{ variant.option3 }}"<br>
+        {% endfor %}
+      </div>
+
+      <button
+        type="button"
+        id="ajax-add-to-cart"
+        class="boku-buy-btn"
+        style="background: #E63946 !important;"
+        data-fallback-variant-id="{{ product.selected_or_first_available_variant.id }}"
+        {% for variant in product.variants %}
+          data-variant-{{ variant.title | handle }}="{{ variant.id }}"
+        {% endfor %}
+      >PROFITER DE L'OFFRE</button>
 
       <script>
       (function() {
+        var addBtn = document.getElementById('ajax-add-to-cart');
+        if (!addBtn) return;
+
         /* ── Build variant map from Shopify product data ── */
         var allVariants = [];
         var variantsByColor = {};
-        var firstVariant = null;
+        var fallbackId = parseInt(addBtn.getAttribute('data-fallback-variant-id'));
+
         {% for variant in product.variants %}
-          {% assign v_title = variant.title | downcase | strip %}
-          {% assign v_opt1 = variant.option1 | downcase | strip %}
-          {% assign v_opt2 = variant.option2 | downcase | strip %}
-          {% assign v_opt3 = variant.option3 | downcase | strip %}
           (function() {
             var vData = {
               id: {{ variant.id }},
-              title: '{{ v_title }}',
-              option1: '{{ v_opt1 }}',
-              option2: '{{ v_opt2 }}',
-              option3: '{{ v_opt3 }}',
+              title: '{{ variant.title | downcase | escape }}',
+              option1: '{{ variant.option1 | downcase | escape }}',
+              option2: '{{ variant.option2 | downcase | escape }}',
+              option3: '{{ variant.option3 | downcase | escape }}',
               price: {{ variant.price }},
               comparePrice: {{ variant.compare_at_price | default: 0 }}
             };
             allVariants.push(vData);
-            if (!firstVariant) firstVariant = vData;
 
-            /* Check ALL option fields + title for color keywords */
-            var fields = [vData.option1, vData.option2, vData.option3, vData.title];
-            for (var f = 0; f < fields.length; f++) {
-              var val = fields[f];
-              if (val.match(/blanc|white|blanche/i)) { variantsByColor['blanc'] = vData; }
-              if (val.match(/rouge|red/i)) { variantsByColor['rouge'] = vData; }
-            }
+            /* Check ALL fields for color keywords */
+            var allText = vData.title + ' ' + vData.option1 + ' ' + vData.option2 + ' ' + vData.option3;
+            if (/blanc|white|blanche/i.test(allText)) variantsByColor['blanc'] = vData;
+            if (/rouge|red/i.test(allText)) variantsByColor['rouge'] = vData;
           })();
         {% endfor %}
 
-        /* Debug: log all variants to console so we can see what Shopify returns */
-        console.log('[EyeLuxe] All variants:', allVariants);
-        console.log('[EyeLuxe] Mapped by color:', variantsByColor);
-
-        /* If no color mapping found, map the first variant to both colors as fallback */
-        if (!variantsByColor['blanc'] && firstVariant) {
-          console.warn('[EyeLuxe] No "blanc" variant found, using first variant as fallback');
-          variantsByColor['blanc'] = firstVariant;
-        }
-        if (!variantsByColor['rouge'] && firstVariant) {
-          console.warn('[EyeLuxe] No "rouge" variant found, using first variant as fallback');
-          variantsByColor['rouge'] = firstVariant;
-        }
+        /* Fallback: if only 1 variant or no color match, use it for everything */
+        var fallbackVariant = allVariants.length > 0 ? allVariants[0] : { id: fallbackId, price: 0, comparePrice: 0 };
+        if (!variantsByColor['blanc']) variantsByColor['blanc'] = fallbackVariant;
+        if (!variantsByColor['rouge']) variantsByColor['rouge'] = fallbackVariant;
 
         /* ── State ── */
-        var selectedPack = 'solo'; // 'solo' or 'duo'
+        var selectedPack = 'solo';
         var selectedColor = 'blanc';
 
         /* ── Pack selection ── */
@@ -403,140 +411,89 @@
             variantCards.forEach(function(c) { c.classList.remove('active'); });
             card.classList.add('active');
             selectedPack = (index === 0) ? 'solo' : 'duo';
-            updateDisplayedPrice();
           });
         });
 
         /* ── Color selection ── */
-        var colorRadios = document.querySelectorAll('input[name="color-choice"]');
-        colorRadios.forEach(function(radio) {
+        document.querySelectorAll('input[name="color-choice"]').forEach(function(radio) {
           radio.addEventListener('change', function() {
             selectedColor = this.value;
-            updateDisplayedPrice();
           });
         });
 
-        /* ── Update price display based on pack ── */
-        function updateDisplayedPrice() {
-          var v = variantsByColor[selectedColor];
-          if (!v) return;
-          var qty = (selectedPack === 'duo') ? 2 : 1;
-          var priceEl = document.querySelector('.boku-price');
-          var compareEl = document.querySelector('.boku-compare-price');
-          if (priceEl) {
-            priceEl.textContent = formatMoney(v.price * qty);
-          }
-          if (compareEl && v.comparePrice > 0) {
-            compareEl.textContent = formatMoney(v.comparePrice * qty);
-            compareEl.style.display = '';
-          }
-        }
-
-        function formatMoney(cents) {
-          return (cents / 100).toFixed(2).replace('.', ',') + ' €';
-        }
-
         /* ── AJAX Add to Cart ── */
-        var addBtn = document.getElementById('ajax-add-to-cart');
         addBtn.addEventListener('click', function() {
-          var variant = variantsByColor[selectedColor];
-          if (!variant) {
-            alert('Variante introuvable. Veuillez sélectionner une couleur.');
+          var variant = variantsByColor[selectedColor] || fallbackVariant;
+          var variantId = variant.id || fallbackId;
+          var quantity = (selectedPack === 'duo') ? 2 : 1;
+
+          if (!variantId) {
+            alert('Erreur: aucune variante trouvée pour ce produit.');
             return;
           }
 
-          var quantity = (selectedPack === 'duo') ? 2 : 1;
-
-          // Visual feedback
           addBtn.disabled = true;
           addBtn.textContent = 'AJOUT EN COURS…';
 
           fetch('/cart/add.js', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify({ items: [{ id: variant.id, quantity: quantity }] })
+            body: JSON.stringify({ items: [{ id: variantId, quantity: quantity }] })
           })
           .then(function(res) {
-            if (!res.ok) throw new Error('Erreur réseau');
+            if (!res.ok) return res.json().then(function(err) { throw new Error(err.description || 'Erreur'); });
             return res.json();
           })
           .then(function() {
-            addBtn.textContent = '✓ AJOUTÉ !';
+            addBtn.textContent = '✓ AJOUTÉ AU PANIER !';
             setTimeout(function() {
               addBtn.disabled = false;
               addBtn.textContent = 'PROFITER DE L\'OFFRE';
-            }, 2000);
-
-            /* ── Open cart drawer ── */
+            }, 2500);
             openCartDrawer();
           })
           .catch(function(err) {
-            console.error('Add to cart error:', err);
             addBtn.disabled = false;
             addBtn.textContent = 'PROFITER DE L\'OFFRE';
-            alert('Une erreur est survenue. Veuillez réessayer.');
+            alert('Erreur: ' + err.message);
           });
         });
 
-        /* ── Cart Drawer opener (compatible with most Shopify themes) ── */
+        /* ── Cart Drawer opener ── */
         function openCartDrawer() {
-          // Method 1: Dispatch a common Shopify custom event
-          document.documentElement.dispatchEvent(
-            new CustomEvent('cart:refresh', { bubbles: true })
-          );
-
-          // Method 2: Try common cart drawer selectors
-          var drawerSelectors = [
-            'cart-drawer',                          // Dawn / OS 2.0
-            '#cart-drawer',
-            '#CartDrawer',
-            '.cart-drawer',
-            '[data-cart-drawer]',
-            '#mini-cart',
-            '.mini-cart',
-            '.js-cart-drawer',
-            '#sidebar-cart',
-            'cart-notification'                     // Dawn notification
+          /* Try common cart drawer / notification elements */
+          var selectors = [
+            'cart-drawer', 'cart-notification', '#cart-drawer', '#CartDrawer',
+            '.cart-drawer', '[data-cart-drawer]', '#mini-cart', '.mini-cart',
+            '#sidebar-cart', '.js-cart-drawer'
           ];
-
           var drawer = null;
-          for (var i = 0; i < drawerSelectors.length; i++) {
-            drawer = document.querySelector(drawerSelectors[i]);
+          for (var i = 0; i < selectors.length; i++) {
+            drawer = document.querySelector(selectors[i]);
             if (drawer) break;
           }
 
           if (drawer) {
-            // Dawn theme: cart-drawer or cart-notification custom element
             if (typeof drawer.open === 'function') {
               drawer.open();
-            } else if (drawer.hasAttribute('open') !== undefined) {
-              drawer.setAttribute('open', '');
-              drawer.classList.add('active', 'is-open', 'is-visible');
-            } else {
-              drawer.classList.add('active', 'is-open', 'is-visible');
-              drawer.style.display = '';
-              drawer.removeAttribute('hidden');
+              return;
             }
+            drawer.setAttribute('open', '');
+            drawer.classList.add('active', 'is-open', 'is-visible');
+            drawer.style.display = '';
+            drawer.removeAttribute('hidden');
           }
 
-          // Method 3: Click the cart icon link as a fallback
+          /* Fallback: click the cart icon */
           setTimeout(function() {
-            // Check if drawer actually opened; if not, try clicking cart icon
-            var stillHidden = drawer && (drawer.offsetParent === null || getComputedStyle(drawer).display === 'none');
-            if (!drawer || stillHidden) {
-              var cartLink = document.querySelector('a[href="/cart"], .cart-icon-bubble, .site-header__cart, [data-cart-toggle], .js-drawer-open-right');
-              if (cartLink) cartLink.click();
-            }
-          }, 300);
-
-          // Method 4: Fetch updated cart HTML for themes that need a section re-render
-          fetch('/cart?sections=cart-drawer,mini-cart,cart-bubble,cart-icon-bubble')
-            .then(function(r) { return r.json(); })
-            .catch(function() {});
+            var cartIcon = document.querySelector('a[href="/cart"], .cart-icon-bubble, .site-header__cart, [data-cart-toggle], .js-drawer-open-right, .header__icon--cart');
+            if (cartIcon) cartIcon.click();
+          }, 400);
         }
 
       })();
       </script>
+
 
       <div class="boku-guarantee">
         <span style="color: #E63946 !important; font-weight: 700 !important;">✅ Livraison 48h Offerte</span>
