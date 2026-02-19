@@ -342,27 +342,12 @@
         </div>
       </div>
 
-      <!-- DEBUG: Visible variant info (remove once working) -->
-      <div id="eyeluxe-debug" style="background: #fff3cd; border: 2px solid #ffc107; padding: 12px; margin-bottom: 15px; border-radius: 8px; font-size: 0.8rem; font-family: monospace;">
-        <strong>🔧 DEBUG VARIANTES:</strong><br>
-        Produit: {{ product.title | default: 'NON TROUVÉ' }}<br>
-        Handle: {{ product.handle | default: 'AUCUN' }}<br>
-        Nombre de variantes: {{ product.variants.size | default: '0' }}<br>
-        1ère variante dispo: {{ product.selected_or_first_available_variant.id | default: 'AUCUNE' }} - "{{ product.selected_or_first_available_variant.title | default: 'N/A' }}"<br>
-        {% for variant in product.variants %}
-          Variante {{ forloop.index }}: ID={{ variant.id }} | Titre="{{ variant.title }}" | Opt1="{{ variant.option1 }}" | Opt2="{{ variant.option2 }}" | Opt3="{{ variant.option3 }}"<br>
-        {% endfor %}
-      </div>
-
       <button
         type="button"
         id="ajax-add-to-cart"
         class="boku-buy-btn"
         style="background: #E63946 !important;"
-        data-fallback-variant-id="{{ product.selected_or_first_available_variant.id }}"
-        {% for variant in product.variants %}
-          data-variant-{{ variant.title | handle }}="{{ variant.id }}"
-        {% endfor %}
+        data-variant-id="{{ product.selected_or_first_available_variant.id }}"
       >PROFITER DE L'OFFRE</button>
 
       <script>
@@ -370,41 +355,10 @@
         var addBtn = document.getElementById('ajax-add-to-cart');
         if (!addBtn) return;
 
-        /* ── Build variant map from Shopify product data ── */
-        var allVariants = [];
-        var variantsByColor = {};
-        var fallbackId = parseInt(addBtn.getAttribute('data-fallback-variant-id'));
-
-        {% for variant in product.variants %}
-          (function() {
-            var vData = {
-              id: {{ variant.id }},
-              title: '{{ variant.title | downcase | escape }}',
-              option1: '{{ variant.option1 | downcase | escape }}',
-              option2: '{{ variant.option2 | downcase | escape }}',
-              option3: '{{ variant.option3 | downcase | escape }}',
-              price: {{ variant.price }},
-              comparePrice: {{ variant.compare_at_price | default: 0 }}
-            };
-            allVariants.push(vData);
-
-            /* Check ALL fields for color keywords */
-            var allText = vData.title + ' ' + vData.option1 + ' ' + vData.option2 + ' ' + vData.option3;
-            if (/blanc|white|blanche/i.test(allText)) variantsByColor['blanc'] = vData;
-            if (/rouge|red/i.test(allText)) variantsByColor['rouge'] = vData;
-          })();
-        {% endfor %}
-
-        /* Fallback: if only 1 variant or no color match, use it for everything */
-        var fallbackVariant = allVariants.length > 0 ? allVariants[0] : { id: fallbackId, price: 0, comparePrice: 0 };
-        if (!variantsByColor['blanc']) variantsByColor['blanc'] = fallbackVariant;
-        if (!variantsByColor['rouge']) variantsByColor['rouge'] = fallbackVariant;
-
-        /* ── State ── */
+        var variantId = parseInt(addBtn.getAttribute('data-variant-id'));
         var selectedPack = 'solo';
-        var selectedColor = 'blanc';
 
-        /* ── Pack selection ── */
+        /* ── Pack selection (Solo = 1x, Duo = 2x) ── */
         var variantCards = document.querySelectorAll('.boku-variant-card');
         variantCards.forEach(function(card, index) {
           card.addEventListener('click', function() {
@@ -414,23 +368,9 @@
           });
         });
 
-        /* ── Color selection ── */
-        document.querySelectorAll('input[name="color-choice"]').forEach(function(radio) {
-          radio.addEventListener('change', function() {
-            selectedColor = this.value;
-          });
-        });
-
         /* ── AJAX Add to Cart ── */
         addBtn.addEventListener('click', function() {
-          var variant = variantsByColor[selectedColor] || fallbackVariant;
-          var variantId = variant.id || fallbackId;
           var quantity = (selectedPack === 'duo') ? 2 : 1;
-
-          if (!variantId) {
-            alert('Erreur: aucune variante trouvée pour ce produit.');
-            return;
-          }
 
           addBtn.disabled = true;
           addBtn.textContent = 'AJOUT EN COURS…';
@@ -441,7 +381,7 @@
             body: JSON.stringify({ items: [{ id: variantId, quantity: quantity }] })
           })
           .then(function(res) {
-            if (!res.ok) return res.json().then(function(err) { throw new Error(err.description || 'Erreur'); });
+            if (!res.ok) return res.json().then(function(e) { throw new Error(e.description || 'Erreur'); });
             return res.json();
           })
           .then(function() {
@@ -459,9 +399,8 @@
           });
         });
 
-        /* ── Cart Drawer opener ── */
+        /* ── Open cart drawer ── */
         function openCartDrawer() {
-          /* Try common cart drawer / notification elements */
           var selectors = [
             'cart-drawer', 'cart-notification', '#cart-drawer', '#CartDrawer',
             '.cart-drawer', '[data-cart-drawer]', '#mini-cart', '.mini-cart',
@@ -472,21 +411,18 @@
             drawer = document.querySelector(selectors[i]);
             if (drawer) break;
           }
-
+          if (drawer && typeof drawer.open === 'function') {
+            drawer.open();
+            return;
+          }
           if (drawer) {
-            if (typeof drawer.open === 'function') {
-              drawer.open();
-              return;
-            }
             drawer.setAttribute('open', '');
             drawer.classList.add('active', 'is-open', 'is-visible');
-            drawer.style.display = '';
             drawer.removeAttribute('hidden');
           }
-
           /* Fallback: click the cart icon */
           setTimeout(function() {
-            var cartIcon = document.querySelector('a[href="/cart"], .cart-icon-bubble, .site-header__cart, [data-cart-toggle], .js-drawer-open-right, .header__icon--cart');
+            var cartIcon = document.querySelector('a[href="/cart"], .cart-icon-bubble, .site-header__cart, [data-cart-toggle], .header__icon--cart');
             if (cartIcon) cartIcon.click();
           }, 400);
         }
