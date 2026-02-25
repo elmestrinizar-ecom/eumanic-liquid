@@ -9,15 +9,6 @@
  */
 {
   "sections": {
-    "drinkfluence_hero_split_EMNWEB": {
-      "type": "drinkfluence-hero-split",
-      "name": "Drinkfluence Hero Split",
-      "settings": {
-        "bg_color": "#F0F4F1",
-        "text_color": "#133626",
-        "btn_color": "#0D2419"
-      }
-    },
     "omnilux_hero_UYUBLP": {
       "type": "OMNILUX-HERO",
       "name": "OMNILUX-HERO",
@@ -570,7 +561,6 @@
     }
   },
   "order": [
-    "drinkfluence_hero_split_EMNWEB",
     "omnilux_hero_UYUBLP",
     "eumanic_trust_bar",
     "boku_product_benefits_4jHbAB",
