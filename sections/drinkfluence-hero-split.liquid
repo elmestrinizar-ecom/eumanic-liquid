@@ -1,0 +1,193 @@
+{% schema %}
+{
+  "name": "Drinkfluence Hero Split",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Couleur de fond (gauche)",
+      "default": "#F0F4F1"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur du texte",
+      "default": "#133626"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Couleur du bouton",
+      "default": "#0D2419"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drinkfluence Hero Split",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Outfit:wght@400;500;600&display=swap');
+
+  .df-split-section {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 85vh;
+    background-color: {{ section.settings.bg_color }};
+    overflow: hidden;
+  }
+
+  .df-split-content {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8% 10%;
+    color: {{ section.settings.text_color }};
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Détail subtil - petite étoile rotative / badge */
+  .df-split-badge {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 80px;
+    height: 80px;
+    animation: df-spin 15s linear infinite;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  @keyframes df-spin {
+    100% { transform: rotate(360deg); }
+  }
+
+  .df-split-image-container {
+    flex: 1 1 50%;
+    position: relative;
+    min-height: 50vh;
+  }
+
+  /* Full bleed cover */
+  .df-split-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.8s ease;
+  }
+  
+  .df-split-image-container:hover .df-split-image {
+    transform: scale(1.02);
+  }
+
+  .df-split-headline {
+    font-family: 'Fraunces', serif;
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0 0 25px 0;
+    letter-spacing: -0.03em;
+    color: {{ section.settings.text_color }};
+  }
+
+  .df-split-subhead {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0 0 40px 0;
+    opacity: 0.9;
+    max-width: 480px;
+  }
+
+  .df-split-details {
+    font-size: 0.95rem;
+    opacity: 0.7;
+    margin-top: 8px;
+    display: block;
+    font-weight: 400;
+  }
+
+  .df-split-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #ffffff;
+    background-color: {{ section.settings.btn_color }};
+    padding: 18px 45px;
+    border-radius: 50px; /* Forme de pilule type Olipop */
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    align-self: flex-start;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .df-split-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    background-color: {{ section.settings.text_color }};
+  }
+
+  @media (max-width: 900px) {
+    .df-split-section {
+      flex-direction: column;
+    }
+    .df-split-content {
+      flex: 1 1 100%;
+      padding: 60px 30px;
+      text-align: center;
+      align-items: center;
+    }
+    .df-split-btn {
+      align-self: center;
+    }
+    .df-split-headline {
+      font-size: 3.2rem;
+    }
+    .df-split-image-container {
+      flex: 1 1 100%;
+      width: 100%;
+      height: 60vh;
+      min-height: 400px;
+    }
+    .df-split-badge {
+      display: none;
+    }
+  }
+</style>
+
+<div class="df-split-section">
+  <div class="df-split-content">
+    
+    <!-- Decorative SVG Badge -->
+    <svg class="df-split-badge" viewBox="0 0 100 100" fill="currentColor">
+      <path d="M50 0L54.7434 38.6534L93.3013 25L61.7371 50L93.3013 75L54.7434 61.3466L50 100L45.2566 61.3466L6.69873 75L38.2629 50L6.69873 25L45.2566 38.6534L50 0Z"/>
+    </svg>
+
+    <h2 class="df-split-headline">Une Nouvelle <br>Ère du Soda.</h2>
+    <p class="df-split-subhead">
+      Riche en fibres. Faible en sucre*. Flavours délicieux. ☺
+      <span class="df-split-details">*Comparé aux sodas traditionnels. Drinkfluence prend soin de votre digestion.</span>
+    </p>
+    
+    <a href="/collections/all" class="df-split-btn">DÉCOUVRIR DRINKFLUENCE</a>
+  </div>
+  
+  <div class="df-split-image-container">
+    <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/20260225_0259_Image_Generation_remix_01kj98ang5feaabqpaq74a2k5s.png?v=1771987452" alt="Drinkfluence Can Split" class="df-split-image" loading="lazy">
+  </div>
+</div>
