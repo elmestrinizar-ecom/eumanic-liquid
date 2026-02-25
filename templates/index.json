@@ -9,6 +9,11 @@
  */
 {
   "sections": {
+    "clutch_innosoda_LdXJ3X": {
+      "type": "clutch-innosoda",
+      "name": "Drinkfluence Soda",
+      "settings": {}
+    },
     "omnilux_hero_UYUBLP": {
       "type": "OMNILUX-HERO",
       "name": "OMNILUX-HERO",
@@ -561,6 +566,7 @@
     }
   },
   "order": [
+    "clutch_innosoda_LdXJ3X",
     "omnilux_hero_UYUBLP",
     "eumanic_trust_bar",
     "boku_product_benefits_4jHbAB",
