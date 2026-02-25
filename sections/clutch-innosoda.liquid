@@ -1,0 +1,410 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+  .clutch-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    font-family: 'Outfit', sans-serif;
+    color: #1a1a1a;
+  }
+
+  .clutch-container {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  @media (max-width: 991px) {
+    .clutch-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  /* MEDIA SECTION */
+  .clutch-media-wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: stretch;
+  }
+  
+  .clutch-main-col {
+    flex: 2;
+  }
+  
+  .clutch-side-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .clutch-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .clutch-side-img {
+    width: 100%;
+    flex: 1;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .clutch-media-wrapper {
+      flex-direction: column;
+    }
+    .clutch-side-col {
+      flex-direction: row;
+    }
+  }
+
+  /* RIGHT SIDE INFO */
+  .clutch-info {
+    padding-top: 10px;
+  }
+
+  .clutch-title {
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+    color: #1a1a1a;
+  }
+
+  .clutch-reviews {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+
+  .clutch-stars {
+    color: #00B67A;
+    display: flex;
+    gap: 2px;
+  }
+
+  .clutch-stars svg {
+    width: 20px;
+    height: 20px;
+    fill: #00B67A;
+  }
+
+  .clutch-reviews-link {
+    color: #333;
+    text-decoration: underline;
+    font-size: 0.95rem;
+    text-underline-offset: 3px;
+  }
+
+  .clutch-price-wrap {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .clutch-price {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .clutch-tax-note {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .clutch-description {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #333;
+    position: relative;
+    padding-right: 40px;
+    margin-bottom: 25px;
+  }
+
+  .clutch-desc-plus {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    cursor: pointer;
+    font-weight: 300;
+    color: #1a1a1a;
+  }
+
+  .clutch-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 25px 0;
+  }
+
+  .clutch-variants-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+
+  .clutch-btn-variant {
+    flex: 1;
+    padding: 14px 10px;
+    border: 1px solid #e0e0e0;
+    background: transparent;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    color: #333;
+    text-align: center;
+  }
+
+  .clutch-btn-variant.active, .clutch-btn-variant:hover {
+    border-color: #000;
+    font-weight: 500;
+    color: #000;
+  }
+
+  .clutch-mix-box {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 30px;
+    background: #fafafa;
+  }
+
+  /* SUBSCRIPTION BOX */
+  .clutch-sub-container {
+    border: 1px solid #1E7F65; 
+    border-radius: 8px;
+    padding: 25px 20px 20px;
+    position: relative;
+    background: #fff;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  .clutch-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: #1E7F65;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .clutch-sub-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .clutch-radio {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .clutch-radio-inner {
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+  }
+
+  .clutch-sub-title {
+    line-height: 1.4;
+  }
+
+  .clutch-sub-title strong {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #000;
+    display: block;
+  }
+
+  .clutch-old-price {
+    text-decoration: line-through;
+    color: #777;
+    margin-right: 5px;
+    font-size: 0.95rem;
+  }
+
+  .clutch-sub-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #000;
+  }
+
+  .clutch-sub-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-left: 35px;
+  }
+
+  .clutch-sub-list li {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .clutch-sub-list li svg {
+    width: 16px;
+    height: 16px;
+    color: #444;
+    flex-shrink: 0;
+  }
+
+  .clutch-add-btn {
+    width: 100%;
+    background: #000; /* Black button like typical modern designs */
+    color: #fff;
+    border: none;
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .clutch-add-btn:hover {
+    opacity: 0.8;
+  }
+</style>
+
+<div class="clutch-section">
+  <div class="clutch-container">
+    
+    <!-- LEFT SIDE: MEDIA GRID -->
+    <div class="clutch-media-wrapper">
+      <div class="clutch-main-col">
+        <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/20260225_0257_Image_Generation_remix_01kj986b35f8wv91tjmfdv7dkp.png?v=1771985135" alt="Clutch InnoSoda Raspberry" class="clutch-main-img">
+      </div>
+      <div class="clutch-side-col">
+        <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/20260225_0255_Image_Generation_remix_01kj98279sfrvar46egkfevqv7.png?v=1771985136" alt="Cans Yuzu Ginger Lime" class="clutch-side-img">
+        <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/task_01kj98rg3afwzrd11ezs5v5ww2_1771985250_img_0.webp?v=1771985339" alt="Clutch InnoSoda Yuzu" class="clutch-side-img">
+        <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/images.jpg?v=1771985352" alt="Clutch InnoSoda Ginger Lime" class="clutch-side-img">
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: PRODUCT INFO -->
+    <div class="clutch-info">
+      <h1 class="clutch-title">Clutch® InnoSoda®, Pack de 24.</h1>
+      
+      <div class="clutch-reviews">
+        <div class="clutch-stars">
+          <!-- 5 Trustpilot style stars -->
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <a href="#" class="clutch-reviews-link">Plus de 70 avis clients sur Trustpilot</a>
+      </div>
+
+      <div class="clutch-price-wrap">
+        <span class="clutch-price">66,95 €</span> <span class="clutch-tax-note">(TTC)</span>
+      </div>
+
+      <div class="clutch-description">
+        <p style="margin: 0;">Clutch® InnoSoda® – une alternative aux sodas élaborée avec de bons ingrédients comme des fibres alimentaires et des glucides à libération lente, qui aide à garder votre glycémie sous contrôle*.</p>
+        <span class="clutch-desc-plus">+</span>
+      </div>
+
+      <div class="clutch-divider"></div>
+
+      <div class="clutch-variants-row">
+        <button class="clutch-btn-variant active">Framboise</button>
+        <button class="clutch-btn-variant">Yuzu</button>
+        <button class="clutch-btn-variant">Gingembre Citron Vert</button>
+      </div>
+
+      <div class="clutch-mix-box">
+        Mix Pack de 24 (8 x framboise + 8 x yuzu + 8 x gingembre-citron vert)
+      </div>
+
+      <div class="clutch-sub-container">
+        <div class="clutch-badge">Économisez jusqu'à 20%</div>
+        <div class="clutch-sub-header">
+          <div class="clutch-radio">
+             <div class="clutch-radio-inner"></div>
+          </div>
+          <div class="clutch-sub-title">
+            <strong>S'abonner & économiser</strong>
+            <div><span class="clutch-old-price">66,95 €</span> <span class="clutch-sub-price">53,56 €</span></div>
+          </div>
+        </div>
+        <ul class="clutch-sub-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="M22 4L12 14.01l-3-3"></path></svg>
+            Économisez 20%
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="M22 4L12 14.01l-3-3"></path></svg>
+            Livraison gratuite en France
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="M22 4L12 14.01l-3-3"></path></svg>
+            Sans engagement. Annulable à tout moment.
+          </li>
+        </ul>
+      </div>
+
+      <button class="clutch-add-btn">AJOUTER AU PANIER</button>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const variants = document.querySelectorAll('.clutch-btn-variant');
+    variants.forEach(btn => {
+      btn.addEventListener('click', () => {
+        variants.forEach(v => v.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Clutch InnoSoda",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Clutch InnoSoda",
+      "category": "Custom Forms"
+    }
+  ]
+}
+{% endschema %}
