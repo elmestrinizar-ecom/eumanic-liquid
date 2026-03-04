@@ -9,18 +9,6 @@
  */
 {
   "sections": {
-    "nuoo_split_promo_8dpMBc": {
-      "type": "nuoo-split-promo",
-      "name": "Nuoo Split Section",
-      "settings": {
-        "left_title": "ÉCLAT<br>NUOO",
-        "left_btn": "DÉCOUVRIR",
-        "left_link": "",
-        "right_title": "LE MEILLEUR<br>PAR NUOO",
-        "right_btn": "DÉCOUVRIR",
-        "right_link": ""
-      }
-    },
     "omnilux_hero_UYUBLP": {
       "type": "OMNILUX-HERO",
       "name": "OMNILUX-HERO",
@@ -573,7 +561,6 @@
     }
   },
   "order": [
-    "nuoo_split_promo_8dpMBc",
     "omnilux_hero_UYUBLP",
     "eumanic_trust_bar",
     "boku_product_benefits_4jHbAB",
