@@ -1,0 +1,155 @@
+{% schema %}
+{
+  "name": "Nuoo Split Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "left_title",
+      "label": "Titre Gauche (utilisez <br> pour sauter une ligne)",
+      "default": "ÉCLAT<br>NUOO"
+    },
+    {
+      "type": "text",
+      "id": "left_btn",
+      "label": "Bouton Gauche",
+      "default": "DÉCOUVRIR"
+    },
+    {
+      "type": "url",
+      "id": "left_link",
+      "label": "Lien Gauche"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Image Gauche (Optionnel)"
+    },
+    {
+      "type": "text",
+      "id": "right_title",
+      "label": "Titre Droit (utilisez <br> pour sauter une ligne)",
+      "default": "LE MEILLEUR<br>PAR NUOO"
+    },
+    {
+      "type": "text",
+      "id": "right_btn",
+      "label": "Bouton Droit",
+      "default": "DÉCOUVRIR"
+    },
+    {
+      "type": "url",
+      "id": "right_link",
+      "label": "Lien Droit"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Image Droite (Optionnel)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nuoo Split Section"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .nuoo-split-wrap {
+    display: flex;
+    width: 100%;
+    height: 700px;
+  }
+  .nuoo-split-block {
+    flex: 1;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+  }
+  .nuoo-split-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.2);
+    z-index: 1;
+    transition: background 0.3s ease;
+  }
+  .nuoo-split-block:hover::before {
+    background: rgba(0,0,0,0.3);
+  }
+  .nuoo-split-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nuoo-split-title {
+    color: #ffffff;
+    font-size: 5vw;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0 0 30px 0;
+    line-height: 1;
+    letter-spacing: -1px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  .nuoo-split-btn {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    padding: 15px 40px;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .nuoo-split-btn:hover {
+    background-color: #f1f1f1;
+  }
+  
+  @media (max-width: 900px) {
+    .nuoo-split-wrap {
+      flex-direction: column;
+      height: auto;
+    }
+    .nuoo-split-block {
+      height: 450px;
+      width: 100%;
+    }
+    .nuoo-split-title {
+      font-size: 46px;
+      margin-bottom: 25px;
+    }
+  }
+</style>
+
+<div class="nuoo-split-wrap">
+  <!-- Left Block -->
+  <div class="nuoo-split-block" style="background-image: url('{% if section.settings.left_image != blank %}{{ section.settings.left_image | img_url: 'master' }}{% else %}https://cdn.shopify.com/s/files/1/0986/3141/8238/files/gtl-dzm-dt.webp?v=1772600835{% endif %}');">
+    <div class="nuoo-split-content">
+      <h2 class="nuoo-split-title">{{ section.settings.left_title }}</h2>
+      <a href="{{ section.settings.left_link | default: '#' }}" class="nuoo-split-btn">{{ section.settings.left_btn }}</a>
+    </div>
+  </div>
+  
+  <!-- Right Block -->
+  <div class="nuoo-split-block" style="background-image: url('{% if section.settings.right_image != blank %}{{ section.settings.right_image | img_url: 'master' }}{% else %}https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Capture_d_ecran_2026-03-04_a_05.10.54.png?v=1772601073{% endif %}');">
+    <div class="nuoo-split-content">
+      <h2 class="nuoo-split-title">{{ section.settings.right_title }}</h2>
+      <a href="{{ section.settings.right_link | default: '#' }}" class="nuoo-split-btn">{{ section.settings.right_btn }}</a>
+    </div>
+  </div>
+</div>
