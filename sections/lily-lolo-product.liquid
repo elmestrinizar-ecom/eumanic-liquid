@@ -1,0 +1,462 @@
+{% schema %}
+{
+  "name": "Lily Lolo Product",
+  "settings": [
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Couleur d'accent (Rose)",
+      "default": "#D47788"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Couleur de fond",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Couleur de fond avantage",
+      "default": "#FDF4F5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lily Lolo Product"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .lily-lolo-section {
+    background-color: {{ section.settings.bg_color }};
+    padding: 60px 20px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+  }
+  .lily-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+  }
+  .lily-media, .lily-info {
+    flex: 1;
+    min-width: 320px;
+  }
+
+  /* MEDIA GALLERY - Morphe Inspired */
+  .lily-media-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  .lily-media-item {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #f7f7f7;
+    position: relative;
+    padding-top: 100%; /* Square aspect ratio */
+  }
+  .lily-media-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* The last photo as the main photo - spanning full width */
+  .lily-media-item.main-image {
+    grid-column: span 2;
+    padding-top: 100%;
+  }
+
+  /* PRODUCT INFO */
+  .lily-brand {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .lily-title {
+    font-size: 36px;
+    font-weight: 400;
+    margin: 0 0 12px 0;
+    color: #1a1a1a;
+  }
+  .lily-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 24px;
+  }
+  .lily-stars {
+    color: {{ section.settings.accent_color }};
+    letter-spacing: 2px;
+  }
+  .lily-price {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #1a1a1a;
+  }
+
+  /* SHADES */
+  .lily-shades-title {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: #777;
+    letter-spacing: 1px;
+  }
+  .lily-shades-list {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 35px;
+  }
+  .lily-shade-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .lily-shade-dot:hover {
+    transform: scale(1.1);
+  }
+  .lily-shade-dot.active {
+    border-color: #333;
+    padding: 2px;
+    background-clip: content-box;
+  }
+
+  /* BENEFITS LIST - Boku Inspired */
+  .lily-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 35px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .lily-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 15px;
+    background: {{ section.settings.highlight_color }};
+    padding: 14px 20px;
+    border-radius: 8px;
+    color: #333;
+    line-height: 1.4;
+  }
+  .lily-check {
+    background-color: {{ section.settings.accent_color }};
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  /* BUNDLES - Boku Inspired */
+  .lily-bundles-title {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+  }
+  .lily-bundles-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .lily-bundle-option {
+    border: 2px solid #eaeaea;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: white;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: stretch;
+  }
+  .lily-bundle-option.active {
+    border-color: {{ section.settings.accent_color }};
+    background-color: {{ section.settings.highlight_color }};
+  }
+  .lily-bundle-header {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 13px;
+    font-weight: bold;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-right: 1px solid #eaeaea;
+  }
+  .lily-bundle-option.active .lily-bundle-header {
+    background-color: {{ section.settings.accent_color }};
+    border-right-color: {{ section.settings.accent_color }};
+    color: white;
+  }
+  .lily-bundle-body {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+  }
+  .lily-bundle-qty {
+    font-size: 16px;
+    color: {{ section.settings.accent_color }};
+    font-weight: bold;
+  }
+  .lily-bundle-price-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lily-bundle-old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+  }
+  .lily-bundle-new-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a1a1a;
+  }
+
+  /* ADD TO CART */
+  .lily-add-btn {
+    width: 100%;
+    background-color: {{ section.settings.accent_color }};
+    color: white;
+    border: none;
+    padding: 18px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 14px rgba(212, 119, 136, 0.3);
+  }
+  .lily-add-btn:hover {
+    opacity: 0.9;
+  }
+  .lily-add-btn:active {
+    transform: translateY(2px);
+  }
+  .lily-footer-info {
+    font-size: 13px;
+    color: #777;
+    line-height: #1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .lily-footer-info p {
+    margin: 0;
+  }
+  .lily-feature-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .lily-container {
+      flex-direction: column;
+      gap: 40px;
+    }
+    .lily-bundle-header {
+      width: 90px;
+      font-size: 11px;
+    }
+  }
+</style>
+
+<div class="lily-lolo-section" id="achat-produit">
+  <div class="lily-container">
+    
+    <!-- PHOTOS (Morphe grid style) -->
+    <div class="lily-media">
+      <div class="lily-media-grid">
+        <!-- Main Image (Last URL per user request) spans full width -->
+        <div class="lily-media-item main-image">
+          <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/20260304_0424_Image_Generation_remix_01kjvhe0svfdbv3djrj0ygf490.png?v=1772598428" alt="Lily Lolo Natural Lip Gloss Main">
+        </div>
+        <!-- Sub Images -->
+        <div class="lily-media-item">
+          <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/20260304_0420_Image_Generation_remix_01kjvh4s55fr88xd610w8wcy16.png?v=1772598428" alt="Texture 1">
+        </div>
+        <div class="lily-media-item">
+          <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Capture_d_ecran_2026-03-04_a_04.17.53.png?v=1772598424" alt="Models Morphe Inspiration">
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT INFO (Boku + Morphe logic) -->
+    <div class="lily-info">
+      <div class="lily-brand">LILY LOLO</div>
+      <h1 class="lily-title">Natural Lip Gloss</h1>
+      
+      <div class="lily-reviews">
+        <span class="lily-stars">★★★★★</span>
+        <span>4.9 (12 AVIS)</span>
+      </div>
+      
+      <div class="lily-price" id="lily-display-price">14,30€</div>
+
+      <div class="lily-shades-title">TEINTE: BITTEN PINK</div>
+      <div class="lily-shades-list">
+        <div class="lily-shade-dot active" style="background-color: #D47788;"></div>
+        <div class="lily-shade-dot" style="background-color: #E6A8A4;"></div>
+        <div class="lily-shade-dot" style="background-color: #B55B5C;"></div>
+        <div class="lily-shade-dot" style="background-color: #CD8B80;"></div>
+        <div class="lily-shade-dot" style="background-color: #D2958D;"></div>
+      </div>
+
+      <!-- BOKU STYLE BENEFITS (Adapted for makeup) -->
+      <ul class="lily-benefits">
+        <li>
+          <div class="lily-check">✓</div>
+          Formulé avec <b>huiles nourrissantes de jojoba et avocat</b> pour une hydratation optimale.
+        </li>
+        <li>
+          <div class="lily-check">✓</div>
+          Texture crémeuse et <b>fini brillant sans effet collant</b>.
+        </li>
+        <li>
+          <div class="lily-check">✓</div>
+          Apporte une <b>couleur éclatante</b> et un effet volume lumineux.
+        </li>
+        <li>
+          <div class="lily-check">✓</div>
+          Composition <b>100% naturelle</b>, fabriqué en Angleterre.
+        </li>
+      </ul>
+
+      <!-- BOKU STYLE BUNDLES -->
+      <div class="lily-bundles-title">Choisissez et économisez :</div>
+      <div class="lily-bundles-container">
+        
+        <!-- Pack 1 -->
+        <div class="lily-bundle-option active" onclick="selectLilyBundle(this, 14.30, 1)">
+          <div class="lily-bundle-header" style="background-color: transparent; border-right-color: #eaeaea; color: #a0a0a0;">
+            STANDARD
+          </div>
+          <div class="lily-bundle-body">
+            <div class="lily-bundle-qty">1 Lip Gloss</div>
+            <div class="lily-bundle-price-wrap">
+              <span class="lily-bundle-new-price">14,30€</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pack 2 -->
+        <div class="lily-bundle-option" onclick="selectLilyBundle(this, 25.74, 2)">
+          <div class="lily-bundle-header">
+            Économisez 10%
+          </div>
+          <div class="lily-bundle-body">
+            <div class="lily-bundle-qty">2 Lip Gloss</div>
+            <div class="lily-bundle-price-wrap">
+              <span class="lily-bundle-old-price">28,60€</span>
+              <span class="lily-bundle-new-price">25,74€</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pack 3 -->
+        <div class="lily-bundle-option" onclick="selectLilyBundle(this, 34.32, 3)">
+          <div class="lily-bundle-header" style="background-color: #ffd700; color: #333; border-right-color: #ffd700;">
+            Économisez 20%
+          </div>
+          <div class="lily-bundle-body">
+            <div class="lily-bundle-qty">3 Lip Gloss</div>
+            <div class="lily-bundle-price-wrap">
+              <span class="lily-bundle-old-price">42,90€</span>
+              <span class="lily-bundle-new-price">34,32€</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ADD TO CART -->
+      <button class="lily-add-btn">AJOUTER AU PANIER - <span id="lily-btn-price">14,30€</span></button>
+
+      <div class="lily-footer-info">
+        <div class="lily-feature-line">
+          <span>📍</span>
+          <p>Vérifier la disponibilité en boutique</p>
+        </div>
+        <div class="lily-feature-line">
+          <span>✨</span>
+          <p>Gagnez <span id="lily-rewards-points">143</span> points de fidélité</p>
+        </div>
+        <div class="lily-feature-line">
+          <span>🌿</span>
+          <p>Conforme à la charte Nuoo</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  function selectLilyBundle(element, price, quantity) {
+    // Remove active class from all options
+    const options = element.closest('.lily-bundles-container').querySelectorAll('.lily-bundle-option');
+    options.forEach(el => el.classList.remove('active'));
+    
+    // Add active class to clicked
+    element.classList.add('active');
+    
+    // Format price correctly with comma
+    const formattedPrice = price.toFixed(2).replace('.', ',') + '€';
+    
+    // Update price displays in UI
+    document.getElementById('lily-display-price').innerText = formattedPrice;
+    document.getElementById('lily-btn-price').innerText = formattedPrice;
+    
+    // Update hypothetical loyalty points
+    const points = Math.round(price * 10);
+    document.getElementById('lily-rewards-points').innerText = points;
+  }
+  
+  // Basic shade selection logic for demo purposes
+  document.querySelectorAll('.lily-shade-dot').forEach(dot => {
+    dot.addEventListener('click', function() {
+      document.querySelectorAll('.lily-shade-dot').forEach(d => d.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
