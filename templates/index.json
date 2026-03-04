@@ -9,13 +9,16 @@
  */
 {
   "sections": {
-    "lily_lolo_product_ar6U6X": {
-      "type": "lily-lolo-product",
-      "name": "Lily Lolo Product",
+    "nuoo_split_promo_8dpMBc": {
+      "type": "nuoo-split-promo",
+      "name": "Nuoo Split Section",
       "settings": {
-        "accent_color": "#D47788",
-        "bg_color": "#FFFFFF",
-        "highlight_color": "#FDF4F5"
+        "left_title": "ÉCLAT<br>NUOO",
+        "left_btn": "DÉCOUVRIR",
+        "left_link": "",
+        "right_title": "LE MEILLEUR<br>PAR NUOO",
+        "right_btn": "DÉCOUVRIR",
+        "right_link": ""
       }
     },
     "omnilux_hero_UYUBLP": {
@@ -570,7 +573,7 @@
     }
   },
   "order": [
-    "lily_lolo_product_ar6U6X",
+    "nuoo_split_promo_8dpMBc",
     "omnilux_hero_UYUBLP",
     "eumanic_trust_bar",
     "boku_product_benefits_4jHbAB",
