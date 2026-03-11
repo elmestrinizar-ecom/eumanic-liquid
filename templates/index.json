@@ -18,6 +18,32 @@
         "highlight_color": "#FDF4F5"
       }
     },
+    "nuoo_split_promo_qD4wrT": {
+      "type": "nuoo-split-promo",
+      "name": "Nuoo Split Section",
+      "settings": {
+        "left_title": "ÉCLATNUOO",
+        "left_btn": "DÉCOUVRIR",
+        "left_link": "",
+        "right_title": "LE MEILLEURPAR NUOO",
+        "right_btn": "DÉCOUVRIR",
+        "right_link": ""
+      }
+    },
+    "clutch_innosoda_pN3Tkt": {
+      "type": "clutch-innosoda",
+      "name": "Drinkfluence Soda",
+      "settings": {}
+    },
+    "drinkfluence_hero_split_yjCcmT": {
+      "type": "drinkfluence-hero-split",
+      "name": "Drinkfluence Hero Split",
+      "settings": {
+        "bg_color": "#F0F4F1",
+        "text_color": "#133626",
+        "btn_color": "#0D2419"
+      }
+    },
     "omnilux_hero_UYUBLP": {
       "type": "OMNILUX-HERO",
       "name": "OMNILUX-HERO",
@@ -571,6 +597,9 @@
   },
   "order": [
     "lily_lolo_product_KVCDgc",
+    "nuoo_split_promo_qD4wrT",
+    "clutch_innosoda_pN3Tkt",
+    "drinkfluence_hero_split_yjCcmT",
     "omnilux_hero_UYUBLP",
     "eumanic_trust_bar",
     "boku_product_benefits_4jHbAB",
