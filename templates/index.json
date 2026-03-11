@@ -9,6 +9,15 @@
  */
 {
   "sections": {
+    "lily_lolo_product_KVCDgc": {
+      "type": "lily-lolo-product",
+      "name": "Lily Lolo Product",
+      "settings": {
+        "accent_color": "#D47788",
+        "bg_color": "#FFFFFF",
+        "highlight_color": "#FDF4F5"
+      }
+    },
     "omnilux_hero_UYUBLP": {
       "type": "OMNILUX-HERO",
       "name": "OMNILUX-HERO",
@@ -561,6 +570,7 @@
     }
   },
   "order": [
+    "lily_lolo_product_KVCDgc",
     "omnilux_hero_UYUBLP",
     "eumanic_trust_bar",
     "boku_product_benefits_4jHbAB",
