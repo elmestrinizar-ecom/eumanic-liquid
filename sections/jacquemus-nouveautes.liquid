@@ -1,0 +1,305 @@
+{% schema %}
+{
+  "name": "Jacquemus Nouveautés",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Bloc Gauche (Image 1)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_left",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title_left",
+      "default": "La Femme",
+      "label": "Titre"
+    },
+    {
+      "type": "text",
+      "id": "link_text_left",
+      "default": "Découvrir les nouveautés femme",
+      "label": "Texte du lien"
+    },
+    {
+      "type": "url",
+      "id": "link_url_left",
+      "label": "URL du lien"
+    },
+    {
+      "type": "header",
+      "content": "Bloc Droit (Image 2)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title_right",
+      "default": "L'Homme",
+      "label": "Titre"
+    },
+    {
+      "type": "text",
+      "id": "link_text_right",
+      "default": "Découvrir les nouveautés homme",
+      "label": "Texte du lien"
+    },
+    {
+      "type": "url",
+      "id": "link_url_right",
+      "label": "URL du lien"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_link",
+      "name": "Lien Menu Latéral",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Texte",
+          "default": "Nouveautés"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Lien"
+        },
+        {
+          "type": "checkbox",
+          "id": "has_dropdown",
+          "label": "Afficher flèche (dropdown)",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "is_active",
+          "label": "Style Encadré (Actif)",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Jacquemus Nouveautés",
+      "blocks": [
+        { "type": "menu_link", "settings": { "title": "Nouveautés Femme", "has_dropdown": true } },
+        { "type": "menu_link", "settings": { "title": "Nouveautés Homme", "has_dropdown": true, "is_active": true } },
+        { "type": "menu_link", "settings": { "title": "Nouveaux Sacs", "has_dropdown": false } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .jn-section {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    font-family: {{ settings.type_base_font.family | default: "Helvetica, Arial, sans-serif" }};
+  }
+
+  /* Sidebar styling */
+  .jn-sidebar {
+    width: 25%;
+    max-width: 300px;
+    min-width: 200px;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #f2f2f2;
+    background: #fff;
+    z-index: 10;
+  }
+
+  .jn-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Spacing between menu items */
+  }
+
+  .jn-menu-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #000;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    padding: 8px 12px;
+    margin-left: -12px; /* Pull back to align with padding visually */
+    border: 1px solid transparent; /* default invisible box */
+    transition: border-color 0.3s ease;
+  }
+
+  .jn-menu-link.active-box {
+    border-color: #000;
+  }
+
+  .jn-menu-link:hover {
+    opacity: 0.7;
+  }
+  
+  .jn-menu-link.active-box:hover {
+    opacity: 1;
+  }
+
+  .jn-arrow {
+    font-size: 10px;
+    opacity: 0.6;
+    margin-left: 10px;
+  }
+
+  /* Split layout */
+  .jn-split-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .jn-split-block {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+  }
+
+  .jn-split-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: block;
+  }
+
+  .jn-split-block:hover img {
+    transform: scale(1.03);
+  }
+
+  .jn-split-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 25%);
+    pointer-events: none;
+  }
+
+  .jn-split-text {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: #fff;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .jn-split-title {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: 0.5px;
+    color: #fff;
+  }
+
+  .jn-split-link {
+    font-size: 13px;
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 300;
+  }
+
+  /* Responsive Mobile */
+  @media (max-width: 800px) {
+    .jn-section {
+      flex-direction: column;
+      height: auto;
+    }
+    .jn-sidebar {
+      width: 100%;
+      max-width: 100%;
+      padding: 30px 24px;
+      border-right: none;
+      border-bottom: 1px solid #f2f2f2;
+    }
+    .jn-split-container {
+      flex-direction: column;
+    }
+    .jn-split-block {
+      height: 60vh;
+      width: 100%;
+    }
+    .jn-split-text {
+      bottom: 25px;
+      left: 20px;
+    }
+  }
+</style>
+
+<div class="jn-section">
+  
+  <!-- Sidebar Menu -->
+  <div class="jn-sidebar">
+    <div class="jn-menu">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link | default: '#' }}" class="jn-menu-link {% if block.settings.is_active %}active-box{% endif %}" {{ block.shopify_attributes }}>
+          <span>{{ block.settings.title }}</span>
+          {% if block.settings.has_dropdown %}
+            <span class="jn-arrow">▼</span>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Right Split Images -->
+  <div class="jn-split-container">
+    
+    <!-- LEFT IMAGE (La Femme) -->
+    <a href="{{ section.settings.link_url_left | default: '#' }}" class="jn-split-block">
+      {% if section.settings.image_left != blank %}
+        {{ section.settings.image_left | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.title_left | default: 'Manteau Femme' }}
+      {% else %}
+        <!-- Fallback based on user string -->
+        <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Capture_d_ecran_2026-03-27_a_04.32.28.png?v=1774582370" alt="La Femme" loading="lazy">
+      {% endif %}
+      <div class="jn-split-overlay"></div>
+      <div class="jn-split-text">
+        <h3 class="jn-split-title">{{ section.settings.title_left }}</h3>
+        <span class="jn-split-link">{{ section.settings.link_text_left }}</span>
+      </div>
+    </a>
+
+    <!-- RIGHT IMAGE (L'Homme) -->
+    <a href="{{ section.settings.link_url_right | default: '#' }}" class="jn-split-block">
+      {% if section.settings.image_right != blank %}
+        {{ section.settings.image_right | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.title_right | default: 'Manteau Homme' }}
+      {% else %}
+        <!-- Fallback based on user string -->
+        <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Capture_d_ecran_2026-03-27_a_04.33.01.png?v=1774582393" alt="L'Homme" loading="lazy">
+      {% endif %}
+      <div class="jn-split-overlay"></div>
+      <div class="jn-split-text">
+        <h3 class="jn-split-title">{{ section.settings.title_right }}</h3>
+        <span class="jn-split-link">{{ section.settings.link_text_right }}</span>
+      </div>
+    </a>
+
+  </div>
+</div>

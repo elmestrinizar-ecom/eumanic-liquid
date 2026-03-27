@@ -9,6 +9,16 @@
  */
 {
   "sections": {
+    "jacquemus_nouveautes_NEW": {
+      "type": "jacquemus-nouveautes",
+      "settings": {},
+      "blocks": {
+        "menu_1": { "type": "menu_link", "settings": { "title": "Nouveautés Femme", "has_dropdown": true } },
+        "menu_2": { "type": "menu_link", "settings": { "title": "Nouveautés Homme", "has_dropdown": true, "is_active": true } },
+        "menu_3": { "type": "menu_link", "settings": { "title": "Nouveaux Sacs", "has_dropdown": false } }
+      },
+      "block_order": [ "menu_1", "menu_2", "menu_3" ]
+    },
     "jacquemus_split_NEW": {
       "type": "jacquemus-split",
       "settings": {
@@ -614,6 +624,7 @@
     }
   },
   "order": [
+    "jacquemus_nouveautes_NEW",
     "jacquemus_split_NEW",
     "flotte_contact_NEW",
     "lily_lolo_product_KVCDgc",
