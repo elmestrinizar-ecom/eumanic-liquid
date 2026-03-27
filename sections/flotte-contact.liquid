@@ -347,10 +347,7 @@
       {% if section.settings.inspiration_image != blank %}
         {{ section.settings.inspiration_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: section.settings.inspiration_image.alt | default: 'Flotte pochette' }}
       {% else %}
-        <div class="flotte-placeholder">
-          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-          Sélectionnez la photo de la pochette Flotte<br>depuis le personnaliseur de thème
-        </div>
+        <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Capture_d_ecran_2026-03-27_a_03.52.06.png?v=1774579941" alt="Flotte Inspiration" loading="lazy">
       {% endif %}
     </div>
     <div class="flotte-inspiration-content">
