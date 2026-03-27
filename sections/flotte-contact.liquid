@@ -1,0 +1,362 @@
+{% schema %}
+{
+  "name": "Flotte Contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre principal",
+      "default": "Contactez-nous"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Nos conseillers sont à votre écoute et seront ravis de répondre à toutes vos questions."
+    },
+    {
+      "type": "image_picker",
+      "id": "inspiration_image",
+      "label": "Image de pochette Flotte (Troisième screenshot)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "contact_column",
+      "name": "Colonne de contact",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titre de la colonne",
+          "default": "APPELEZ-NOUS"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Texte explicatif",
+          "default": "<p>Lundi - Samedi : 9h30 - 20h<br>Dimanche : 9h30 - 17h30</p>"
+        },
+        {
+          "type": "text",
+          "id": "btn1_text",
+          "label": "Texte bouton 1",
+          "default": "Appelez-nous"
+        },
+        {
+          "type": "url",
+          "id": "btn1_link",
+          "label": "Lien bouton 1"
+        },
+        {
+          "type": "text",
+          "id": "btn2_text",
+          "label": "Texte bouton 2"
+        },
+        {
+          "type": "url",
+          "id": "btn2_link",
+          "label": "Lien bouton 2"
+        },
+        {
+          "type": "text",
+          "id": "btn3_text",
+          "label": "Texte bouton 3"
+        },
+        {
+          "type": "url",
+          "id": "btn3_link",
+          "label": "Lien bouton 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Flotte Contact",
+      "blocks": [
+        {
+          "type": "contact_column",
+          "settings": {
+            "title": "APPELEZ-NOUS",
+            "content": "<p>Lundi - Samedi : 9h30 - 20h<br>Dimanche : 9h30 - 17h30</p>",
+            "btn1_text": "Appelez-nous",
+            "btn2_text": "Rappelez-moi"
+          }
+        },
+        {
+          "type": "contact_column",
+          "settings": {
+            "title": "ÉCRIVEZ-NOUS",
+            "content": "<p>Nous sommes également disponibles par e-mail, sur WhatsApp et Apple Messages.</p>",
+            "btn1_text": "Envoyez un e-mail",
+            "btn2_text": "WhatsApp",
+            "btn3_text": "Apple Messages"
+          }
+        },
+        {
+          "type": "contact_column",
+          "settings": {
+            "title": "RENDEZ-VOUS EN MAGASIN",
+            "content": "<p>Nous vous invitons à prendre rendez-vous dans le magasin de votre choix afin de vivre une expérience personnalisée.</p>",
+            "btn1_text": "Prendre rendez-vous"
+          }
+        },
+        {
+          "type": "contact_column",
+          "settings": {
+            "title": "SERVICE D'ASSISTANCE",
+            "content": "<p>Le service Flotte dédié à vos retours et échanges est disponible du lundi au vendredi de 9h30 à 18h.</p>",
+            "btn1_text": "Accéder à l'assistance"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .flotte-contact-section {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    font-family: {{ settings.type_base_font.family | default: "'Helvetica Neue', Helvetica, Arial, sans-serif" }};
+    color: #000;
+  }
+  .flotte-contact-header {
+    margin-bottom: 50px;
+  }
+  .flotte-contact-header h2 {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+  }
+  .flotte-contact-header p {
+    font-size: 15px;
+    color: #4a4a4a;
+  }
+  .flotte-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 80px;
+  }
+  .flotte-contact-col {
+    padding: 40px 30px;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+  }
+  .flotte-contact-col:last-child {
+    border-right: none;
+  }
+  .flotte-contact-col h3 {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 24px;
+    margin-top: 0;
+  }
+  .flotte-contact-col .flotte-content-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 40px;
+    flex-grow: 1;
+  }
+  .flotte-contact-col .flotte-content-text p {
+    margin-top: 0;
+  }
+  .flotte-col-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .flotte-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid #000;
+    border-radius: 40px;
+    background: transparent;
+    color: #000;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+  .flotte-btn:hover {
+    background: #f8f8f8;
+  }
+  
+  /* Inspiration Section */
+  .flotte-inspiration {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fbfbfb;
+    align-items: center;
+  }
+  .flotte-inspiration-image {
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    background-color: #f6efe9; /* Very soft beige background matching the pouch's vibe */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  .flotte-inspiration-image img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+  }
+  .flotte-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    text-align: center;
+  }
+  .flotte-placeholder svg {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    fill: #ccc;
+  }
+  .flotte-inspiration-content {
+    padding: 60px 80px;
+  }
+  .flotte-inspiration-content h3 {
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 24px;
+    margin-top: 0;
+  }
+  .flotte-inspiration-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 40px;
+  }
+  .flotte-inspiration-content .flotte-btn {
+    max-width: 250px;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .flotte-contact-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .flotte-contact-col:nth-child(2) {
+      border-right: none;
+    }
+    .flotte-contact-col:nth-child(1), .flotte-contact-col:nth-child(2) {
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .flotte-inspiration-content {
+      padding: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .flotte-contact-section {
+      padding: 40px 20px;
+    }
+    .flotte-contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .flotte-contact-col {
+      border-right: none;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 30px 20px;
+    }
+    .flotte-contact-col:last-child {
+      border-bottom: none;
+    }
+    .flotte-inspiration {
+      grid-template-columns: 1fr;
+    }
+    .flotte-inspiration-image {
+      min-height: 300px;
+      padding: 20px;
+    }
+    .flotte-inspiration-image img {
+      max-height: 250px;
+    }
+    .flotte-inspiration-content {
+      padding: 40px 20px;
+    }
+    .flotte-inspiration-content .flotte-btn {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<div class="flotte-contact-section">
+  <div class="flotte-contact-header">
+    <h2>{{ section.settings.title }}</h2>
+    <p>{{ section.settings.subtitle }}</p>
+  </div>
+
+  <div class="flotte-contact-grid">
+    {% for block in section.blocks %}
+      <div class="flotte-contact-col">
+        <h3>{{ block.settings.title }}</h3>
+        <div class="flotte-content-text">
+          {{ block.settings.content }}
+        </div>
+        <div class="flotte-col-buttons">
+          {% if block.settings.btn1_text != blank %}
+            <a href="{{ block.settings.btn1_link | default: '#' }}" class="flotte-btn">
+              {{ block.settings.btn1_text }}
+            </a>
+          {% endif %}
+          {% if block.settings.btn2_text != blank %}
+            <a href="{{ block.settings.btn2_link | default: '#' }}" class="flotte-btn">
+              {{ block.settings.btn2_text }}
+            </a>
+          {% endif %}
+          {% if block.settings.btn3_text != blank %}
+            <a href="{{ block.settings.btn3_link | default: '#' }}" class="flotte-btn">
+              {{ block.settings.btn3_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="flotte-inspiration">
+    <div class="flotte-inspiration-image">
+      {% if section.settings.inspiration_image != blank %}
+        {{ section.settings.inspiration_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: section.settings.inspiration_image.alt | default: 'Flotte pochette' }}
+      {% else %}
+        <div class="flotte-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          Sélectionnez la photo de la pochette Flotte<br>depuis le personnaliseur de thème
+        </div>
+      {% endif %}
+    </div>
+    <div class="flotte-inspiration-content">
+      <h3>BESOIN D'INSPIRATION ?</h3>
+      <p>Nos conseillers se tiennent à votre disposition pour vous aider et vous accompagner dans votre expérience Flotte.</p>
+      <a href="#" class="flotte-btn">Appeler</a>
+    </div>
+  </div>
+</div>

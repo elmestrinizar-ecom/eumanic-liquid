@@ -9,6 +9,17 @@
  */
 {
   "sections": {
+    "flotte_contact_NEW": {
+      "type": "flotte-contact",
+      "blocks": {
+        "block_1": { "type": "contact_column", "settings": { "title": "APPELEZ-NOUS", "content": "<p>Lundi - Samedi : 9h30 - 20h<br>Dimanche : 9h30 - 17h30</p>", "btn1_text": "Appelez-nous", "btn2_text": "Rappelez-moi" } },
+        "block_2": { "type": "contact_column", "settings": { "title": "ÉCRIVEZ-NOUS", "content": "<p>Nous sommes également disponibles par e-mail, sur WhatsApp et Apple Messages.</p>", "btn1_text": "Envoyez un e-mail", "btn2_text": "WhatsApp", "btn3_text": "Apple Messages" } },
+        "block_3": { "type": "contact_column", "settings": { "title": "RENDEZ-VOUS EN MAGASIN", "content": "<p>Nous vous invitons à prendre rendez-vous dans le magasin de votre choix afin de vivre une expérience personnalisée.</p>", "btn1_text": "Prendre rendez-vous" } },
+        "block_4": { "type": "contact_column", "settings": { "title": "SERVICE D'ASSISTANCE", "content": "<p>Le service Flotte dédié à vos retours et échanges est disponible du lundi au vendredi de 9h30 à 18h.</p>", "btn1_text": "Accéder à l'assistance" } }
+      },
+      "block_order": ["block_1", "block_2", "block_3", "block_4"],
+      "settings": {}
+    },
     "lily_lolo_product_KVCDgc": {
       "type": "lily-lolo-product",
       "name": "Lily Lolo Product",
@@ -596,6 +607,7 @@
     }
   },
   "order": [
+    "flotte_contact_NEW",
     "lily_lolo_product_KVCDgc",
     "nuoo_split_promo_qD4wrT",
     "clutch_innosoda_pN3Tkt",
