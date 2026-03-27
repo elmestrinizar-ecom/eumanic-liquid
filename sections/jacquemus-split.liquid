@@ -1,0 +1,173 @@
+{% schema %}
+{
+  "name": "Jacquemus Split Screen",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Bloc Gauche"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_left",
+      "label": "Image Gauche"
+    },
+    {
+      "type": "text",
+      "id": "text_left",
+      "label": "Texte Gauche",
+      "default": "Les Classiques - Women"
+    },
+    {
+      "type": "url",
+      "id": "link_left",
+      "label": "Lien Gauche"
+    },
+    {
+      "type": "header",
+      "content": "Bloc Droit"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right",
+      "label": "Image Droite"
+    },
+    {
+      "type": "text",
+      "id": "text_right",
+      "label": "Texte Droit",
+      "default": "Les Classiques - Men"
+    },
+    {
+      "type": "url",
+      "id": "link_right",
+      "label": "Lien Droit"
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Hauteur sur ordinateur",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Jacquemus Split Screen"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .j-split-section {
+    display: flex;
+    width: 100%;
+    height: {{ section.settings.desktop_height }}vh;
+    overflow: hidden;
+    background-color: #000; /* fallbacks */
+  }
+
+  .j-split-block {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+
+  .j-split-block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: block;
+  }
+
+  .j-split-block:hover img {
+    transform: scale(1.05);
+  }
+
+  .j-split-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 25%);
+    transition: opacity 0.5s ease;
+  }
+
+  .j-split-text {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: #ffffff;
+    font-size: 14px;
+    text-transform: none;
+    font-weight: 400;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (max-width: 768px) {
+    .j-split-section {
+      flex-direction: column;
+      height: auto;
+    }
+    .j-split-block {
+      width: 100%;
+      height: 60vh;
+    }
+    .j-split-text {
+      bottom: 25px;
+      left: 20px;
+    }
+  }
+</style>
+
+<div class="j-split-section">
+  <!-- Left Block -->
+  {%- capture left_tag -%}
+    {% if section.settings.link_left != blank %}a{% else %}div{% endif %}
+  {%- endcapture -%}
+  
+  <{{left_tag}} 
+    {% if section.settings.link_left != blank %}href="{{ section.settings.link_left }}"{% endif %} 
+    class="j-split-block"
+  >
+    {% if section.settings.image_left != blank %}
+      {{ section.settings.image_left | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.text_left | default: 'Split Gauche' }}
+    {% else %}
+      <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/ubinol.png?v=1774580611" alt="Left Split Fallback" loading="lazy">
+    {% endif %}
+    <div class="j-split-overlay"></div>
+    {% if section.settings.text_left != blank %}
+      <div class="j-split-text">{{ section.settings.text_left }}</div>
+    {% endif %}
+  </{{left_tag}}>
+
+  <!-- Right Block -->
+  {%- capture right_tag -%}
+    {% if section.settings.link_right != blank %}a{% else %}div{% endif %}
+  {%- endcapture -%}
+  
+  <{{right_tag}} 
+    {% if section.settings.link_right != blank %}href="{{ section.settings.link_right }}"{% endif %} 
+    class="j-split-block"
+  >
+    {% if section.settings.image_right != blank %}
+      {{ section.settings.image_right | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.text_right | default: 'Split Droit' }}
+    {% else %}
+      <img src="https://cdn.shopify.com/s/files/1/0986/3141/8238/files/Capture_d_ecran_2026-03-27_a_04.01.55.png?v=1774580616" alt="Right Split Fallback" loading="lazy">
+    {% endif %}
+    <div class="j-split-overlay"></div>
+    {% if section.settings.text_right != blank %}
+      <div class="j-split-text">{{ section.settings.text_right }}</div>
+    {% endif %}
+  </{{right_tag}}>
+</div>

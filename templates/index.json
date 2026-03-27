@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "jacquemus_split_NEW": {
+      "type": "jacquemus-split",
+      "settings": {
+        "text_left": "Les Classiques - Women",
+        "text_right": "Les Classiques - Men"
+      }
+    },
     "flotte_contact_NEW": {
       "type": "flotte-contact",
       "blocks": {
@@ -607,6 +614,7 @@
     }
   },
   "order": [
+    "jacquemus_split_NEW",
     "flotte_contact_NEW",
     "lily_lolo_product_KVCDgc",
     "nuoo_split_promo_qD4wrT",
